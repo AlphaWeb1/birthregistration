@@ -207,12 +207,7 @@ if(!empty($posts->signup) and $posts->signup=='register' and $sitePage=='registe
         '$posts->father_ethnic', '$posts->father_literacy', '$posts->father_level_of_education', '$posts->informant_relationship_to_child', '$posts->informant_surname', 
         '$posts->informant_firstname', '$posts->informant_place_of_residence', '$posts->informant_email', '0', '$dateNow', '$dateNow');");
 
-        $fail='<div class="alert text-primary alert-dismissible" role="alert">
-            <i class="fa fa-checked"></i> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h3>Success!</h3><p>Your Registration of birth detail is successfully sent for verification</p>
-            <p>Your Registration Search ID is <strong>'.$genRefid.'</strong> encure to copy and keep it safe. You can also find it in the informant\'s email</p>
-            <p>Kindly visit your email form time to time for you will receive email notification with link to print the birth certificate if approved.</p>
-        </div>';
+        require_once 'mail_success_registration.php';
         
     }else{
         $fail='<div class="alert alert-danger text-justify">
