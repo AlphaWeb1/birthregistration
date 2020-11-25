@@ -1,0 +1,82 @@
+<!--{extends file="root.html"}-->
+<!--{block name="breadcrumb"}-->
+<section class="breadcrumb"><strong class="uppercase">Dasboard |</strong>&nbsp;REPORTS&nbsp;<i class="fa fa-files-o"></i></section>
+<!--{/block}-->
+<!--{block name="content"}-->
+<section class="row justify-content-center">
+	<div class="col-md-4 mb-2">
+		<div class="card text-center">
+	        <div class="card body border border-success text-center pt-3">
+	        	<h3 class="card-header"><i class="fa fa-money"></i> Total Income</h3>
+	            <div class="bg-success py-3 mb-2">
+	                <h1>₦<!--{$reports->totalIncome}--><br/></h1>
+	                Last Transaction <!--{$reports->lastTransDate|date_format}-->
+	            </div>
+	            <h4 class=""><strong>Minimum Income:</strong> ₦<!--{$reports->minIncome}--></h4>
+	            <h4 class=""><strong>Maximum Income:</strong> ₦<!--{$reports->maxIncome}--></h4>
+	            <h4 class=""><strong>Total Transactions:</strong> <!--{$reports->totalTrans}--></h4>
+	        </div>
+			<div class="card-footer"> <a class="btn btn-block site-bg-1" href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/transactions"><i class="fa fa-ellipsis-v"></i> Transactions</a></div>
+		</div>
+    </div>
+	<div class="col-md-4 mb-2">
+		<div class="card text-center">
+	        <div class="card body border border-success text-center pt-3">
+	        	<h3 class="card-header"><i class="fa fa-info-circle"></i>Total Clients</h3>
+	            <div class="bg-success py-3 mb-2">
+	                <h1><!--{$reports->totalCustomers}--><br/></h1>
+	                Last Registered <!--{$reports->lastRegDate|date_format}-->
+	            </div>
+	            <h4 class=""><strong>Client's Having Store:</strong> <!--{$reports->customersWithStores}--></h4>
+	            <h4 class=""><strong>Client's Having No Store:</strong> <!--{$reports->customersWithoutStores}--></h4>
+	            <h4 class=" float-left"><strong>Custimers</strong> Active: <!--{$reports->activeCustomers}--> In-Active:<!--{$reports->inactiveCustomers}--></h4>
+	        </div>
+			<div class="card-footer"> <a class="btn btn-block site-bg-1" href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/clients"><i class="fa fa-ellipsis-v"></i> Clients</a></div>
+		</div>
+    </div>
+	<div class="col-md-4 mb-2">
+		<div class="card text-center">
+	        <div class="card body border border-success text-center pt-3">
+	        	<h3 class="card-header"><i class="fa fa-info-circle"></i>Total Stores</h3>
+	            <div class="bg-success py-2 mb-2">
+	                <h1><!--{$reports->totalStores}--><br/></h1>
+	                Last Registered <!--{$reports->lastRegStoreDate|date_format}-->
+	            </div>
+	            <h5 class=""><strong>Hidden Stores:</strong> <!--{$reports->hiddenStores}--></h5>
+	            <h5 class=""><strong>Showing Stores:</strong> <!--{$reports->showingStores}--></h5>
+	            <h5 class=""><strong>Transferred Stores</strong> No of Times: <!--{$reports->transferredStoreTotal}--> Total Stores: <!--{$reports->transferredStore}--></h5>
+	        </div>
+			<div class="card-footer"> <a class="btn btn-block site-bg-1" href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/stores"><i class="fa fa-ellipsis-v"></i> Stores</a></div>
+		</div>
+    </div>
+	<div class="col-md-4 mb-2">
+		<div class="card text-center">
+	        <div class="card body border border-success text-center pt-3">
+	        	<h3 class="card-header"><i class="fa fa-info-circle"></i>Total Properties</h3>
+	            <div class="bg-success py-3 mb-2">
+	                <h1><!--{$reports->totalProperties}--><br/></h1>
+	                Last Registered <!--{$reports->lastRegPropertyDate|date_format}-->
+	            </div>
+	            <h4 class=""><strong>Hidden Properties:</strong> <!--{$reports->hiddenProperties}--></h4>
+	            <h4 class=""><strong>Showing Properties:</strong> <!--{$reports->showingProperties}--></h4>
+	        </div>
+			<div class="card-footer"> <a class="btn btn-block site-bg-1" href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/properties"><i class="fa fa-ellipsis-v"></i> Properties</a></div>
+		</div>
+    </div>
+	<div class="col-md-4 mb-2">
+		<div class="card text-center">
+	        <div class="card body border border-success text-center pt-3">
+	        	<h3 class="card-header"><i class="fa fa-info-circle"></i>Total Jobs</h3>
+	            <div class="bg-success py-2 mb-2">
+	                <h1><!--{$reports->totalJobs}--><br/></h1>
+	                Last Registered <!--{$reports->lastRegJobDate|date_format}-->
+	            </div>
+	            <h5 class=""><strong>Closed Jobs:</strong> <!--{$reports->hiddenJobs}--></h5>
+	            <h5 class=""><strong>Open Jobs:</strong> <!--{$reports->showingJobs}--></h5>
+	            <h5 class=""><strong>Total Applicants:</strong> <!--{$reports->totalApplicants}--></h5>
+	        </div>
+			<div class="card-footer"> <a class="btn btn-block site-bg-1" href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/jobs"><i class="fa fa-ellipsis-v"></i> Jobs</a></div>
+		</div>
+    </div>
+</section>
+<!--{/block}-->

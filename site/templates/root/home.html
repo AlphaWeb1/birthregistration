@@ -1,0 +1,63 @@
+<!--{extends file="root.html"}-->
+<!--{block name="content"}-->
+<h2>Dashboard Home</h2>
+<section class="jumbotron text-center">
+	<!--img src="--><!--$Site.siteProtocol--><!--$Site.domainName--><!--/site/media/i/all/dashboard_model.jpg" style="" class="img-fluid rounded mx-auto"-->
+	<div class="row justify-content-center mx-0">
+		<div class="col-md-4 mb-2">
+			<div class="card text-center">
+				<h5 class="card-header site-bg-1"><i class="fa fa-list"></i> Newly Registered</h5>
+				<div class="card-body">
+					<h3 class="font-weight-bold text-center"><!--{$dashStat->trans}--></h3>
+				</div>
+				<div class="card-footer"> <a class="btn btn-block btn-success" href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/registered-new">Check List</a></div>
+			</div>
+		</div>
+		<div class="col-md-4 mb-2">
+			<div class="card text-center">
+				<h5 class="card-header site-bg-1"><i class="fa fa-list"></i> Approved Certificate</h5>
+				<div class="card-body">
+					<h3 class="font-weight-bold text-center"><!--{$dashStat->user}--></h3>
+				</div>
+				<div class="card-footer"> <a class="btn btn-block btn-success" href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/registered-approved">Check List</a></div>
+			</div>
+		</div>
+		<div class="col-md-4 mb-2">
+			<div class="card text-center">
+				<h5 class="card-header site-bg-1"><i class="fa fa-list"></i> Rejected Certificates</h5>
+				<div class="card-body">
+					<h3 class="font-weight-bold text-center"><!--{$dashStat->jobs}--></h3>
+				</div>
+				<div class="card-footer"> <a class="btn btn-block btn-success" href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/registered-unverified">Check List</a></div>
+			</div>
+		</div>
+		<div class="col-md-4 mb-2">
+			<div class="card text-center">
+				<h5 class="card-header site-bg-1"><i class="fa fa-search"></i> Find Certificate</h5>
+				<div class="card-body">
+					<h3 class="font-weight-bold text-center"><!--{$dashStat->stores}--></h3>
+				</div>
+				<div class="card-footer"> <a class="btn btn-block btn-success" href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/search">Go Search</a></div>
+			</div>
+		</div>
+		<div class="col-md-4 mb-2">
+			<div class="card text-center">
+				<h5 class="card-header site-bg-1"><i class="fa fa-certificate"></i>  Create New Certificate </h5>
+				<div class="card-body">
+					<h3 class="font-weight-bold text-center"><!--{$dashStat->properties}--></h3>
+				</div>
+				<div class="card-footer"> <a class="btn btn-block btn-success" href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/registered-manual">Create</a></div>
+			</div>
+		</div>
+		<div class="col-md-4 mb-2">
+			<div class="card text-center">
+				<h5 class="card-header site-bg-1"><i class="fa fa-question"></i>  F.A.Q</h5>
+				<div class="card-body">
+					<h3 class="font-weight-bold text-center"><!--{$dashStat->properties}--></h3>
+				</div>
+				<div class="card-footer"> <a class="btn btn-block btn-success" href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/faq">Check List</a></div>
+			</div>
+		</div>
+	</div>
+</section>
+<!--{/block}-->

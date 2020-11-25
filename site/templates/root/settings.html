@@ -1,0 +1,113 @@
+<!--{extends file="root.html"}-->
+<!--{block name="breadcrumb"}-->
+<section class="breadcrumb"><strong class="uppercase">Dasboard |</strong> &nbsp;<a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/settings">SETTINGS&nbsp;<i class="fa fa-gears"></i></a></section>
+<!--{/block}-->
+<!--{block name="content"}-->
+<section class="row justify-content-center">
+	<div class="col-md-4">
+		<form class="w-100" method="post" action="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/settings">
+			<fieldset class="border-success1 border p-4 rounded">
+				<legend class="text-center font-weight-bold">Activation Settings</legend>
+				<div class="form-group">
+					<label for="amount" class="form-control-label">Amount ₦</label>
+					<input type="number" id="amount" name="amount" class="form-control form-control-sm input-block" value="<!--{if !empty($settings->activation)}--><!--{$settings->activation->amount}--><!--{/if}-->" required/>
+				</div>
+				<div class="form-group">
+					<label for="time" class="form-control-label">Activation Time <sub>(in minutes)</sub></label>
+					<input type="number" id="time" name="time" class="form-control form-control-sm input-block" value="<!--{if !empty($settings->activation)}--><!--{$settings->activation->time}--><!--{/if}-->" required/>
+				</div>
+				<div class="form-group">
+					<label for="renewal" class="form-control-label">Renewal Period</label>
+					<select id="renewal" name="renewal" class="form-control form-control-sm input-block">
+						<option value="once" <!--{if !empty($settings->activation) and $settings->activation->renewal=='once'}-->selected<!--{/if}-->>Once</option>
+						<option value="weekly" <!--{if !empty($settings->activation) and $settings->activation->renewal=='weekly'}-->selected<!--{/if}-->>Weekly</option>
+						<option value="monthly" <!--{if !empty($settings->activation) and $settings->activation->renewal=='monthly'}-->selected<!--{/if}-->>Monthly</option>
+						<option value="quarterly" <!--{if !empty($settings->activation) and $settings->activation->renewal=='quarterly'}-->selected<!--{/if}-->>Quarterly</option>
+						<option value="yearly" <!--{if !empty($settings->activation) and $settings->activation->renewal=='yearly'}-->selected<!--{/if}-->>Yearly</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="discount" class="form-control-label">Discount (%)</label>
+					<input type="number" id="discount" name="discount" default="0"  min="0" max="100" value="<!--{if !empty($settings->activation)}--><!--{$settings->activation->discount}--><!--{/if}-->" class="form-control form-control-sm input-block" required/>
+				</div>
+				<div class="form-group">
+					<!--{if !empty($fail)}-->
+						<!--{$fail}-->
+					<!--{/if}-->
+				</div>
+				<div class="form-group text-center">
+					<button class="btn site-bg-1 btn-sm btn-rounded" type="submit" name="activation" value="activation"><i class="fa fa-save"></i> Save Changes</button>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+	<div class="col-md-4 d-none">
+		<form class="w-100" method="post" action="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/settings">
+			<fieldset class="border-success border p-4 rounded">
+				<legend class="text-center font-weight-bold">HFP Working Hour Settings</legend>
+				<div class="form-row">
+					<div class="form-group col-sm-6">
+						<label for="open_hour" class="form-control-label">Opening Hour</label>
+						<input type="text" id="open_hour" name="open_hour" value="<!--{$settings->working_hours->open_hour_string}-->" class="form-control form-control-sm badge-pill" required/>
+					</div>
+					<div class="form-group col-sm-6">
+						<label for="close_hour" class="form-control-label">Closing Hour</label>
+						<input type="text" id="close_hour" name="close_hour" value="<!--{$settings->working_hours->close_hour_string}-->" class="form-control form-control-sm badge-pill" required/>
+					</div>
+				</div>
+				<div class="form-group">
+					<!--{if !empty($fail2)}-->
+						<!--{$fail2}-->
+					<!--{/if}-->
+				</div>
+				<div class="form-group text-center">
+					<button class="btn btn-success btn-sm btn-rounded" type="submit" name="working_hour" value="working_hour"><i class="fa fa-save"></i> Save Changes</button>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+	<div class="col-md-4 d-none">
+		<form class="w-100" method="post" action="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/settings">
+			<fieldset class="border-success border p-4 rounded">
+				<legend class="text-center font-weight-bold">Parking Space Settings</legend>
+				<div class="form-row">
+					<div class="form-group col-sm-12">
+						<label for="total" class="form-control-label">Total Parking Spaces</label>
+						<input type="number" id="total" name="total" value="<!--{$settings->parkspace->total}-->" class="form-control form-control-sm badge-pill" required/>
+					</div>
+				</div>
+				<div class="form-group">
+					<!--{if !empty($fail3)}-->
+						<!--{$fail3}-->
+					<!--{/if}-->
+				</div>
+				<div class="form-group text-center">
+					<button class="btn btn-success btn-sm btn-rounded" type="submit" name="parkspace" value="parkspace"><i class="fa fa-save"></i> Save Changes</button>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+	<div class="col-md-5 d-none">
+		<form class="w-100" method="post" action="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/settings">
+			<fieldset class="border-primary border p-4 rounded">
+				<legend class="text-center font-weight-bold">Entry Code Generation Settings</legend>
+				<div class="form-group">
+					<label for="codegenstatus" class="form-control-label">Auto Generation Status</label>
+					<select id="codegenstatus" name="status" class="form-control form-control-sm input-block">
+						<option value="0" <!--{if !empty($settings->codegen) and $settings->codegen->status=='0'}-->selected<!--{/if}-->>Off</option>
+						<option value="1" <!--{if !empty($settings->codegen) and $settings->codegen->status=='1'}-->selected<!--{/if}-->>On</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<!--{if !empty($fail1)}-->
+						<!--{$fail1}-->
+					<!--{/if}-->
+				</div>
+				<div class="form-group text-center">
+					<button class="btn btn-primary btn-sm btn-rounded" type="submit" name="codegen" value="codegen"><i class="fa fa-save"></i> Save Changes</button>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+</section>
+<!--{/block}-->

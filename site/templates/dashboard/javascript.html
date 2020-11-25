@@ -1,0 +1,139 @@
+
+<!--{if in_array($sitePage, array('enroll'))}-->
+  <!-- Stripe JavaScript library -->
+  <script src="https://js.stripe.com/v2/"></script>
+<!--{/if}-->
+<!-- JavaScript Libraries -->
+<script src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/lib/common/jquery/jquery.min.js"></script>
+<script src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/lib/common/jquery/jquery-migrate.min.js"></script>
+
+<script src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/lib/common/datatables/js/jquery.datatables.min.js"></script>
+<script src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/lib/common/datatables/js/datatables.min.js"></script>
+<script src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/lib/common/bootstrap/popper.js"></script>
+
+<script src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/lib/common/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/lib/common/easing/easing.min.js"></script>
+<script src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/lib/common/mobile-nav/mobile-nav.js"></script>
+<script src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/lib/common/wow/wow.min.js"></script>
+<script src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/lib/common/waypoints/waypoints.min.js"></script>
+<script src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/lib/common/counterup/counterup.min.js"></script>
+<script src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/lib/common/owlcarousel/owl.carousel.min.js"></script>
+<script src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/lib/common/isotope/isotope.pkgd.min.js"></script>
+<script src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/lib/common/lightbox/js/lightbox.min.js"></script>
+<!-- Contact Form JavaScript File -->
+<script src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/lib/common/contactform/contactform.js"></script>
+
+<!-- Template Main Javascript File -->
+<script src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/lib/common/js/main.js"></script>
+
+<script type="text/javascript" src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/lib/common/js/script.js"></script>
+<script type="text/javascript">
+  $("body").addClass("js");
+
+  $(document).ready(function(){
+    /*General Event Shooter*/ 
+     $(document).on('click','#rootEvt', function(){
+
+      /*Security Page Access Control*/
+      <!--{if $sitePage=='security'}-->
+        let secDetail={username: $("#vUsername").val(), password: $("#vPassword").val()};
+        $.post("<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/site/inc/dashboard/general.php", {sp: `<!--{$sitePage}-->`, sd: secDetail}, (res)=> {
+          if (res=='success') {
+            $('.alert1').addClass('alert-success').removeClass('alert-danger').html(`<p><strong>Notice:</strong> ${res}</p>`);
+            $('.login-shield').hide(2000);
+          }else{
+            $('.alert1').addClass('alert-danger').removeClass('alert-success').html(`<p><strong>Notice:</strong> ${res}</p>`);
+            $('.login-shield').show(2000);
+          }
+          // $(this).addClass("hidden");
+          // $(".sec-token-request").html('<a class="btn btn-sm">Security token sent</a>');
+        });
+      <!--{/if}-->
+    });
+    $(document).on('click','.deleteTrig', function(){
+      let deleConf=confirm(`Are you Sure to Remove This ${$(this).attr(`what`)}?`);
+      if (deleConf!==true) {
+        return false;
+      }
+    });
+    $(document).on('click','.confirmDiag', function(){
+        let confOpt=window.confirm(`${$(this).attr(`what`)}`);
+        if (confOpt==false) {
+          return false;
+        }
+    });
+    /*Smart User Angle Controller*/
+    $(document).on('click', '#smartUser', _=>{
+      $('#smartUser strong i').toggleClass('fa-angle-up').toggleClass('fa-angle-down');
+    });
+    /*Changing of Country State City*/
+    <!--{if in_array($sitePage, array('profile'))}-->
+      $(document).on('change','#country, #state', function(){
+        let csd={ data: $(this).val(), type: $(this).attr('id') };
+        $.post("<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/site/inc/dashboard/general.php", {sp: `<!--{$sitePage}-->`, csd: csd}, (res)=> {
+          let ret=JSON.parse(res);
+          // console.log(ret);
+          let target=( $(this).attr('id')=="country"? "#state": "#city");
+          if(ret.length>0 && ret!=null){
+            $(target).empty();
+            for (let re of ret) {
+              $(target).append(`<option value="${re.name}">${re.name}</option>`);
+            }
+          }else{
+            $(target).html(`<option value="">No Record Found</option>`);
+          }
+        });
+      });
+    <!--{/if}-->
+    $(document).on('change', "#img-upload", function() {
+      readURL(this, '#dataImg');
+      $('#dataImg').css('width', 'inherit');
+      $('#dataImg').css('display', 'block');
+    });
+    $(document).on('change', "#img-upload1", function() {
+      readURL(this, '#dataImg1');
+      $('#dataImg1').css('width', 'inherit');
+      $('#dataImg1').css('display', 'block');
+    });
+    $(document).on('click', '.imgPreview', function() {
+      $("#imgPreviewShow").attr('src', `${$(this).attr('src')}`);
+      $("#gallImgName").text(`${$(this).attr('title')}`);
+    });
+
+    /*Print Event Handler*/
+    $(document).on('click',"#printSect", function() {
+      $("#printSect").hide();
+      printData('printMe', 'School of Greatness: TRANSACTION DETAIL');
+      $("#printSect").show();
+    });
+
+    /*Side menu name collapse caret toggler*/
+    $(document).on("click", "data a.fullname", ()=>{
+      $('data a.fullname strong').toggleClass('isopened');
+    }).on("click", ".side-menu-link", function(){
+      $(this).toggleClass('isactive');
+    });
+
+    /*Toggling of Menu*/
+    $(document).on("click", "#openMobileMenu", ()=>{
+      $('.dashboard-wrapper').toggleClass('mobile-menu-open');
+      let mmControl=$(".dh-menu-icon .fa");
+      mmControl.toggleClass("fa-ellipsis-v").toggleClass("fa-close");
+      /*if(mmControl.hasClass("fa-ellipsis-v")){
+        mmControl.removeClass("fa-ellipsis-v").addClass("fa-close");
+      }else{
+        mmControl.removeClass("fa-close").addClass("fa-ellipsis-v");
+      }*/
+    });
+    $(document).on("click","#printBtn", ()=>{
+      printData("printPage");
+    });
+  });
+ /* Table Navigator*/
+  $('#dataTableId').DataTable({
+    // paging: false,
+    // scrollY: 400,
+    // scrollX: auto,
+    ordering: false
+  });
+</script>

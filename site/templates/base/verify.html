@@ -1,0 +1,37 @@
+<!--{extends 'default.html'}-->
+<!--{block name="login"}-->
+<section class="row no-gutters justify-content-center bg-image-1">
+    <div class="card col-sm-8 my-5 float-left p-3" id="logn-frame">
+        <fieldset class="card p-4 mt-3">
+            <legend class="text-center mb-4"><h4 class="font-weight-bold"><i class="fa fa-user-check"></i> Account Verification Status</h4></legend>
+            <div class="form-group ">
+                <!--{if !empty($fail)}-->
+                    <!--{$fail}-->
+                <!--{/if}-->
+            </div>
+            <div class="form-group text-center">
+                Already Registered? <a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/login"  class="btn btn-link text-primary">login here...</a>
+            </div>
+        </fieldset>
+    </div>
+</section>
+    <div class="container top-margined d-none">
+        <div class="row justify-content-center">
+            <div class="col-md-12 text-center">
+                <div class="h4"><span>Account Verification Status</span></div>
+            </div>
+            <div class="col-md-8 mt-3">
+                <!--{if !empty($fail)}-->
+                        <!--{$fail}-->
+                <!--{/if}-->
+                <!--{block name="forgot-link"}-->
+                <div class="col-md-12 text-center text-dark">
+                    Already Registered? <a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/login"  class="btn btn-link brown">login here...</a>
+                </div>
+                <!--{/block}-->
+            </div>
+        </div>
+    </div>
+<!--{/block}-->
+<!--{block name="general-message"}-->
+<!--{/block}-->

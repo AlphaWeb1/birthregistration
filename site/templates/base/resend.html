@@ -1,0 +1,24 @@
+<!--{extends 'default.html'}-->
+<!--{block name="login"}-->
+    <div class="container top-margined p-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8 mt-3">
+                <fieldset class="card p-4 mt-3">
+                    <legend class="text-center mb-4"><h4><i class="fa fa-info"></i> <!--{if !empty($Site.get.rt) and $Site.get.rt=='reset'}-->Password Reset link<!--{else}--> Signup Verification link<!--{/if}--> Resend</h4></legend>
+                    <div class="form-group">
+                        <!--{if !empty($fail)}-->
+                            <!--{$fail}-->
+                        <!--{/if}-->
+                    </div>
+                    <!--{block name="forgot-link"}-->
+                    <div class="form-group text-center text-dark">
+                        Already Registered? <a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/login" class="btn btn-link brown">login here...</a>
+                    </div>
+                    <!--{/block}-->
+                </fieldset>
+            </div>
+        </div>
+    </div>
+<!--{/block}-->
+<!--{block name="general-message"}-->
+<!--{/block}-->

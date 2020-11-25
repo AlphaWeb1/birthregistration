@@ -1,0 +1,76 @@
+<!--{extends file="dashboard.html"}-->
+<!--{block name="topbuttons"}-->
+
+<section class="row justify-content-center">
+	<h4 class="text-center col-sm-12 font-weight-bold">Activation Payment Status</h4>
+	<!--{if $lastPayment->isExpired==true}-->
+		<div class="col-sm-12 d-none">
+			<a class="btn btn-sm btn-danger" href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/dashboard/activation"><i class="fa fa-credit-card"></i> <!--{if !empty($lastPayment->expired)}-->Kindly Renew Your Activation<!--{else}-->Activate Now<!--{/if}--></a>
+		</div>
+	<!--{else}-->
+		<div class="col-sm-5 alert badge-pill badge-success text-white text-center py-2 my-2 d-none">
+		 	<h6>You plan is currently<span class="font-weight-bold">active</span> </h6>
+		</div>
+	<!--{/if}--> 
+	<!--{if !empty($otherPayments)}-->
+	<h4 class="text-center col-sm-12 font-weight-bold d-none mt-3">Payments Outlets</h4>
+		<!--{foreach $otherPayments as $othPay}-->
+			<!--{if $othPay->lastPayment->isExpired==true}-->
+				<div class="col-sm-3 d-none my-2">
+					<a class="btn btn-sm btn-danger" href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/dashboard/otherpayments?payid=<!--{$othPay->token}-->"><i class="fa fa-credit-card"></i> <!--{if !empty($othPay->lastPayment->expired)}-->Kindly Renew Your <!--{$othPay->purpose}--> Payment<!--{else}-->Make Payment for <!--{$othPay->purpose}--> Now<!--{/if}--></a>
+				</div>
+			<!--{else}-->
+				<div class="col-sm-3 d-none">
+            		<div class="alert badge-pill badge-success text-white text-center py-2 my-2 px-2 mx-2">Your payment for <!--{$othPay->purpose}--> is currently <span class="font-weight-bold">active</span> </div>
+				</div>
+			<!--{/if}--> 
+		<!--{/foreach}--> 
+	<!--{/if}--> 
+</section>
+
+<!--{/block}-->
+<!--{block name="content"}-->
+	<!--{block name="content-main"}-->
+	<div class="row justify-content-center bg-white">
+		<div class="col-md-12 mt-4 text-justify">
+			<h4 class="font-weight-bold">Dashboard</h4>
+		</div>
+		<div class="col-sm-5 mb-4 mt-3">
+			<div class="card text-center">
+				<h5 class="card-header bg-success1 text-white">Total Transactions</h5>
+				<div class="card-body">
+					<h3 class="font-weight-bold text-center"><!--{$def->trans}--></h3>
+				</div>
+				<div class="card-footer"> <a class="btn btn-block btn-primary1" href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/dashboard/transactions">Check Detail</a></div>
+			</div>
+		</div>
+		<div class="col-sm-5 mb-4 mt-3">
+			<div class="card text-center">
+				<h5 class="card-header bg-success2 text-white">Total Reffered</h5>
+				<div class="card-body">
+					<h3 class="font-weight-bold text-center"><!--{$def->referred}--></h3>
+				</div>
+				<div class="card-footer"> <a class="btn btn-block btn-primary1" href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/dashboard/referral">Check Detail</a></div>
+			</div>
+		</div>
+		<div class="col-sm-5 mb-4 mt-3">
+			<div class="card text-center">
+				<h5 class="card-header text-white bg-success3 text-white">Downlines</h5>
+				<div class="card-body">
+					<h3 class="font-weight-bold text-center"><!--{$def->downlines}--></h3>
+				</div>
+				<div class="card-footer"> <a class="btn btn-block btn-primary1" href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/dashboard/network">Check Detail</a></div>
+			</div>
+		</div>
+		<div class="col-sm-5 mb-4 mt-3">
+			<div class="card text-center">
+				<h5 class="card-header bg-dark text-white">Network Level</h5>
+				<div class="card-body">
+					<h3 class="font-weight-bold text-center"><!--{$def->level}--></h3>
+				</div>
+				<div class="card-footer"> <a class="btn btn-block btn-primary1" href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/dashboard/network">Check Detail</a></div>
+			</div>
+		</div>
+	</div>
+	<!--{/block}-->
+<!--{/block}-->

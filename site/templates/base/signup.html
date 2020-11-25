@@ -1,0 +1,97 @@
+<!--{extends 'default.html'}-->
+
+<!--{block name="login"}-->
+<section class="row no-gutters justify-content-end bg-image-1">
+    <div class="card col-sm-8 my-5 float-left p-3" id="logn-frame">
+        <form method="post" action="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/signup">
+            <fieldset class="card p-4 mt-3">
+                <legend class="text-center mb-4"><h3 class="font-weight-bold"><i class="fa fa-user"></i> Create An Account</h3></legend>
+                <div class="form-row">
+                    <div class="form-group col-sm-6 mb-3">
+                        <label for="refid">Referral Code</label>
+                        <input type="text" class="form-control form-control-sm badge-pill" name="refid" id="refid" value="<!--{if !empty($Site.session.refid)}--><!--{$Site.session.refid}--><!--{/if}-->" placeholder="Referral Code" required="" readonly>
+                    </div>
+                    <div class="form-group col-sm-6 mb-3">
+                        <label for="username">Username</label>
+                        <input type="text" class="form-control form-control-sm badge-pill" name="username" id="username" value="" placeholder="Username" required="">
+                    </div>
+                </div>
+                <div class="form-row justify-content-center mb-3">
+                    <div class="form-group col-sm-6">
+                        <label for="firstName">First Name</label>
+                        <input type="text" class="form-control form-control-sm badge-pill" id="firstName" name="firstName" placeholder="First name" value="" required="">
+                    </div>
+                    <div class="form-group col-sm-6 mb-3">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" class="form-control form-control-sm badge-pill" id="lastName" name="lastName" placeholder="Last name" value="" required="">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-sm-6 mb-3">
+                        <label for="address">Address</label>
+                        <input type="text" class="form-control form-control-sm badge-pill" id="address" name="address" placeholder="Enter Address" required="">
+                    </div>
+                    <div class="form-group col-sm-6 mb-3">
+                        <label for="country">Country</label>
+                        <select class="custom-select d-block w-100 form-control-sm badge-pill" id="country" name="country">
+                            <!--{if !empty($countries)}-->
+                                <!--{foreach $countries as $country}-->
+                                    <option value="<!--{$country->name}-->" <!--{if 'Nigeria'==$country->name}-->selected<!--{/if}-->><!--{$country->name|capitalize}--></option>
+                                <!--{/foreach}-->
+                            <!--{/if}-->
+                            <option value="">Others</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-sm-6 text-justify mb-3">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Enter Email" class="form-control form-control-sm badge-pill" required="">
+                    </div>
+                    <div class="form-group col-sm-6 text-justify mb-3">
+                        <label for="phone">Phone No</label>
+                        <input type="phone" id="phone" name="phone" placeholder="Enter Phone Number" class="form-control form-control-sm badge-pill" required="">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-sm-6 text-justify mb-3">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" placeholder="Enter Password" class="form-control form-control-sm badge-pill" required="">
+                    </div>
+                    <div class="form-group col-sm-6 text-justify mb-3">
+                        <label for="cpassword">Confirm Password</label>
+                        <input type="password" id="cpassword" name="cpassword" placeholder="Confirm Password" class="form-control form-control-sm badge-pill" required="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <span class="matches"></span>
+                </div>
+                <div class="form-group">
+                    <div class="custom-control custom-checkbox m-3">
+                        <input type="checkbox" class="custom-control-input" name="terms" value="1" id="agree-terms">
+                        <label class="custom-control-label" for="agree-terms">I agree to <a class="brown" href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/terms" target="__top">Terms &amp; Policies</a>.</label>
+                    </div>
+                </div>      
+                <!--{if !empty($fail)}-->
+                    <div class="form-group m-1">
+                        <div class="alert alert-danger alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><h3>Error:</h3> 
+                            <!--{$fail}-->
+                        </div>
+                    </div>
+                <!--{/if}-->
+                <div class="form-group text-center">
+                    <button class="btn btn-success1 btn-block badge-pill" type="submit" name="signup" value="signup">Register</button>
+                </div>
+                <div class="form-group text-center">
+                    <h5 class="font-weight-bold">OR</h5>    
+                </div>
+                <div class="form-group text-center">
+                    <a class="btn btn-success1 btn-block badge-pill" href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/login">Login</a>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</section>
+<!--{/block}-->
+<!--{block name="general-message"}-->
+<!--{/block}-->

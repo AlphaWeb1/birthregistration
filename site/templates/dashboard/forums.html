@@ -1,0 +1,79 @@
+<!--{extends file="dashboard.html"}-->
+<!--{block name="breadcrumb"}-->
+<section class="breadcrumb"><strong class="uppercase">Dasboard |</strong>
+	&nbsp;<a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/dashboard/available-courses">Greatness Community&nbsp;<i class="fa fa-cubes"></i></a>&nbsp;| Forums&nbsp;<i class="fa fa-comments-o"></i>
+</section>
+<!--{/block}-->
+<!--{block name="content"}-->
+<section class="row justify-content-center">
+	<h4 class="col-sm-10 font-weight-bold">FORUMS</h4>
+	<div class="card col-sm-10 mt-2 mb-2">
+		<form action="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/dashboard/forums" method="post">
+			<div class="form-group"><legend class="font-weight-bold text-center mb-2 mt-2">Create New Topic in “Greatness Community”</legend></div>
+			<div class="form-row">
+				<div class="form-group col-3">
+					<label for="title">Title</label>
+					<input class="form-control form-control-sm bg-secondary font-weight-bold" type="text" id="title" name="title" placeholder="Topic title here..." required>
+				</div>
+				<div class="form-group col-3">
+					<label for="tag">Tag</label>
+					<input class="form-control form-control-sm bg-secondary" type="text" id="tag" name="tag" placeholder="Topic tag here...">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="content">Content</label>
+				<textarea class="form-control form-control-sm bg-secondary text-white" rows="8" id="content" name="content" placeholder="Type in your content here..." required></textarea>
+			</div>
+			<div class="form-group">
+				<!--{if !empty($fail)}-->
+					<!--{$fail}-->
+				<!--{/if}-->
+			</div>
+			<div class="form-group">
+				<button type="submit" name="triggers" value="converse" class="btn btn-sm btn-secondary rounded">Start Conversation</button>
+			</div>
+		</form>
+	</div>
+	<div class="col-sm-10">
+		<div class="table-responsive">
+			<!--{if !empty($forums)}-->
+			<div id="dataTableId_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+				<!--{include file="paging-top.html"}-->
+				<table class="table table-striped table-hover table-bordered">
+				  <thead class="bg-warning">
+				    <tr>
+				      <th scope="col">#</th>
+				      <th scope="col">Topic</th>
+				      <th scope="col">Conversations</th>
+				      <th scope="col">Last Visited</th>
+				      <th scope="col"></th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				  	<!--{$numCount=1}-->
+				  	<!--{foreach $forums as $forum}-->
+				    <tr>
+				      <td><!--{$numCount}--></td>
+				      <td>
+				      	<a class="font-weight-bold" href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/dashboard/forum?id=<!--{$forum->token}-->"><!--{$forum->title}--></a><br>
+				      	<span class="text-muted">Created by: </span><!--{$forum->creatornames}--> (<!--{$forum->creator}-->)
+				      </td>
+				      <td><!--{$forum->replies}--></td>
+				      <td><!--{$forum->lastvisit}--></td>
+				      <td>
+				      	<a class="btn btn-sm btn-primary" href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/dashboard/forum?id=<!--{$forum->token}-->"><i class="fa fa-sign-in"></i> Join Conversation</a>
+				      </td>
+				    </tr>
+				  	<!--{$numCount=$numCount+1}-->
+					<!--{/foreach}-->
+				  </tbody>
+				</table>
+				<!--{include file="paging-bottom.html"}-->
+			</div>
+			<!--{else}-->
+			<div class="alert alert-warning"><h3 class="alert-heading">No record found</h3></div>
+			<!--{/if}-->
+		</div>
+	</div>
+</section>
+<!--{/block}-->

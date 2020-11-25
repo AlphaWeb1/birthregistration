@@ -1,0 +1,60 @@
+<!--{extends 'default.html'}-->
+<!--{block name="main-slider"}-->
+<section class="replace-slider-main h-auto border border-top-0 border-left-0 border-right-0 border-warning site-bg-3 py-4 text-center">
+    <h3 class="font-weight-bold text-white">Contact Us</h3>
+</section>
+<!--{/block}-->
+<!--{block name="main_content"}-->
+<section class="row justify-content-around stage-four">
+	<div class="col-sm-5 text-justify">
+		<h1 class="text-center">Enquiry Form</h1>
+		<form method="post" accept="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/contact">
+			<div class="form-group">
+				<label>NAME</label>
+				<input class="form-control input" name="names" type="text" placeholder="Name*..."/>
+			</div>
+			<div class="form-group">
+				<label>EMAIL</label>
+				<input class="form-control input" name="email" type="email" placeholder="Email*..."/>
+			</div>
+			<div class="form-group">
+				<label>PHONE NUMBER</label>
+				<input class="form-control input" name="phone" type="tel" placeholder="Phone Number*..."/>
+			</div>
+			<div class="form-group">
+				<label>SUBJECT</label>
+				<input class="form-control input" name="subject" type="text" placeholder="Subject*..."/>
+			</div>
+			<div class="form-group">
+				<label>MESSAGE</label>
+				<textarea class="form-control input" rows="5" name="message" placeholder="Message..."></textarea>
+			</div>
+			<div class="form-group">
+				<button type="submit" name="trigger" value="contact" class="btn btn-success1 rounded-0 m-1">SUBMIT</button>
+			</div>
+		</form>
+	</div>
+	<div class="col-sm-5 text-justify">
+		<p>If you would like to contact us to understand more about this Policy or wish to contact us concerning any matter relating to individual rights and your Personal Information, you may send a mail to support@<!--{$Site.domainName}--> or use the enquiry form on this page</p>
+		<h1 class="text-center">Address</h1>
+		<h5>Address 1</h5>
+		<p>
+			Address 1.<br/>
+			Tel: <a href="tel:23412345678" target="__top">+23412345678</a>
+		</p>
+		<h5>Address 2</h5>
+		<p>
+		    Address 2<br/>
+		    Tel: <a href="tel:23412345678" target="__top">+23412345678</a>
+		</p>
+		<p>
+			Email: contact@<!--{$Site.domainName}-->
+		</p>
+		<p>
+			<a href=""><i class="fa fa-3x fa-facebook-square"></i></a>
+			<a href=""><i class="fa fa-3x fa-twitter-square"></i></a>
+			<a href=""><i class="fa fa-3x fa-instagram"></i></a>
+		</p>
+	</div>
+</section>
+<!--{/block}-->

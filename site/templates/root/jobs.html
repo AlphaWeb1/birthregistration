@@ -1,0 +1,51 @@
+<!--{extends file="root.html"}-->
+<!--{block name="breadcrumb"}-->
+<section class="breadcrumb"><strong class="uppercase">Dasboard |</strong> &nbsp;JOBS&nbsp;<i class="fa fa-book"></i></section>
+<!--{/block}-->
+<!--{block name="content"}-->
+<section class="row no-gutters justify-content-center">
+    <div class="col-sm-10 form-group mb-3">
+      <!--{if !empty($fail)}-->
+        <!--{$fail}-->
+      <!--{/if}-->
+    </div>
+    <div class="col-sm-11">
+      <!--{if !empty($jobs)}-->
+      <div class="row justify-content-center">
+        <!--{include file="paging-top.html"}-->
+        <!--{$numCount}-->
+        <!--{foreach $jobs as $job}-->
+        <div class="col-md-6 mb-4">
+          <div class="card store-card">
+            <div class="row no-gutters justify-content-center">
+              <img src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/<!--{if !empty($job->logo)}--><!--{$job->logo}--><!--{else}-->site/media/i/new-imgs/backgrounds/background-4.jpg<!--{/if}-->" class="col-sm-6 card-img-top" style="height: 300px;" alt="<!--{$job->jobtitle}-->">
+              <div class="col-sm-6 card-body text-white site-bg-2 px-4">
+                <h4 class="card-title text-center"><!--{$job->jobtitle}--></h4>
+                <p class="" class="card-title text-center"><span class="fon-weight-bold">Name of Organization: </span><!--{$job->company}--></p>
+                <!--{if !empty($job->description)}--><p class="card-text max-h-150px overflow-y-auto"><span class="font-weight-bold">Job Description: </span><!--{$job->description}--></p><!--{/if}-->
+                <!--{if !empty($job->role)}--><p class="card-text max-h-150px overflow-y-auto"><span class="font-weight-bold">Job Role: </span><!--{$job->role}--></p><!--{/if}-->
+                <p class="card-text"><span class="font-weight-bold">Total Applicants: </span><!--{count($job->applicantDetails)}-->
+                <p class="text-center">
+                  <a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/job?id=<!--{$job->token}-->" class="btn btn-sm btn-success rounded-0 btn-success-hover mb-1"><i class="fa fa-ellipsis-v"></i> DETAIL</a>
+                  <!--{if $job->open!='1'}-->
+                    <a class="btn btn-sm btn-success rounded-0 confirmTrig mb-1" href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/jobs?id=<!--{$job->token}-->&evt=show" what='show this record to website visitors'><i class="fa fa-check-circle"></i> Set to Open</a>
+                  <!--{/if}-->
+                  <!--{if $job->open!='0'}-->
+                    <a class="btn btn-sm btn-warning rounded-0 confirmTrig mb-1" href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/jobs?id=<!--{$job->token}-->&evt=hide" what='hide this record from website visitors'><i class="fa fa-times-circle"></i> Set to Closed</a>
+                  <!--{/if}-->
+                  <a class="btn btn-sm btn-danger border border-white rounded-0 confirmTrigv" href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/jobs?id=<!--{$job->token}-->&evt=delete" what='delete this record from the system'><i class="fa fa-trash"></i> Delete</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--{$numCount=$numCount+1}-->
+        <!--{/foreach}-->
+        <!--{include file="paging-bottom.html"}-->
+      </div>
+      <!--{else}-->
+      <div class="alert alert-success mt-5"><h4 class="alert-heading font-weight-bold text-center pt-2">No registered job yet</h4></div>
+      <!--{/if}-->
+    </div>
+</section>
+<!--{/block}-->

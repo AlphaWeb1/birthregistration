@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <title>Client Dashboard: <!--{$sitePage|capitalize}--> - <!--{$Site.companyName|capitalize}--></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <meta name="robots" content="noindex">
+	    <!-- Favicons -->
+    	<link href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/site/media/i/logo.png" rel="icon">
+    	<link href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/site/media/i/logo.png" rel="apple-touch-icon">
+        <!--{include file='stylesheet.html'}-->
+    </head>
+	<body>
+		<div class="dashboard-wrapper is-responsive">
+			<!--div class="overlay-menu"></div-->
+			<!Dashboard Side Menu>
+			<!--{include file='dash_sidemenu.html'}-->
+			<!Dashboard Header>
+			<!--{include file='header.html'}-->
+			<!Dashboard Content Wrapper>
+			<div class="dashboard-content-wrapper">
+				<div class="dash-main-content">
+					<div class="col-sm-12">
+						<!--{block name="breadcrumb"}-->
+						<section class="breadcrumb"><strong class="uppercase">Dasboard |</strong>&nbsp;<i class="fa fa-home"></i> Home</section>
+						<!--{/block}-->
+						<!--{block name="topbuttons"}-->
+						<!--{/block}-->
+						<!--{block name="content"}-->
+						<section class="jumbotron text-center">
+							<h4>Dashboard Error 404: Page not found</h4>
+						</section>
+						<!--{/block}-->
+					</div>
+					<footer class="dash-footer">
+						<div class="container-fluid">
+							<div class="row">
+								<div class="col-sm-12">
+									<!--{block name="footer"}-->
+									<span class="footer-copyright text-midnight-lighter">
+										Copyright © <a href="mailto:contact@citysportsgroup.com.ng" target="__top" charset="text-white"><strong><!--{$Site.companyName}--></strong></a> 2019 | <small> Powered By <a href="http://hoffenheimtechnologies.com" target="__blank"><em class="text-secondary">HOFFENHEIM TECHNOLOGIES LIMITED</em></small></a>
+									</span>
+									<!--{/block}-->
+								</div>
+							</div>
+						</div>
+						<hr>
+					</footer>
+				</div>
+		
+			</div>
+		</div>
+		<!--{include file='javascript.html'}-->
+	</body>
+</html>

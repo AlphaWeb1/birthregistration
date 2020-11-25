@@ -1,0 +1,178 @@
+<!--{extends file="root.html"}-->
+<!--{block name="breadcrumb"}-->
+<section class="breadcrumb"><strong class="uppercase">Dasboard |</strong> &nbsp;<a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/stores">JOBS&nbsp;<i class="fa fa-briefcase"></i></a> |&nbsp; <!--{$job->jobtitle}-->&nbsp;<i class="fa fa-book"></i>
+</section>
+<!--{/block}-->
+<!--{block name="content"}-->
+<section class="row justify-content-center" id="printMe">
+	<div class="col-md-8 card">
+		<h4 class="card-header bg-success mt-2 text-center text-white font-weight-bold">
+			<img class="img float-left" style="max-width: 100px;" src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/site/media/i/new-imgs/logo01.jpg" alt="<!--{$Site.companyName}-->"> HFP Eeastline Job Post
+		</h4>
+		<div class="card-body text-justify pt-4">
+			<div class="row no-gutters justify-content-center">
+				<img src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/<!--{if !empty($job->logo)}--><!--{$job->logo}--><!--{else}-->site/media/i/new-imgs/backgrounds/background-4.jpg<!--{/if}-->" class="col-sm-6 card-img-top" id="imgPreviewShow" style="height: 300px;" alt="<!--{$job->jobtitle}-->">
+				<div class="col-sm-6 card-body text-white site-bg-2 px-4">
+					<h4 class="card-title text-center font-weight-bold"><!--{$job->jobtitle}--></h4>
+					<p class="card-text"><span class="font-weight-bold">Organnization: </span><!--{$job->company}--></p>
+					<p class="card-text"><span class="font-weight-bold">Job Category: </span> <!--{$job->category}--></p>
+					<p class="card-text"><span class="font-weight-bold">Salary Expectation:</span> <!--{if $job->salary>=0.0}-->₦<!--{$job->salary}--> <!--{$payTypes[$job->salarytype]}--><!--{else}-->not specified<!--{/if}--></p>
+					<p class="card-text"><span class="font-weight-bold">Total Applicants: </span> <!--{count($job->applicantDetails)}--></p>
+					<p class="card-text"><span class="font-weight-bold">Expiration Date: </span> <!--{$job->expirydate}--></p>
+					<p class="card-text"><span class="font-weight-bold">Job Status: </span> <!--{if $job->open=='0'}--><i class="badge badge-pill badge-warning">closed</i><!--{elseif $job->open=='1'}--><i class="badge badge-pill badge-success">open</i><!--{/if}--></p>
+				</div>
+				<div class="col-sm-12 alert-danger card-body px-4">
+					<p class="text-center">
+						<a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/jobs" class="btn btn-sm btn-success rounded-0 btn-success-hover mb-1"><i class="fa fa-undo"></i> BACK</a>
+						<button class="btn btn-sm btn-success rounded-0 mb-1" type="button" data-toggle="collapse" data-target="#editJobInfo" aria-expanded="true" aria-controls="editJobInfo" id="editJob"><i class="fa fa-pencil-square"></i> Edit Detail</button>
+						<button class="btn btn-sm site-bg-1 btn-success-hover rounded-0 mb-1" type="button" data-toggle="collapse" data-target="#applicantsInfo" aria-expanded="true" aria-controls="applicantsInfo" id="applicants"><i class="fa fa-list"></i> Applicant Listing</button>
+						<!--{if $job->open!='1'}-->
+		                    <a class="btn btn-sm btn-success rounded-0 confirmTrig mb-1" href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/job?id=<!--{$job->token}-->&evt=show" what='show this record to website visitors'><i class="fa fa-check-circle"></i> Set to Open</a>
+		                <!--{/if}-->
+		                <!--{if $job->open!='0'}-->
+		                    <a class="btn btn-sm btn-warning rounded-0 confirmTrig mb-1" href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/job?id=<!--{$job->token}-->&evt=hide" what='hide this record from website visitors'><i class="fa fa-times-circle"></i> Set to Closed</a>
+		                  <!--{/if}-->
+						<a class="btn btn-sm btn-danger rounded-0 confirmTrig mb-1" href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/job?id=<!--{$job->token}-->&evt=delete" what='delete this record from the system'><i class="fa fa-trash"></i> Delete</a>
+					</p>
+					<!--{if !empty($fail)}-->
+						<p>
+						  <!--{$fail}-->
+						</p>
+					<!--{/if}-->
+				</div>
+	            <div class="col-md-11 card-body text-justify" id="accordion">
+	            	<div id="editJobInfo" class="collapse" aria-labelledby="editJob" data-parent="#accordion">
+	            		<div class="row justify-content-center">
+	            			<form method="post" action="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/job?id=<!--{$job->token}-->" class="w-100" enctype="multipart/form-data">
+						      <fieldset class="rounded border border-success py-3 px-4">
+						        <legend class="font-weight-bold text-center">Edit Job Post Detail</legend>
+						        <div class="form-row">
+						          <div class="form-group col-md-6">
+						              <label for="category" class="control-label">Job Category:</label>
+						              <input type="text" class="form-control form-control-sm" id="category" name="category" value="<!--{$job->category1}-->" list="jobcatlists" required="">
+						              <datalist id="jobcatlists">
+						                <!--{if !empty($jcats)}-->
+						                <!--{foreach $jcats as $jcat}-->
+						                  <option value="<!--{$jcat|capitalize}-->"><!--{$jcat|capitalize}--></option>
+						                <!--{/foreach}-->
+						                <!--{/if}-->
+						              </datalist>
+						          </div>
+						          <div class="form-group col-md-6">
+						              <label for="fullname" class="control-label">Representative's Full Name:</label>
+						              <input type="text" class="form-control form-control-sm" id="fullname" name="fullname" value="<!--{$job->postedby}-->" >
+						          </div>
+						          <div class="form-group col-md-6">
+						              <label for="compname" class="control-label">Company's Name:</label>
+						              <input type="text" class="form-control form-control-sm" id="compname" name="compname" value="<!--{$job->company1}-->" placeholder="Compamy's Name" required="">
+						          </div>
+						          <div class="form-group col-md-6">
+						              <label for="img-upload" class="control-label">Company's Logo:</label>
+						              <input type="file" class="form-control form-control-sm upload-img" id="img-upload" name="complogo" placeholder="Company's Logo">
+						              <img src="<!--{if !empty($job->logo)}--><!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/<!--{$job->logo}--><!--{/if}-->" id="dataImg" class="img text-center w-100 mt-1" id="img-upload" style="max-height: 300px;">
+						          </div>
+						          <div class="form-group col-md-6">
+						            <label for="jobtitle" class="col-form-label">Job Title:</label>
+						            <input type="text" class="form-control form-control-sm" id="jobtitle" name="jobtitle" value="<!--{$job->jobtitle1}-->" placeholder="Job Title" required="">
+						          </div>
+						          <div class="form-group col-md-6">
+						            <label for="expirydate" class="col-form-label">Expiration Date:</label>
+						            <input type="date" class="form-control form-control-sm" id="expirydate" name="expirydate" value="<!--{$job->expirydate}-->" placeholder="Expiry Date" required="">
+						          </div>
+						          <div class="form-group col-md-6">
+						            <label for="email" class="col-form-label">Email:</label>
+						            <input type="email" class="form-control form-control-sm" id="email" name="email" value="<!--{$job->email}-->" placeholder="Email" required="">
+						          </div>
+						          <div class="form-group col-md-6">
+						            <label for="phone" class="col-form-label">Phone:</label>
+						            <input type="tel" class="form-control form-control-sm" id="phone" name="phone" placeholder="Phone No" value="<!--{$job->phone}-->">
+						          </div>
+						          <div class="form-group col-md-6">
+						            <label for="location" class="col-form-label">Job Location (Optional):</label>
+						            <input type="text" class="form-control form-control-sm" id="location" name="location" placeholder="Location Address"  value="<!--{$job->location1}-->">
+						          </div>
+						          <div class="form-group col-md-6">
+						            <label for="city" class="col-form-label">City:</label>
+						            <input type="text" class="form-control form-control-sm" id="city" name="city" placeholder="City" required="" value="<!--{$job->city}-->">
+						          </div>
+						          <div class="form-group col-md-6">
+						            <label for="description" class="col-form-label">Job Description:</label>
+						            <textarea class="form-control form-control-sm" id="description" rows="4" name="description" placeholder="Enter Job Description Here..."><!--{$job->description1}--></textarea>
+						          </div>
+						          <div class="form-group col-md-6">
+						            <label for="role" class="col-form-label">Roles &amp; Responslibilties:</label>
+						            <textarea class="form-control form-control-sm" id="role" rows="4" name="role" placeholder="Enter Job Roles Here..." required=""><!--{$job->role1}--></textarea>
+						          </div>
+						          <div class="form-group col-md-6">
+						            <label for="description" class="col-form-label">Salary Expectation:</label>
+						            <div class="input-group">
+						              <input type="number" name="salary" class="form-control form-control-sm" placeholder="Salary Expectation"  value="<!--{$job->salary}-->">
+						              <select class="form-control form-control-sm" name="paymentMode" required="">
+						                <option value="h" <!--{if $job->salarytype=='h'}-->selected<!--{/if}-->>Hourly</option>
+						                <option value="d" <!--{if $job->salarytype=='d'}-->selected<!--{/if}-->>Daily</option>
+						                <option value="w" <!--{if $job->salarytype=='w'}-->selected<!--{/if}-->>Weekly</option>
+						                <option value="m" <!--{if $job->salarytype=='m'}-->selected<!--{/if}-->>Monthly</option>
+						                <option value="q" <!--{if $job->salarytype=='q'}-->selected<!--{/if}-->>Quarterly</option>
+						                <option value="a" <!--{if $job->salarytype=='a'}-->selected<!--{/if}-->>Annually</option>
+						              </select>
+						            </div>
+						          </div>
+						          <div class="form-group col-md-6">
+						            <label for="joburl" class="col-form-label"> Website URL (if any):</label>
+						            <input type="url" class="form-control form-control-sm" id="joburl" name="joburl" placeholder="Website URL..." value="<!--{$job->url}-->">
+						            <small>Format: https://employerswebsite.com</small>
+						          </div>
+						        </div>
+						        <div class="form-group text-center">
+						          <button class="btn site-bg-1 text-white rounded-0" type="submit" name="triggers"value="editJob"><i class="fa fa-save"></i> Save Changes</button>
+						        </div>
+						      </fieldset>
+						    </form>
+	            		</div>
+	            	</div>
+	            </div>
+	            <div class="col-md-11 text-justify" id="accordion">
+	            	<div id="applicantsInfo" class="collapse" aria-labelledby="applicants" data-parent="#accordion">
+	            		<div class="row justify-content-center">
+	            			<h3 class="col-sm-12 site-bg-1 text-white"><i class="fa fa-list"></i> Job Applicants</h3>
+			                <!--{if !empty($job->applicantDetails)}-->
+				                <!--{foreach $job->applicantDetails as $applicant}-->
+			            		<div class="col-sm-4 mb-2">
+			            			<div class="card w-100 rounded-0">
+			            				<h4 class="card-header text-center"><!--{$applicant->userdetails->names}--></h4>
+			            				<div class="card-body">
+			            					<p class="card-title"><span class="font-weight-bold">Email: </span><!--{$applicant->email}--></p>
+			            					<p class="card-title"><span class="font-weight-bold">Phone: </span><!--{$applicant->userdetails->phone}--></p>
+			            					<p class="card-text" style="height: 60px !important; overflow-y: auto !important;"><span class="font-weight-bold">Comment: </span><!--{$applicant->comment}--></p>
+			            					<p class="card-text"><span class="font-weight-bold">CV: </span><a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/<!--{$applicant->cv}-->" target="__blank"><!--{$applicant->cv}--></a></p>
+			            				</div>
+			            				<div class="card-footer">
+			            					<span class="font-weight-bold">Date Applied: </span><!--{$applicant->dateadded}-->
+			            				</div>
+			            			</div>
+			            		</div>
+				                <!--{/foreach}-->
+			                <!--{else}-->
+			                	<div class="alert alert-info alert-dismissible" role="alert"><h3>Info!</h3> <p class="border border-success p-1 rounded">There are currently no applicants to this job</p></div>
+			                <!--{/if}-->
+	            		</div>
+	            	</div>
+	            </div>
+				<div class="col-sm-12 card-body text-white text-justify site-bg-1 px-4">
+					<h4 class="font-weight-bold text-center">Other Details</h4>
+					<p class="card-text text-justify"><span class="font-weight-bold">Representative:</span> <!--{$job->postedby}--></p>
+					<p class="card-text text-justify"><span class="font-weight-bold">Rep. Email:</span> <!--{$job->email}--></p>
+					<p class="card-text text-justify"><span class="font-weight-bold">Rep. Contact:</span> <!--{$job->phone}--></p>
+					<p class="card-text text-justify"><span class="font-weight-bold">Job Location:</span> <!--{$job->location}-->, <!--{$job->city}--></p>
+					<p class="card-text text-justify"><span class="font-weight-bold">Description:</span> <!--{$job->description}--></p>
+					<p class="card-text"><span class="font-weight-bold">Job Role: </span> <!--{$job->role}--></p>
+				</div>
+			</div>
+		</div>
+		<div class="card-footer d-none">
+			<button type="button" class="btn btn-primary btn-sm" id="printSect"><i class="fa fa-print"></i> Print Now</button>
+		</div>
+	</div>
+</section>
+
+<!--{/block}-->

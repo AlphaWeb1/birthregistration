@@ -1,0 +1,90 @@
+<!--{extends file="root.html"}-->
+<!--{block name="breadcrumb"}-->
+<section class="breadcrumb"><strong class="uppercase">Dasboard |
+	&nbsp;Events&nbsp;<i class="fa fa-calendar"></i></strong>
+</section>
+<!--{/block}-->
+<!--{block name="content"}-->
+<h3>EVENTS</h3>
+<section class="container-fluid">
+	<div class="row justify-content-center">
+		<!--{if in_array( $Site.session.User.userinfo->userrole, array('level0','level1')) and  $Site.session.User.userinfo->active==true}-->
+			<div class="col-sm-12">
+				<button class="btn btn-primary btn-sm" type="button" data-toggle="collapse" data-target="#newEventInfo" aria-expanded="true" aria-controls="newEventInfo" id="newEvent"><i class="fa fa-plus"></i> New Event</button>
+				<!--collapse adding here-->
+			</div>
+			<!--{if !empty($fail)}-->
+				<div class="col-md-12">
+					<!--{$fail}-->
+				</div>
+			<!--{/if}-->
+			<div class="col-md-9 collapse" id="newEventInfo" aria-labelledby="newEvent">
+				<form method="post" action="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/events" enctype="multipart/form-data">
+					<div class="row justify-content-center">	
+						<div class="col-md-8 card card-body">
+							<fieldset>
+								<legend>New Event Post</legend>
+								<div class="form-group">
+									<div class="img-scope card-heading pt-3 pb-3">
+										<label for="img-upload">
+											<img class="img img-thumbnail w-100" id="dataImg" src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/site/media/i/default-icon/event-icon.png">
+											<data class="text-center jsonly">Upload Photo</data>
+										</label>
+										<input type="file" accept="image/*" id="img-upload" class="input-rounded w-100" name="img_upload"/>
+										<noscript><button class="text-center" id="ppUpload" name="ppUpload" type="button">Upload Photo</button></noscript>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="title" class="form-control-label">Event Title</label>
+									<input type="text" id="title" name="title" class="form-control form-control-sm input-rounded" required/>
+								</div>
+								<div class="form-group">
+									<label for="eventdate" class="form-control-label">Event Date</label>
+									<input type="datetime-local" id="eventdate" name="eventdate" class="form-control form-control-sm input-rounded" required/>
+								</div>
+								<div class="form-group">
+									<label for="content" class="form-control-label">Event Detail</label>
+									<textarea id="content" name="content" class="form-control form-control-sm input-block" rows="10" required></textarea>
+								</div>
+								<div class="form-group">
+									<button class="btn btn-primary btn-sm btn-block" type="submit" name="add_update">Add Event</button>
+								</div>
+							</fieldset>
+						</div>
+					</div>
+				</form>
+			</div>
+		<!--{/if}-->
+		<div class="col-sm-12 mt-3">
+			<div class="row justify-content-center">
+				<!--{if !empty($updates)}-->
+					<!--{foreach $updates as $event}-->
+					<div class="col-4 mt-2">
+						<div class="card">
+							<div class="card-header">
+								<img class="imge card-img-top" src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/<!--{if !empty($event->image)}--><!--{$event->image}--><!--{else}-->site/media/i/default-icon/event-icon.png<!--{/if}-->" style="height: 450px;" >
+							</div>
+							<div class="card-body" style="overflow-y: auto; height: 200px;">
+								<h4 class="card-title">
+									<!--{$event->title}-->
+								</h4>
+								<div class="card-text">
+									<!--{$event->content}-->
+								</div>
+							</div>
+							<span class="card-footer">
+								<!--{$event->eventdate|date_format}-->
+								<a class="btn btn-sm btn-danger deleteTrig float-right" title="Delete <!--{$event->title}-->" what="Event" href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/events?id=<!--{$event->updateid}-->&event=delete"><i class="fa fa-trash"></i></a>
+							</span>
+						</div>
+					</div>
+					<!--{/foreach}-->
+					<div class="col-sm-12"><!--{include file="paging-bottom.html"}--></div>
+				<!--{else}-->
+				<h4 class="col-6">Event record is empty.</h4>
+				<!--{/if}-->
+			</div>
+		</div>
+	</div>
+</section>
+<!--{/block}-->

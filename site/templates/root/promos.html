@@ -1,0 +1,32 @@
+<!--{extends file="root.html"}-->
+<!--{block name="breadcrumb"}-->
+<section class="breadcrumb"><strong class="uppercase">Dasboard |</strong> &nbsp;PROMOTIONS&nbsp;<i class="fa fa-ticket"></i> | Promo List&nbsp;<i class="fa fa-link"></i>
+</section>
+<!--{/block}-->
+<!--{block name="content"}-->
+<section class="container-fluid">
+	<div class="row no-gutters justify-content-center mt-3">
+		<!--{if !empty($promos)}-->
+			<!--{foreach $promos as $promo}-->
+			<div class="col-sm-4 mt-2">
+				<div class="card bg-dark text-white">
+					<img src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/<!--{if !empty($promo->image)}--><!--{$promo->image}--><!--{else}-->site/media/i/default-icon/logo-blog.png<!--{/if}-->" class="card-img" alt="<!--{$promo->description}-->" style="height: 200px;">
+					<div class="card-img-overlay" style="background: #00000052;">
+						<h5 class="card-title"><!--{$promo->company}--></h5>
+						<div class="card-text" style="overflow-y: auto; height: 80px;"><!--{$promo->description}--></div>
+						<p class="card-text"><!--{$promo->dateadded|date_format}--></p>
+					</div>
+					<div class="card-footer site-bg-1" style="z-index: 1;">
+						<a class="btn btn-sm btn-success float-right ml-2" title="Edit <!--{$promo->title}-->" href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/promo?id=<!--{$promo->token}-->&event=edit"><i class="fa fa-pencil-square"></i></a>
+						<a class="btn btn-sm btn-danger deleteTrig float-right" title="Delete <!--{$promo->title}-->" what="promo" href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/promos?id=<!--{$promo->token}-->&event=delete"><i class="fa fa-trash"></i></a>
+					</div>
+				</div>
+			</div>
+			<!--{/foreach}-->
+			<div class="col-sm-12"><!--{include file="paging-bottom.html"}--></div>
+		<!--{else}-->
+		<h4 class="col-6">Promo record is empty.</h4>
+		<!--{/if}-->
+	</div>
+</section>
+<!--{/block}-->

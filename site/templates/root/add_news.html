@@ -1,0 +1,55 @@
+<!--{extends file="root.html"}-->
+<!--{block name="breadcrumb"}-->
+<section class="breadcrumb"><strong class="uppercase">Dasboard |</strong> &nbsp;NEWS&nbsp;<i class="fa fa-newspaper-o"></i> |&nbsp;Add News&nbsp;<i class="fa fa-plus-circle"></i></section>
+<!--{/block}-->
+<!--{block name="content"}-->
+<section class="container-fluid">
+	<div class="row justify-content-center">
+		<!--{if in_array( $Site.session.User.userinfo->userrole, array('level0','level1')) and  $Site.session.User.userinfo->active==true}-->
+			<div class="col-md-9">
+				<form method="post" action="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/add_news" enctype="multipart/form-data">
+					<div class="row justify-content-center">	
+						<div class="col-md-8 card card-body">
+							<fieldset class="border border-success rounded-0 px-3">
+								<legend class="text-center">News Post</legend>
+								<div class="form-group">
+									<div class="img-scope card-heading pt-3 pb-3">
+										<label for="img-upload">
+											<img class="img img-thumbnail w-100" id="dataImg" src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/site/media/i/default-icon/logo-blog.png">
+											<data class="text-center jsonly">Upload Photo</data>
+										</label>
+										<input type="file" accept="image/*" id="img-upload" class="input-rounded w-100" name="img_upload"/>
+										<noscript><button class="text-center" id="ppUpload" name="ppUpload" type="button">Upload Photo</button></noscript>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="author" class="form-control-label">Author</label>
+									<input type="text" id="author" name="author" class="form-control form-control-sm input-rounded"/>
+								</div>
+								<div class="form-group">
+									<label for="title" class="form-control-label">News Title</label>
+									<input type="text" id="title" name="title" class="form-control form-control-sm input-rounded" required/>
+								</div>
+								<!--{if !empty($fail)}-->
+									<div class="form-group">
+										<!--{$fail}-->
+									</div>
+								<!--{/if}-->
+								<div class="form-group">
+									<label for="content" class="form-control-label">Content</label>
+									<!-- <textarea id="content" name="content" class="form-control form-control-sm input-block" rows="10" required></textarea> -->
+									<div id="editcontent"></div>
+									<input type="hidden" name="content" id="content" value="" required />
+								</div>
+								<div class="form-group text-center">
+									<button class="btn btn-success rounded-0 btn-sm" type="submit" name="add_news">Add News</button>
+								</div>
+							</fieldset>
+						</div>
+					</div>
+				</form>
+			</div>
+		<!--{/if}-->
+	</div>
+</section>
+<!--{/block}-->

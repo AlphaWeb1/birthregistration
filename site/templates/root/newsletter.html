@@ -1,0 +1,81 @@
+<!--{extends file="root.html"}-->
+<!--{block name="breadcrumb"}-->
+<section class="breadcrumb"><strong class="uppercase">Dasboard |</strong> &nbsp;NEWSLETTER&nbsp;<i class="fa fa-envelope-o"></i></section>
+<!--{/block}-->
+<!--{block name="content"}-->
+<section class="jumbotron text-center mt-2">
+	<div class="row justify-content-center">
+		<!--{if !empty($newsletters)}-->
+		<div class="col-sm-6">
+			<form method="post" action="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/newsletter" enctype="multipart/form-data">
+				<div class="card card-body">
+					<fieldset class="border rounded border-success px-5 text-justify">
+						<legend class="text-center">Newsletter Sending Form</legend>
+						<div class="form-group">
+							<label for="title" class="form-control-label">Newletter Title *</label>
+							<input type="text" id="title" name="title" value="" class="form-control form-control-sm input-rounded" required/>
+						</div>
+						<div class="form-group">
+							<label for="content" class="form-control-label">Content *</label>
+							<!-- <textarea id="content" name="content" class="form-control form-control-sm input-block" rows="10" required></textarea> -->
+							<div id="editcontent"></div>
+							<input type="hidden" name="content"  id="content" value="" required />
+						</div>
+						<div class="form-group">
+							<label for="author" class="form-control-label">Author</label>
+							<input type="text" id="author" name="author" value="" class="form-control form-control-sm input-rounded"/>
+						</div>
+						<div class="form-group">
+							<label for="file_upload" class="form-control-label">Upload a File</label>
+							<input type="file" accept="image/*, application/*" id="file_upload" class="input-rounded w-100" name="file_upload"/>
+						</div>
+						<!--{if !empty($fail)}-->
+							<div class="form-group">
+								<!--{$fail}-->
+							</div>
+						<!--{/if}-->
+						<div class="form-group text-center">
+							<button class="btn btn-success btn-sm rounded-0" type="submit" name="newsletter">Send Newsletter</button>
+						</div>
+					</fieldset>
+				</div>
+			</form>
+		</div>
+		<div class="col-sm-6">
+			<div class="table-responsive">
+				<div id="dataTableId_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+					<!--{include file="paging-top.html"}-->
+					<table class="table table-striped table-hover table-bordered">
+					  <thead class="thead-light">
+					    <tr>
+					      <th scope="col">#</th>
+					      <th scope="col">Email</th>
+					      <th scope="col">Date Requested</th>
+					      <th scope="col"></th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					  	<!--{$numCount=1}-->
+					  	<!--{foreach $newsletters as $newsletter}-->
+					    <tr>
+					      <td><!--{$numCount}--></td>
+					      <td><!--{$newsletter->email}--></td>
+					      <td><!--{$newsletter->dateupdated|date_format}--></td>
+					      <td>
+							<a class="btn btn-sm btn-danger deleteTrig float-right" title="Delete <!--{$newsletter->email}-->" what="email" href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/newsletter?id=<!--{$newsletter->email}-->&event=delete"><i class="fa fa-trash"></i></a>
+					      </td>
+					    </tr>
+					  	<!--{$numCount=$numCount+1}-->
+						<!--{/foreach}-->
+					  </tbody>
+					</table>
+					<!--{include file="paging-bottom.html"}-->
+				</div>
+			</div>
+		</div>
+		<!--{else}-->
+		<div class="col-sm-7 alert alert-warning"><h3 class="alert-heading">No registered newsletter subscribers</h3></div>
+		<!--{/if}-->
+	</div>
+</section>
+<!--{/block}-->

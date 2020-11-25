@@ -1,0 +1,41 @@
+<!--{extends file="root.html"}-->
+<!--{block name="breadcrumb"}-->
+<section class="breadcrumb"><strong class="uppercase">Dasboard |</strong> &nbsp;NEWS&nbsp;<i class="fa fa-newspaper-o"></i></section>
+<!--{/block}-->
+<!--{block name="content"}-->
+<section class="container-fluid">
+	<div class="row justify-content-center">
+		<div class="col-sm-12 mt-3">
+			<div class="row justify-content-center">
+				<!--{if !empty($news)}-->
+					<!--{foreach $news as $new}-->
+					<div class="col-4 mt-2">
+						<div class="card">
+							<div class="card-header site-bg-1">
+								<img class="imge card-img-top" src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/<!--{if !empty($new->image)}--><!--{$new->image}--><!--{else}-->site/media/i/default-icon/logo-blog.png<!--{/if}-->" style="height: 200px;" >
+							</div>
+							<div class="card-body" style="overflow-y: auto; height: 300px;">
+								<h4 class="card-title">
+									<!--{$new->title}-->
+								</h4>
+								<div class="card-text">
+									<!--{$new->content_stripe}-->
+								</div>
+							</div>
+							<span class="card-footer">
+								<!--{$new->dateadded|date_format}-->
+								<a class="btn btn-sm btn-primary float-right ml-2" title="Edit <!--{$new->title}-->" href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/edit_news?id=<!--{$new->token}-->&event=edit"><i class="fa fa-pencil-square"></i></a>
+								<a class="btn btn-sm btn-danger deleteTrig float-right" title="Delete <!--{$new->title}-->" what="news" href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/news?id=<!--{$new->token}-->&event=delete"><i class="fa fa-trash"></i></a>
+							</span>
+						</div>
+					</div>
+					<!--{/foreach}-->
+					<div class="col-sm-12"><!--{include file="paging-bottom.html"}--></div>
+				<!--{else}-->
+				<h4 class="col-6">News record is empty.</h4>
+				<!--{/if}-->
+			</div>
+		</div>
+	</div>
+</section>
+<!--{/block}-->

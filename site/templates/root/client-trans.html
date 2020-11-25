@@ -1,0 +1,100 @@
+<!--{extends file="root.html"}-->
+<!--{block name="breadcrumb"}-->
+<section class="breadcrumb"><strong class="uppercase">Dashboard |</strong> USERS&nbsp;<i class="fa fa-files"></i></section>
+<!--{/block}-->
+<!--{block name="content"}-->
+<section class="row justify-content-center no-gutters">
+	<div class="col-sm-6">
+		<form action="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/client-trans" method="get" accept-charset="utf-8" class="w-100">
+			<fieldset class="border border-success px-5">
+				<legend class="text-center">Select Filter</legend>
+				<div class="form-row">
+					<div class="form-group col-sm-6">
+						<select name="id" class="form-control rounder-0">
+							<option value="all">All Clients</option>
+							<option value="paid" <!--{if !empty($Site.get.id) and $Site.get.id=='paid'}-->selected<!--{/if}-->>Paid Clients</option>
+							<option value="unpaid" <!--{if !empty($Site.get.id) and $Site.get.id=='unpaid'}-->selected<!--{/if}-->>Unpaid CLients</option>
+						</select>
+					</div>
+					<div class="form-group col-sm-6">
+						<button class="btn site-bg-1 btn-block text-white rounded-0" type="submit"><i class="fa fa-filter"></i> Filter</a>
+					</div>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+	<!--{if !empty($clients)}-->
+		<div class="col-sm-6">
+			<fieldset class="border border-success px-5">
+				<legend class="text-center">Select Filter</legend>
+				<div class="form-row">
+					<div class="form-group col-sm-6">
+						<button class="btn site-bg-1 btn-block text-white rounded-0" id="printSect" type="button"><i class="fa fa-print"></i> Print</a>
+					</div>
+					<div class="form-group col-sm-6">
+						<button class="btn site-bg-1 btn-block text-white rounded-0" id="toExcel" type="button"><i class="fa fa-file-excel-o"></i> Export to Excel</a>
+					</div>
+				</div>
+			</fieldset>
+		</form>
+	<!--{/if}-->
+</section>
+<section class="jumbotron text-center mt-2" id="printMe">
+	<h5 class="font-weight-bold text-center"><!--{if !empty($Site.get.id) and $Site.get.id=='unpaid'}-->Unpaid<!--{elseif !empty($Site.get.id) and $Site.get.id=='paid'}-->Paid<!--{else}-->All<!--{/if}--> Clients Payment Report</h5>
+	<div class="table-responsive" id="excelMe">
+		<!--{if !empty($clients)}-->
+		<div id="dataTableId_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+			<!--{include file="paging-top.html"}-->
+			<table class="table table-striped table-hover table-bordered">
+			  <thead class="thead-light">
+			    <tr>
+			      <th scope="col">#</th>
+			      <th scope="col">Client Detail</th>
+			      <th scope="col">Occupied Stores</th>
+			      <th scope="col">Payment Status</th>
+			      <th scope="col">Unpaid Outlets</th>
+			      <th scope="col">Overall Transactions</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			  	<!--{$numCount=1}-->
+			  	<!--{foreach $clients as $client}-->
+			    <tr>
+			      <td><!--{$numCount}--></td>
+			      <td>Email: <!--{$client->email}--><br/>
+			      	Name: <!--{$client->firstname}--> <!--{$client->middlename}--> <!--{$client->lastname}--><br/>
+			      	Phone Number: <!--{$client->phone}--><br/>
+			      </td>
+			      <td> Total: <!--{count($client->stores)}--> <br/>
+			      	<!--{if !empty($client->stores)}-->
+			      		Store Numbers: <!--{foreach $client->stores as $k=>$store}-->
+			      			<!--{if $k>0}-->,<!--{/if}--> <!--{$store->store_number}-->
+			      		<!--{/foreach}-->
+			      	<!--{/if}-->
+			      </td>
+			      <td><!--{if count($client->expiredPay)>0}--><!--{count($client->expiredPay)}--> outlets unpaid<!--{else}-->paid<!--{/if}--></td>
+			      <td>
+			      	<!--{if !empty($client->otherPayments)}-->
+				      <!--{foreach $client->otherPayments as $othPay}-->
+				        <!--{if $othPay->lastPayment->isExpired==true}-->
+				            <h6><span class="badge btn-sm mb-1 badge-pill badge-info"><!--{$othPay->purpose}--> ₦<!--{$othPay->amount}--></span></h6>
+				        <!--{/if}--> 
+				      <!--{/foreach}--> 
+				    <!--{/if}--> 
+			      </td>
+			      <td>Total Transactions: <!--{$client->transactions->total}--><br/>
+			      	Total Amount: ₦<!--{$client->transactions->amount}--><br/>
+			      </td>
+			    </tr>
+			  	<!--{$numCount=$numCount+1}-->
+				<!--{/foreach}-->
+			  </tbody>
+			</table>
+			<!--{include file="paging-bottom.html"}-->
+		</div>
+		<!--{else}-->
+		<div class="alert alert-warning"><h3 class="alert-heading">No record found</h3></div>
+		<!--{/if}-->
+	</div>
+</section>
+<!--{/block}-->

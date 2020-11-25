@@ -1,0 +1,122 @@
+<!--{extends file="root.html"}-->
+<!--{block name="breadcrumb"}-->
+<section class="breadcrumb"><strong class="uppercase">Dasboard |</strong> &nbsp;ADS&nbsp;<i class="fa fa-building"></i> | New Ads&nbsp;<i class="fa fa-plus"></i>
+</section>
+<!--{/block}-->
+<!--{block name="content"}-->
+<section class="row justify-content-center">
+	<div class="col-sm-8">
+		<form method="post" action="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/post_ads" class="w-100" enctype="multipart/form-data">
+			<fieldset class="rounded border border-success py-4 px-4">
+				<legend class="font-weight-bold text-center">Add A New Ads</legend>
+				<div class="form-row">
+					<div class="form-group col-sm-6">
+						<label for="store_title" class="form-control-label">Product Name/Ads Title</label>
+						<input type="text" id="store_title" name="ads_title" class="form-control form-control-sm badge-pill" required/>
+					</div>
+					<div class="form-group col-sm-6">
+						<label for="category" class="form-control-label">Category</label>
+						<input type="text" id="category" name="category" class="form-control form-control-sm badge-pill" list="categ" required/>
+						<datalist id="categ">
+							<!--{if !empty($categories)}-->
+								<!--{foreach $categories as $cat}-->
+									<option value="<!--{$cat}-->"><!--{$cat}--></option>
+								<!--{/foreach}-->
+							<!--{/if}-->
+						</datalist>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-group col-sm-6">
+						<label for="client_email" class="form-control-label">Client's Email</label>
+						<!-- <input type="text" id="client_email" name="client_email" class="form-control form-control-sm badge-pill" list="clients" required/> -->
+						<select id="client_email" name="client_email" class="form-control form-control-sm badge-pill" list="clients" required>
+							<!--{if !empty($clients)}-->
+								<!--{foreach $clients as $client}-->
+									<option value="<!--{$client->email}-->" i='<!--{json_encode($client)}-->'><!--{$client->email}--></option>
+								<!--{/foreach}-->
+							<!--{/if}-->
+						</select>
+					</div>
+					<div class="form-group col-sm-6">
+						<label for="client_names" class="form-control-label">Client's Names</label>
+						<input type="text" id="client_names" name="client_names" value="<!--{if !empty($clients)}--><!--{$clients[0]->firstname}--> <!--{$clients[0]->lastname}--><!--{/if}-->" class="form-control form-control-sm badge-pill" />
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-group col-sm-6">
+						<label for="phone_number" class="form-control-label">Phone Number</label>
+						<input type="text" id="phone_number" name="phone_number" value="<!--{if !empty($clients)}--><!--{$clients[0]->phone}--><!--{/if}-->" class="form-control form-control-sm badge-pill" />
+					</div>
+					<div class="form-group col-sm-6">
+						<label for="url" class="form-control-label">Website URL</label>
+						<input type="url" id="url" name="url" value="" class="form-control form-control-sm badge-pill" />
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-group col-sm-6">
+						<label for="description" class="form-control-label">Details & Description</label>
+						<textarea id="description" name="description" class="form-control form-control-sm input-block" rows="6" required></textarea>
+					</div>
+					<div class="form-group col-sm-6">
+						<label for="otherdetails" class="form-control-label">Additional Details</label>
+						<textarea id="otherdetails" name="otherdetails" class="form-control form-control-sm input-block" rows="6" ></textarea>
+					</div>
+				</div>
+				<div class="form-row justify-content-center">
+					<div class="form-group col-sm-3 text-center">
+						<div class="img-scope card-heading pt-3 pb-3">
+							<label for="img-upload">
+								<img class="img img-thumbnail w-100" id="dataImg" src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/site/media/i/default-icon/event-icon.png">
+								<data class="text-center jsonly">Upload Photo</data>
+							</label>
+							<input type="file" accept="image/*" id="img-upload" class="badge-pill w-100" name="img_upload" required/>
+							<noscript><button class="text-center" id="ppUpload" name="ppUpload" type="button">Upload Photo</button></noscript>
+						</div>
+						<span class="small">Ads main photo/banner</span>
+					</div>
+					<div class="form-group col-sm-3">
+						<div class="img-scope card-heading pt-3 pb-3">
+							<label for="img-upload1">
+								<img class="img img-thumbnail w-100" id="dataImg1" src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/site/media/i/default-icon/event-icon.png">
+								<data class="text-center jsonly">Upload Photo</data>
+							</label>
+							<input type="file" accept="image/*" id="img-upload1" class="badge-pill w-100" name="img_upload1"/>
+							<noscript><button class="text-center" id="ppUpload" name="ppUpload" type="button">Upload Photo</button></noscript>
+						</div>
+					</div>
+					<div class="form-group col-sm-3">
+						<div class="img-scope card-heading pt-3 pb-3">
+							<label for="img-upload2">
+								<img class="img img-thumbnail w-100" id="dataImg2" src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/site/media/i/default-icon/event-icon.png">
+								<data class="text-center jsonly">Upload Photo</data>
+							</label>
+							<input type="file" accept="image/*" id="img-upload2" class="badge-pill w-100" name="img_upload2"/>
+							<noscript><button class="text-center" id="ppUpload" name="ppUpload" type="button">Upload Photo</button></noscript>
+						</div>
+					</div>
+					<div class="form-group col-sm-3">
+						<div class="img-scope card-heading pt-3 pb-3">
+							<label for="img-upload3">
+								<img class="img img-thumbnail w-100" id="dataImg3" src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/site/media/i/default-icon/event-icon.png">
+								<data class="text-center jsonly">Upload Photo</data>
+							</label>
+							<input type="file" accept="image/*" id="img-upload3" class="badge-pill w-100" name="img_upload3"/>
+							<noscript><button class="text-center" id="ppUpload" name="ppUpload" type="button">Upload Photo</button></noscript>
+						</div>
+					</div>
+				</div>
+				<!--{if !empty($fail)}-->
+					<div class="form-group">
+						<!--{$fail}-->
+					</div>
+				<!--{/if}-->
+				<div class="form-group text-center">
+					<button class="btn site-bg-1 text-white rounded-0" type="submit" name="add_ads"><i class="fa fa-save"></i> Post Ads</button>
+				</div>
+			</fieldset>
+		</form>
+		
+	</div>
+</section>
+<!--{/block}-->

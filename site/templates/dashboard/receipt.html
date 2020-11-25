@@ -1,0 +1,37 @@
+<!--{extends file="dashboard.html"}-->
+<!--{block name="breadcrumb"}-->
+<section class="breadcrumb"><strong class="uppercase">Dasboard | &nbsp;TRANSACTION&nbsp;<i class="fa fa-list"></i> |</strong>&nbsp;Receipt&nbsp;<i class="fa fa-file"></i>
+</section>
+<!--{/block}-->
+<!--{block name="content"}-->
+<section class="row justify-content-center">
+	<div class="col-sm-6">
+	  <!--{if !empty($fail)}-->
+	    <div class="form-group">
+	      <!--{$fail}-->
+	    </div>
+	  <!--{/if}-->
+	</div>
+</section>
+<!--{if !empty($payment)}-->
+<section class="row justify-content-center" id="printMe">
+	<div class="col-md-6">
+		<div class="card w-100">
+			<h4 class="card-header site-bg-1 text-center">
+				<img class="img float-left" style="max-width: 100px;" src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/site/media/i/new-imgs/logo01.jpg" alt="<!--{$Site.companyName}-->"> HFP Eastline <!--{$payment->purpose|capitalize}--> Receipt
+			</h4>
+			<div class="card-body text-center pt-4">
+				<h6 class="mb-5"><span  class="font-weight-bold">Transaction ID: </span><!--{$payment->transid}--></h6>
+				<h6 class="mb-5"><span  class="font-weight-bold">Transaction Date: </span><!--{$payment->transdate}--></h6>
+				<h6 class="mb-5"><span  class="font-weight-bold">Payer's Email: </span><!--{$payment->paidby}--></h6>
+				<h6 class="mb-5"><span  class="font-weight-bold">Purpose: </span><!--{$payment->purpose|capitalize}--></h6>
+				<h6 class="mb-5"><span  class="font-weight-bold">Amount Paid: </span>₦ <!--{$payment->amount}--></h6>
+			</div>
+			<div class="card-footer">
+				<button type="button" class="btn site-bg-1 btn-sm rounded-0" id="printSect"><i class="fa fa-print"></i> Print Now</button>
+			</div>
+		</div>
+	</div>
+</section>
+<!--{/if}-->
+<!--{/block}-->

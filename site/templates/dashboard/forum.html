@@ -1,0 +1,57 @@
+<!--{extends file="dashboard.html"}-->
+<!--{block name="breadcrumb"}-->
+<section class="breadcrumb"><strong class="uppercase">Dasboard |</strong>
+	&nbsp;<a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/dashboard/available-courses">Greatness Community&nbsp;<i class="fa fa-cubes"></i></a>&nbsp;| Forum&nbsp;<i class="fa fa-comment"></i>
+</section>
+<!--{/block}-->
+<!--{block name="content"}-->
+<section class="row justify-content-center">
+	<div class="col-md-9">
+		<table class="table table-striped table-hover">
+		  <thead>
+		    <tr class="bg-warning">
+		      <th scope="col" colspan="3"><span class="font-weight-bold">Topic:</span> <!--{$forum->title}--></th>
+		    </tr>
+		    <tr class="bg-light">
+		      <td scope="col" colspan="3"><span class="float-left">Since: <!--{$forum->dateadded|date_format}--></span><span class="float-right"><strong>Replies:</strong> <!--{$forum->totolreplies}--> <strong>Members:</strong> <!--{$forum->members}--> </span></td>
+		    </tr>
+		    <tr class="bg-light">
+		      <td colspan="1">
+		      	<img class="img-thumbnail" src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/<!--{if !empty($forum->creatorimg)}--><!--{$forum->creatorimg}--><!--{else}-->site/media/i/default-icon/4-48125_this-free-icons-png-design-of-business-man.png<!--{/if}-->" 
+		      	alt="<!--{$forum->creatornames}-->" style="width: 80px; height: 80px;"><br/>
+		      	<span><!--{$forum->creatornames}--></span>
+		      </td>
+		      <td scope="col" colspan="2"><!--{$forum->content}--></td>
+		    </tr>
+		    <tr class="btn-dark text-white">
+		    	<th scope="col" colspan="3">Comments</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		  	<tr>
+		  		<form action="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/dashboard/forum?id=<!--{$Site.get.id}-->" method="post">
+		  			<td colspan="2"><input type="text" class="form-control form-control-sm" name="comment" value="" placeholder="Type your comment here..."></td>
+		  			<td colspan="1"><button type="submit" class="btn btn-sm btn-dark" name="triggers" value="reply">Reply</button></td>
+		  		</form>
+		  	</tr>
+			<!--{if !empty($fail)}-->
+				<!--{$fail}-->
+			<!--{/if}-->
+		  	<!--{if !empty($forum->replies)}-->
+			  	<!--{foreach $forum->replies as $reply}-->
+			  	<tr>
+			  		<td>
+				  		<img class="img-thumbnail" src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/<!--{if !empty($reply->image)}--><!--{$reply->image}--><!--{else}-->site/media/i/default-icon/4-48125_this-free-icons-png-design-of-business-man.png<!--{/if}-->" 
+				      	alt="<!--{$forum->creatornames}-->" style="width: 50px; height: 50px;"><br/>
+				      	<span><!--{$reply->names}--></span>
+			  		</td>
+			  		<td scope="col" colspan="2"><!--{$reply->comment}--></td>
+			  	</tr>
+				<!--{/foreach}-->
+			<!--{/if}-->
+		  </tbody>
+		</table>
+		<!--{include file="paging-bottom.html"}-->
+	</div>
+</section>
+<!--{/block}-->

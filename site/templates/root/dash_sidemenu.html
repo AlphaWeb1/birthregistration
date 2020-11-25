@@ -1,0 +1,130 @@
+<div class="dash-side-menu rounded">
+	<div class="side-menu-logo">
+		<img src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/site/media/i/logo1.png" class="header-logo" alt="<!--{$Site.companyName}-->">
+	</div>
+	<aside class="side-menu-wrapper pb-5 mb-5 overflow-y-auto">
+		<div class="sm-container">
+			<div class="side-menu-user">
+				<img src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/<!--{if !empty($userinfo->userimg)}--><!--{$userinfo->userimg}--><!--{else}-->site/media/i/usericon.png<!--{/if}-->">
+				<data><a data-toggle="collapse" href="#min-det"><strong><!--{$userinfo->firstname}--> <!--{$userinfo->lastname}--> <i class="fa fa-angle-down"></i></strong></a></data>
+				<section id="min-det"  class="text-center collapse show">
+					<div>TOTAL Registered <span class="text-warning"><!--{$defaults->not.reg}--></span></div>
+					<div>TOTAL Approved <span class="text-warning"><!--{$defaults->not.approved}--></span></div>
+					<div>ACTIVE Reject<span class="text-warning"><!--{$defaults->not.rejected}--></span></div>
+					<div class="d-none">ACCOUNT STATUS</div>
+					<data class="d-none"><!--{if $Site.session.User.userinfo->active==true}--><span class="badge site-bg-1">Active</span><!--{else}--><span class="badge badge-danger">Blocked</span><!--{/if}--></data>
+				</section>
+			</div>
+			<div class="dash-menu-wrapper pb-5">
+				<ul class="side-menu-list">
+					<!--{if in_array( $Site.session.User.userinfo->userrole, array('level0','level1')) and  $Site.session.User.userinfo->active==true}-->
+					<li class="side-menu-link <!--{if in_array($sitePage, array('home'))}-->isactive<!--{/if}-->">
+						<a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/home"><i class="fa fa-home"></i> Dashboard</a>
+					</li>
+					<!--{/if}-->
+					<li class="side-menu-link <!--{if in_array($sitePage, array('profile','logout'))}-->isactive<!--{/if}-->">
+						<a href="#"><i class="fa fa-vcard"></i> Profile <span><i class="fa fa-angle-down"></i></span></a>
+						<ul class="side-menu-sub-list">
+							<li class="side-menu-sub-link <!--{if $sitePage == 'profile'}-->isactive<!--{/if}-->">
+								<a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/profile">My Profile</a>
+							</li>
+							<li class="side-menu-sub-link <!--{if $sitePage == 'logout'}-->isactive<!--{/if}-->">
+								<a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/logout">Logout</a>
+							</li>
+						</ul>
+					</li>
+					<!--{if in_array( $Site.session.User.userinfo->userrole, array('level0','level1')) and  $Site.session.User.userinfo->active==true}-->
+					<li class="side-menu-link <!--{if in_array($sitePage, array('settings'))}-->isactive<!--{/if}-->">
+						<a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/settings"><i class="fa fa-gear"></i> Settings</a>
+					</li>
+					<!--{/if}-->
+					<!--{if in_array( $Site.session.User.userinfo->userrole, array('level0','level1')) and  $Site.session.User.userinfo->active==true}-->
+					<li class="side-menu-link <!--{if in_array($sitePage, array('search','certificate'))}-->isactive<!--{/if}-->">
+						<a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/search"><i class="fa fa-search"></i> Find Certificate</a>
+					</li>
+					<li class="side-menu-link <!--{if in_array($sitePage, array('registered-approved', 'registered-new', 'registered-unverified', 'registered-all', 
+						'registered-manual', 'birth-detail'))}-->isactive<!--{/if}-->">Registrations
+						<a href="#"><i class="fa fa-certificate"></i> Birth Certificates <span><i class="fa fa-angle-down"></i></span></a>
+						<ul class="side-menu-sub-list">
+							<li class="side-menu-sub-link <!--{if in_array($sitePage, array( 'registered-all'))}-->isactive<!--{/if}-->">
+								<a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/registered-all"><i class="fa fa-list"></i> All</a>
+							</li>
+							<li class="side-menu-sub-link <!--{if in_array($sitePage, array('registered-new'))}-->isactive<!--{/if}-->">
+								<a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/registered-new"><i class="fa fa-list"></i> Newly Registered</a>
+							</li>
+							<li class="side-menu-sub-link <!--{if in_array($sitePage, array('registered-approved'))}-->isactive<!--{/if}-->">
+								<a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/registered-approved"><i class="fa fa-list"></i> Approved</a>
+							</li>
+							<li class="side-menu-sub-link <!--{if in_array($sitePage, array('registered-unverified'))}-->isactive<!--{/if}-->">
+								<a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/registered-unverified"><i class="fa fa-list"></i> Unverified</a>
+							</li>
+							<li class="side-menu-sub-link <!--{if in_array($sitePage, array('registered-manual'))}-->isactive<!--{/if}-->">
+								<a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/registered-manual"><i class="fa fa-list"></i> Add New</a>
+							</li>
+						</ul>
+					</li>
+					<!--{/if}-->
+					<li class="side-menu-link d-none <!--{if in_array($sitePage, array( 'newsletter'))}-->isactive<!--{/if}-->">
+						<a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/newsletter"><i class="fa fa-envelope"></i> NEWSLETTERS </a>
+					</li>
+					<li class="side-menu-link d-none <!--{if in_array($sitePage, array('add_news', 'news', 'edit_news'))}-->isactive<!--{/if}-->">
+						<a href="#"><i class="fa fa-newspaper-o"></i> NEWS <span><i class="fa fa-angle-down"></i></span></a>
+						<ul class="side-menu-sub-list">
+							<li class="side-menu-sub-link <!--{if in_array($sitePage, array('news', 'edit_news'))}-->isactive<!--{/if}-->">
+								<a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/news"><i class="fa fa-newspaper-o"></i> All News</a>
+							</li>
+							<li class="side-menu-sub-link <!--{if in_array($sitePage, array('add_news'))}-->isactive<!--{/if}-->">
+								<a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/add_news"><i class="fa fa-plus-square"></i> Add News</a>
+							</li>
+						</ul>
+					</li>
+					<li class="side-menu-link d-none <!--{if in_array($sitePage, array('compose','messages','inbox'))}-->isactive<!--{/if}-->">
+						<a href="#" class="side-menu-main-link"><i class="fa fa-envelope"></i> Messaging <span><i class="fa fa-angle-down"></i></span></a>
+						<ul class="side-menu-sub-list">
+							<li class="side-menu-sub-link <!--{if $sitePage == 'compose'}-->isactive<!--{/if}-->">
+								<a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/compose"><i class="fa fa-pencil"></i> Compose</a>
+							</li>
+							<li class="side-menu-sub-link <!--{if $sitePage == 'messages'}-->isactive<!--{/if}-->">
+								<a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/messages"><i class="fa fa-send"></i> Sent Messages</a>
+							</li>
+							<li class="side-menu-sub-link <!--{if $sitePage == 'inbox'}-->isactive<!--{/if}-->">
+								<a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/inbox"><i class="fa fa-inbox"></i> Inbox</a>
+							</li>
+						</ul>
+					</li>
+					<!--{if in_array( $Site.session.User.userinfo->userrole, array('level0','level1','level2')) and  $Site.session.User.userinfo->active==true}-->
+					<li class="side-menu-link d-none <!--{if in_array($sitePage, array( 'clients', 'add_client', 'client'))}-->isactive<!--{/if}-->">
+						<a href="#" class="side-menu-main-link"><i class="fa fa-users"></i> INVESTORS <span><i class="fa fa-angle-down"></i></span></a>
+						<ul class="side-menu-sub-list">
+							<li class="side-menu-sub-link <!--{if $sitePage == 'client' or  $sitePage == 'clients'}-->isactive<!--{/if}-->">
+								<a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/clients"><i class="fa fa-users"></i> Investors</a>
+							</li>
+							<li class="side-menu-sub-link <!--{if $sitePage == 'add_client'}-->isactive<!--{/if}-->">
+								<a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/add_client"><i class="fa fa-user-plus"></i> Add a New Investor</a>
+							</li>
+						</ul>
+					</li>
+					<!--{if in_array( $Site.session.User.userinfo->userrole, array('level0','level1')) and  $Site.session.User.userinfo->active==true}-->
+					<li class="side-menu-link <!--{if in_array($sitePage, array('staffs','add_staff', 'edit_staff'))}-->isactive<!--{/if}-->">
+						<a href="#" class="side-menu-main-link"><i class="fa fa-users"></i> STAFFS <span><i class="fa fa-angle-down"></i></span></a>
+						<ul class="side-menu-sub-list">
+							<li class="side-menu-sub-link <!--{if $sitePage == 'staffs' or  $sitePage == 'edit_staff'}-->isactive<!--{/if}-->">
+								<a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/staffs"><i class="fa fa-users"></i> All Staff</a>
+							</li>
+							<li class="side-menu-sub-link <!--{if $sitePage == 'add_staff'}-->isactive<!--{/if}-->">
+								<a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/add_staff"><i class="fa fa-user-plus"></i> Add a Staff</a>
+							</li>
+						</ul>
+					</li>
+					<!--{/if}-->
+					<!--{/if}-->
+					<!--{if in_array( $Site.session.User.userinfo->userrole, array('level0','level1')) and  $Site.session.User.userinfo->active==true}-->
+					<li class="side-menu-link <!--{if in_array($sitePage, array('faq'))}-->isactive<!--{/if}-->">
+						<a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/faq"><i class="fa fa-question"></i> FAQ </a>
+					</li>
+					<!--{/if}-->
+				</ul>
+			</div>
+		</div>
+	</aside>
+</div>

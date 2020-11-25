@@ -1,0 +1,37 @@
+<!--{extends file="root.html"}-->
+<!--{block name="breadcrumb"}-->
+<section class="breadcrumb"><strong class="uppercase">Dasboard |
+	&nbsp;Gallery&nbsp;<i class="fa fa-file-image-o"></i>
+</section>
+<!--{/block}-->
+<!--{block name="content"}-->
+<h3>GALLERY</h3>
+<section class="container-fluid">
+<div class="row justify-content-center">
+    <!--{if !empty($fail)}-->
+      <div class="col-md-10 mt-2">
+        <!--{$fail}-->
+      </div>
+    <!--{/if}-->
+	<!--{if !empty($galleries)}-->
+		<!--{foreach $galleries as $gallery}-->
+			<div class="col-sm-2">
+				<div class="card">
+					<img class="img img-thumbnail card-img w-100 imgPreview" src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/<!--{$gallery->url}-->" desc="<!--{$gallery->description}-->" title="<!--{$gallery->title}-->" alt="<!--{$gallery->title}-->" style="height: auto !important;" data-toggle="modal" data-target="#showImgPreview" />
+					<div class="card-footer">
+						<a class="deleteTrig btn btn-danger btn-sm" href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/gallery?galid=<!--{$gallery->id}-->&evt=delete" what="Image From Gsallery"><i class="fa fa-trash"></i> Delete</a>
+					</div>
+				</div>
+			</div>
+		<!--{/foreach}-->
+		<div class="col-sm-10 mt-5">
+			<!--{include file="paging-bottom.html"}-->
+		</div>
+	<!--{else}-->
+		<div class="col-sm-10">
+			<div class="alert alert-warning"><h3 class="alert-heading">No image found!</h3></div>
+		</div>
+	<!--{/if}-->
+</div>
+</section>
+<!--{/block}-->

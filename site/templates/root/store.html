@@ -1,0 +1,402 @@
+<!--{extends file="root.html"}-->
+<!--{block name="breadcrumb"}-->
+<section class="breadcrumb"><strong class="uppercase">Dasboard |</strong> &nbsp;<a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/stores">STORES&nbsp;<i class="fa fa-bank"></i></a> |&nbsp; <!--{$store->store_title}-->&nbsp;<i class="fa fa-ellipsis-v"></i>
+</section>
+<!--{/block}-->
+<!--{block name="content"}-->
+<!--{if !empty($store)}-->
+<section class="row justify-content-center" id="printMe">
+	<div class="col-md-7 card">
+		<h4 class="card-header bg-success mt-2 text-center font-weight-bold">
+			<img class="img float-left" style="max-width: 100px;" src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/site/media/i/new-imgs/logo01.jpg" alt="<!--{$Site.companyName}-->"> <!--{$store->store_title}-->
+		</h4>
+		<div class="card-body text-center pt-4">
+			<div class="row no-gutters justify-content-center">
+				<img src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/<!--{if !empty($store->images) and is_array($store->images)}--><!--{$store->images[0]}--><!--{else}-->site/media/i/new-imgs/logo01.jpg<!--{/if}-->" class="col-sm-6 card-img-top" id="imgPreviewShow" style="height: 300px;" alt="<!--{$store->store_title}-->">
+				<div class="col-sm-6 card-body text-white site-bg-1 px-4">
+					<h4 class="card-title text-center font-weight-bold"><!--{$store->store_title}--></h4>
+					<p class="card-text"><span class="font-weight-bold">Store Number: </span><!--{$store->store_number}--></p>
+					<p class="card-text"><span class="font-weight-bold">Category: </span> <!--{$store->category}--></p>
+					<p class="card-text"><span class="font-weight-bold">Client's Name: </span> <!--{$store->owner_detail->owner_names}--></p>
+					<p class="card-text"><span class="font-weight-bold">Client's Email: </span> <!--{$store->store_owner}--></p>
+					<p class="card-text"><span class="font-weight-bold">Client's Phone Contact: </span> <!--{$store->owner_detail->phone_number}--></p>
+					<!--{if !empty($store->owner_detail->url)}--><p class="card-text"><span class="font-weight-bold">Website URL: </span> <a href="<!--{$store->owner_detail->url}-->" target="__blank"><!--{$store->owner_detail->url}--></a></p><!--{/if}-->
+					<p class="card-text"><span class="font-weight-bold">Date Added: </span> <!--{$store->dateadded}--></p>
+					<p class="card-text"><span class="font-weight-bold">For Website Visitors:</span> <!--{if $store->show=='0'}--><i class="badge badge-pill badge-warning">hidden</i><!--{elseif $store->show=='1'}--><i class="badge badge-pill badge-success">showing</i><!--{/if}--></p>
+					<!--{if !empty($store->owner_detail->open_hour_string)}--><p class="card-text"><span class="font-weight-bold">Opening Hour: </span><!--{$store->owner_detail->open_hour_string}--></p><!--{/if}-->
+					<!--{if !empty($store->owner_detail->close_hour_string)}--><p class="card-text"><span class="font-weight-bold">Closing Hour: </span><!--{$store->owner_detail->close_hour_string}--></p><!--{/if}-->
+					<p class="text-success">
+						<!--{if empty($store->rate) or $store->rate==0}-->
+						<!--{else}-->
+							<!--{for $j=0; $j < ($store->rateCeil); $j++}-->
+								<i class="fa fa-star"></i>
+							<!--{/for}-->
+						<!--{/if}-->
+						<!--{if ($store->rateFloor) > 0}-->
+						<i class="fa fa-star-half-empty"></i>
+						<!--{/if}-->
+						<!--{if ($store->rateRem) > 0}-->
+							<!--{for $j=0; $j < ($store->rateRem - $store->rateFloor); $j++}-->
+								<i class="fa fa-star-o"></i>
+							<!--{/for}-->
+						<!--{/if}-->
+					</p>
+				</div>
+				<!--{if !empty($store->images) and is_array($store->images)}-->
+				<div class="col-sm-12 row justify-content-center card-body px-1 py-2 alert-success">
+					<!--{foreach $store->images as $sIm=> $image}-->
+					<!--{if !empty($image)}-->
+						<div class="col-sm-3">
+							<img src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/<!--{$image}-->" class="w-100 h-150px img-thumbnail imgPreview" title="<!--{$store->store_title}-->">
+						</div>
+					<!--{/if}-->
+					<!--{/foreach}-->
+				</div>
+				<!--{/if}-->
+				<!--{if !empty($store->rateDetails) and is_array($store->rateDetails)}-->
+				<div class="col-sm-12 card-body px-1 py-2 bg-success border-0">
+					<h5 class="font-weight-bold">Comments (<!--{count($store->rateDetails)}-->)</h5>
+					<div id="carSel<!--{$kY}-->" class="carousel slide" data-ride="carousel">
+					  <div class="carousel-inner">
+					  	<!--{foreach $store->rateDetails as $cR=> $rtn}-->
+					    <div class="carousel-item <!--{if $cR==0}-->active<!--{/if}-->">
+					      <div class="pt-3 text-dark" style="max-height: 150px; overflow-y: auto;">
+						    <h6><!--{$rtn->email}--></h6>
+						    <p><!--{$rtn->comment}--></p>
+						  </div>
+					    </div>
+					    <!--{/foreach}-->
+					  </div>
+					  <a class="carousel-control-prev" href="#carSel<!--{$kY}-->" role="button" data-slide="prev">
+					    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					    <span class="sr-only">Previous</span>
+					  </a>
+					  <a class="carousel-control-next" href="#carSel<!--{$kY}-->" role="button" data-slide="next">
+					    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+					    <span class="sr-only">Next</span>
+					  </a>
+					</div>
+				</div>
+				<!--{/if}-->
+				<div class="col-sm-12 card-body px-4">
+					<p class="text-center">
+						<a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/stores" class="btn btn-sm btn-success rounded-0 btn-success-hover mb-1"><i class="fa fa-undo"></i> BACK</a>
+						<button class="btn btn-sm btn-success rounded-0 mb-1" type="button" data-toggle="collapse" data-target="#editStoreInfo" aria-expanded="true" aria-controls="editStoreInfo" id="editStore"><i class="fa fa-pencil-square"></i> Edit Detail</button>
+
+						<button class="btn btn-sm btn-info rounded-0 mb-1" type="button" data-toggle="collapse" data-target="#moveStoreInfo" aria-expanded="true" aria-controls="moveStoreInfo" id="moveStore"><i class="fa fa-exchange"></i> Move Store to Client</button>
+						<!--{if $store->archives>0}-->
+							<a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/archives?id=<!--{$store->store_number}-->" class="btn btn-sm btn-success rounded-0 btn-success-hover mb-1"><i class="fa fa-ellipsis-v"></i> View Transfer History</a>
+						<!--{/if}-->
+						<!--{if $store->show!='1'}-->
+							<a class="btn btn-sm btn-success rounded-0 confirmTrig mb-1" href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/store?id=<!--{$store->token}-->&evt=show" what='show this record to website visitors'><i class="fa fa-check-circle"></i> Show</a>
+						<!--{/if}-->
+						<!--{if $store->show!='0'}-->
+							<a class="btn btn-sm btn-warning rounded-0 confirmTrig mb-1" href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/store?id=<!--{$store->token}-->&evt=hide" what='hide this record from website visitors'><i class="fa fa-times-circle"></i> Hide</a>
+						<!--{/if}-->
+						<a class="btn btn-sm btn-danger rounded-0 confirmTrig mb-1" href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/store?id=<!--{$store->token}-->&evt=delete" what='delete this record from the system'><i class="fa fa-trash"></i> Delete</a>
+					</p>
+					<!--{if !empty($fail)}-->
+						<p>
+						  <!--{$fail}-->
+						</p>
+					<!--{/if}-->
+				</div>
+
+	            <div class="col-md-11 card-body text-justify" id="accordion">
+	            	<div id="moveStoreInfo" class="collapse mt-2 row justify-content-center" aria-labelledby="moveStore" data-parent="#accordion">
+						<form method="post" action="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/store?id=<!--{$store->token}-->" class="w-100" enctype="multipart/form-data">
+							<fieldset class="rounded border border-success py-4 px-4">
+								<legend class="font-weight-bold text-center">Move Store to Another Client</legend>
+								<div class="form-row">
+									<div class="form-group col-sm-6">
+										<label for="store_title" class="form-control-label">Store Title</label>
+										<input type="text" id="store_title" name="store_title" class="form-control form-control-sm badge-pill" value="<!--{$store->store_title}-->" required/>
+									</div>
+									<div class="form-group col-sm-6">
+										<label for="store_number" class="form-control-label">Store Number</label>
+										<input type="text" id="store_number" name="store_number" class="form-control form-control-sm badge-pill" value="<!--{$store->store_number}-->" readonly/>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="form-group col-sm-5">
+										<label for="store_owner" class="form-control-label">New Client's Email</label>
+										<select id="store_owner" name="store_owner" class="form-control form-control-sm badge-pill"/>
+											<!--{if !empty($clients)}-->
+												<!--{foreach $clients as $client}--><!--{if $client->email==$store->store_owner}--><!--{continue}--><!--{/if}-->
+													<option value="<!--{$client->email}-->" i='<!--{json_encode($client)}-->' ><!--{$client->email}--> (<!--{$client->firstname}--> <!--{$client->lastname}-->)</option>
+												<!--{/foreach}-->
+											<!--{/if}-->
+										</select>
+									</div>
+									<div class="form-group col-sm-4">
+										<label for="owner_names" class="form-control-label">New Client's Names</label>
+										<input type="text" id="owner_names" name="owner_names" class="form-control form-control-sm badge-pill" value="<!--{if !empty($clients)}--><!--{$clients[0]->firstname}--> <!--{$clients[0]->lastname}--><!--{/if}-->"/>
+									</div>
+									<div class="form-group col-sm-3">
+										<label for="phone_number" class="form-control-label">New Phone Number</label>
+										<input type="text" id="phone_number" name="phone_number" class="form-control form-control-sm badge-pill" value="<!--{if !empty($clients)}--><!--{$clients[0]->phone}--><!--{/if}-->"/>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="form-group col-sm-4">
+										<label for="store_owner_names" class="form-control-label">Owner's Names</label>
+										<input type="text" id="store_owner_names" name="store_owner_names" value="<!--{$store->owner_detail->store_owner_names}-->" class="form-control form-control-sm badge-pill" required/>
+									</div>
+									<div class="form-group col-sm-5">
+										<label for="store_owner_email" class="form-control-label">Owners's Email</label>
+										<input type="text" id="store_owner_email" name="store_owner_email" value="<!--{$store->owner_detail->store_owner_email}-->" class="form-control form-control-sm badge-pill" required/>
+									</div>
+									<div class="form-group col-sm-3">
+										<label for="store_owners_phone" class="form-control-label">Owner's Phone Number</label>
+										<input type="text" id="store_owners_phone" name="store_owners_phone" value="<!--{$store->owner_detail->store_owners_phone}-->" class="form-control form-control-sm badge-pill" required/>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="form-group col-sm-6">
+										<label for="category" class="form-control-label">Category</label>
+										<input type="text" id="category" name="category" class="form-control form-control-sm badge-pill" value="<!--{$store->category}-->" list="categ" required/>
+										<datalist id="categ">
+											<!--{if !empty($categories)}-->
+												<!--{foreach $categories as $cat}-->
+													<option value="<!--{$cat}-->"><!--{$cat}--></option>
+												<!--{/foreach}-->
+											<!--{/if}-->
+										</datalist>
+									</div>
+									<div class="form-group col-sm-6">
+										<label for="url" class="form-control-label">Website URL</label>
+										<input type="url" id="url" name="url" value="<!--{$store->owner_detail->url}-->" class="form-control form-control-sm badge-pill" />
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="form-group col-sm-3">
+										<label for="open_hour" class="form-control-label">Opening Hour</label>
+										<input type="text" id="open_hour" name="open_hour" value="<!--{$store->owner_detail->open_hour_string}-->" class="form-control form-control-sm badge-pill" required/>
+									</div>
+									<div class="form-group col-sm-3">
+										<label for="close_hour" class="form-control-label">Closing Hour</label>
+										<input type="text" id="close_hour" name="close_hour" value="<!--{$store->owner_detail->close_hour_string}-->" class="form-control form-control-sm badge-pill" required/>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="form-group col-sm-6">
+										<label for="description" class="form-control-label">Details & Description</label>
+										<textarea id="description" name="description" class="form-control form-control-sm input-block" rows="6" required><!--{$store->description2}--></textarea>
+									</div>
+									<div class="form-group col-sm-6">
+										<label for="otherdetails" class="form-control-label">Additional Details</label>
+										<textarea id="otherdetails" name="otherdetails" class="form-control form-control-sm input-block" rows="6" ><!--{$store->otherdetails2}--></textarea>
+									</div>
+								</div>
+								<div class="form-row justify-content-center">
+									<div class="form-group col-sm-6 text-center">
+										<div class="img-scope card-heading pt-3 pb-3">
+											<label for="img-upload">
+												<img class="img img-thumbnail w-100" id="dataImg" src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/<!--{if !empty($store->images) and is_array($store->images)}--><!--{$store->images[0]}--><!--{else}-->site/media/i/default-icon/event-icon.png<!--{/if}-->">
+												<data class="text-center jsonly">Upload Photo</data>
+											</label>
+											<input type="file" accept="image/*" id="img-upload" class="badge-pill w-100" name="img_upload"/>
+											<noscript><button class="text-center" id="ppUpload" name="ppUpload" type="button">Upload Photo</button></noscript>
+										</div>
+										<span class="small">Strictly business logo</span>
+									</div>
+									<div class="form-group col-sm-6">
+										<div class="img-scope card-heading pt-3 pb-3">
+											<label for="img-upload1">
+												<img class="img img-thumbnail w-100" id="dataImg1" src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/<!--{if !empty($store->images) and is_array($store->images)}--><!--{$store->images[1]}--><!--{else}-->site/media/i/default-icon/event-icon.png<!--{/if}-->">
+												<data class="text-center jsonly">Upload Photo</data>
+											</label>
+											<input type="file" accept="image/*" id="img-upload1" class="badge-pill w-100" name="img_upload1"/>
+											<noscript><button class="text-center" id="ppUpload" name="ppUpload" type="button">Upload Photo</button></noscript>
+										</div>
+									</div>
+									<div class="form-group col-sm-6">
+										<div class="img-scope card-heading pt-3 pb-3">
+											<label for="img-upload2">
+												<img class="img img-thumbnail w-100" id="dataImg2" src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/<!--{if !empty($store->images) and is_array($store->images)}--><!--{$store->images[2]}--><!--{else}-->site/media/i/default-icon/event-icon.png<!--{/if}-->">
+												<data class="text-center jsonly">Upload Photo</data>
+											</label>
+											<input type="file" accept="image/*" id="img-upload2" class="badge-pill w-100" name="img_upload2"/>
+											<noscript><button class="text-center" id="ppUpload" name="ppUpload" type="button">Upload Photo</button></noscript>
+										</div>
+									</div>
+									<div class="form-group col-sm-6">
+										<div class="img-scope card-heading pt-3 pb-3">
+											<label for="img-upload3">
+												<img class="img img-thumbnail w-100" id="dataImg3" src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/<!--{if !empty($store->images) and is_array($store->images)}--><!--{$store->images[3]}--><!--{else}-->site/media/i/default-icon/event-icon.png<!--{/if}-->">
+												<data class="text-center jsonly">Upload Photo</data>
+											</label>
+											<input type="file" accept="image/*" id="img-upload3" class="badge-pill w-100" name="img_upload3"/>
+											<noscript><button class="text-center" id="ppUpload" name="ppUpload" type="button">Upload Photo</button></noscript>
+										</div>
+									</div>
+								</div>
+								<div class="form-group text-center">
+									<button class="btn site-bg-1 text-white rounded-0 confirmTrig" type="submit" name="move_store" what='move this store to another client'><i class="fa fa-exchange"></i> Move Store</button>
+								</div>
+							</fieldset>
+						</form>
+	            	</div>
+	            	<div id="editStoreInfo" class="collapse mt-2 row justify-content-center" aria-labelledby="editStore" data-parent="#accordion">
+						<form method="post" action="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/store?id=<!--{$store->token}-->" class="w-100" enctype="multipart/form-data">
+							<fieldset class="rounded border border-success py-4 px-4">
+								<legend class="font-weight-bold text-center">Edit Store Detail</legend>
+								<div class="form-row">
+									<div class="form-group col-sm-6">
+										<label for="store_title" class="form-control-label">Store Title</label>
+										<input type="text" id="store_title" name="store_title" class="form-control form-control-sm badge-pill" value="<!--{$store->store_title}-->" required/>
+									</div>
+									<div class="form-group col-sm-6">
+										<label for="store_number" class="form-control-label">Store Number</label>
+										<select id="store_number" name="store_number" class="form-control form-control-sm badge-pill" required/>
+										<!--{if !empty($store_numbers)}-->
+											<!--{foreach $store_numbers as $store_number}-->
+												<!--{if !empty($store_number) and is_array($store_number)}-->
+												<!--{foreach $store_number as $storeN}-->
+													<option value="<!--{$storeN}-->" <!--{if $storeN==$store->store_number}-->selected<!--{/if}-->><!--{$storeN}--></option>
+												<!--{/foreach}-->
+												<!--{/if}-->
+											<!--{/foreach}-->
+										<!--{/if}-->
+									</select>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="form-group col-sm-5">
+										<label for="store_owner" class="form-control-label">Client's Email</label>
+										<select id="store_owner" name="store_owner" class="form-control form-control-sm badge-pill"/>
+											<!--{if !empty($clients)}-->
+												<!--{foreach $clients as $client}-->
+													<option value="<!--{$client->email}-->" i='<!--{json_encode($client)}-->' <!--{if $client->email==$store->store_owner}-->selected<!--{/if}-->><!--{$client->email}--> (<!--{$client->firstname}--> <!--{$client->lastname}-->)</option>
+												<!--{/foreach}-->
+											<!--{/if}-->
+										</select>
+									</div>
+									<div class="form-group col-sm-4">
+										<label for="owner_names" class="form-control-label">Client's Names</label>
+										<input type="text" id="owner_names" name="owner_names" class="form-control form-control-sm badge-pill" value="<!--{$store->owner_detail->owner_names}-->"/>
+									</div>
+									<div class="form-group col-sm-3">
+										<label for="phone_number" class="form-control-label">Phone Number</label>
+										<input type="text" id="phone_number" name="phone_number" class="form-control form-control-sm badge-pill" value="<!--{$store->owner_detail->phone_number}-->"/>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="form-group col-sm-4">
+										<label for="store_owner_names" class="form-control-label">Owner's Names</label>
+										<input type="text" id="store_owner_names" name="store_owner_names" value="<!--{$store->owner_detail->store_owner_names}-->" class="form-control form-control-sm badge-pill" required/>
+									</div>
+									<div class="form-group col-sm-5">
+										<label for="store_owner_email" class="form-control-label">Owners's Email</label>
+										<input type="text" id="store_owner_email" name="store_owner_email" value="<!--{$store->owner_detail->store_owner_email}-->" class="form-control form-control-sm badge-pill" required/>
+									</div>
+									<div class="form-group col-sm-3">
+										<label for="store_owners_phone" class="form-control-label">Owner's Phone Number</label>
+										<input type="text" id="store_owners_phone" name="store_owners_phone" value="<!--{$store->owner_detail->store_owners_phone}-->" class="form-control form-control-sm badge-pill" required/>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="form-group col-sm-6">
+										<label for="category" class="form-control-label">Category</label>
+										<input type="text" id="category" name="category" class="form-control form-control-sm badge-pill" value="<!--{$store->category}-->" list="categ" required/>
+										<datalist id="categ">
+											<!--{if !empty($categories)}-->
+												<!--{foreach $categories as $cat}-->
+													<option value="<!--{$cat}-->"><!--{$cat}--></option>
+												<!--{/foreach}-->
+											<!--{/if}-->
+										</datalist>
+									</div>
+									<div class="form-group col-sm-6">
+										<label for="url" class="form-control-label">Website URL</label>
+										<input type="url" id="url" name="url" value="<!--{$store->owner_detail->url}-->" class="form-control form-control-sm badge-pill" />
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="form-group col-sm-3">
+										<label for="open_hour" class="form-control-label">Opening Hour</label>
+										<input type="text" id="open_hour" name="open_hour" value="<!--{$store->owner_detail->open_hour_string}-->" class="form-control form-control-sm badge-pill" required/>
+									</div>
+									<div class="form-group col-sm-3">
+										<label for="close_hour" class="form-control-label">Closing Hour</label>
+										<input type="text" id="close_hour" name="close_hour" value="<!--{$store->owner_detail->close_hour_string}-->" class="form-control form-control-sm badge-pill" required/>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="form-group col-sm-6">
+										<label for="description" class="form-control-label">Details & Description</label>
+										<textarea id="description" name="description" class="form-control form-control-sm input-block" rows="6" required><!--{$store->description2}--></textarea>
+									</div>
+									<div class="form-group col-sm-6">
+										<label for="otherdetails" class="form-control-label">Additional Details</label>
+										<textarea id="otherdetails" name="otherdetails" class="form-control form-control-sm input-block" rows="6" ><!--{$store->otherdetails2}--></textarea>
+									</div>
+								</div>
+								<div class="form-row justify-content-center">
+									<div class="form-group col-sm-6 text-center">
+										<div class="img-scope card-heading pt-3 pb-3">
+											<label for="img-upload">
+												<img class="img img-thumbnail w-100" id="dataImg" src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/<!--{if !empty($store->images) and is_array($store->images)}--><!--{$store->images[0]}--><!--{else}-->site/media/i/default-icon/event-icon.png<!--{/if}-->">
+												<data class="text-center jsonly">Upload Photo</data>
+											</label>
+											<input type="file" accept="image/*" id="img-upload" class="badge-pill w-100" name="img_upload"/>
+											<noscript><button class="text-center" id="ppUpload" name="ppUpload" type="button">Upload Photo</button></noscript>
+										</div>
+										<span class="small">Strictly business logo</span>
+									</div>
+									<div class="form-group col-sm-6">
+										<div class="img-scope card-heading pt-3 pb-3">
+											<label for="img-upload1">
+												<img class="img img-thumbnail w-100" id="dataImg1" src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/<!--{if !empty($store->images) and is_array($store->images)}--><!--{$store->images[1]}--><!--{else}-->site/media/i/default-icon/event-icon.png<!--{/if}-->">
+												<data class="text-center jsonly">Upload Photo</data>
+											</label>
+											<input type="file" accept="image/*" id="img-upload1" class="badge-pill w-100" name="img_upload1"/>
+											<noscript><button class="text-center" id="ppUpload" name="ppUpload" type="button">Upload Photo</button></noscript>
+										</div>
+									</div>
+									<div class="form-group col-sm-6">
+										<div class="img-scope card-heading pt-3 pb-3">
+											<label for="img-upload2">
+												<img class="img img-thumbnail w-100" id="dataImg2" src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/<!--{if !empty($store->images) and is_array($store->images)}--><!--{$store->images[2]}--><!--{else}-->site/media/i/default-icon/event-icon.png<!--{/if}-->">
+												<data class="text-center jsonly">Upload Photo</data>
+											</label>
+											<input type="file" accept="image/*" id="img-upload2" class="badge-pill w-100" name="img_upload2"/>
+											<noscript><button class="text-center" id="ppUpload" name="ppUpload" type="button">Upload Photo</button></noscript>
+										</div>
+									</div>
+									<div class="form-group col-sm-6">
+										<div class="img-scope card-heading pt-3 pb-3">
+											<label for="img-upload3">
+												<img class="img img-thumbnail w-100" id="dataImg3" src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/<!--{if !empty($store->images) and is_array($store->images)}--><!--{$store->images[3]}--><!--{else}-->site/media/i/default-icon/event-icon.png<!--{/if}-->">
+												<data class="text-center jsonly">Upload Photo</data>
+											</label>
+											<input type="file" accept="image/*" id="img-upload3" class="badge-pill w-100" name="img_upload3"/>
+											<noscript><button class="text-center" id="ppUpload" name="ppUpload" type="button">Upload Photo</button></noscript>
+										</div>
+									</div>
+								</div>
+								<div class="form-group text-center">
+									<button class="btn site-bg-1 text-white rounded-0" type="submit" name="edit_store"><i class="fa fa-save"></i> Save Changes</button>
+								</div>
+							</fieldset>
+						</form>
+	            	</div>
+	            </div>
+				<div class="col-sm-6 card-body text-white site-bg-1 px-4">
+					<p class="card-text text-justify"><span class="font-weight-bold">Store Owner:</span> <!--{$store->owner_detail->store_owner_names}--></p>
+					<p class="card-text text-justify"><span class="font-weight-bold">Store Owner's Email:</span> <!--{$store->owner_detail->store_owner_email}--></p>
+					<p class="card-text text-justify"><span class="font-weight-bold">Phone Number:</span> <!--{$store->owner_detail->store_owners_phone}--></p>
+					<p class="card-text text-justify"><span class="font-weight-bold">Other Details:</span> <!--{$store->otherdetails}--></p>
+				</div>
+				<div class="col-sm-6 card-body text-white site-bg-1 px-4">
+					<p class="card-text text-justify"><span class="font-weight-bold">Description:</span> <!--{$store->description}--></p>
+				</div>
+			</div>
+		</div>
+		<div class="card-footer d-none">
+			<button type="button" class="btn btn-primary btn-sm" id="printSect"><i class="fa fa-print"></i> Print Now</button>
+		</div>
+	</div>
+</section>
+<!--{/if}-->
+<!--{/block}-->

@@ -1,0 +1,28 @@
+<!--{extends file="dashboard.html"}-->
+<!--{block name="breadcrumb"}-->
+<section class="breadcrumb"><strong class="uppercase">Dasboard |</strong> &nbsp;Subscription&nbsp;<i class="fa fa-credit-card"></i>
+</section>
+<!--{/block}-->
+<!--{block name="content"}-->
+<section class="container-fluid">
+ <div class="row justify-content-center mt-4">
+  <div class="col-sm-7 alert alert-success text-center mt-3" role="alert">
+    <!--{if $lastPayment->isExpired==true}-->
+    <h6 class="font-weight-bold mb-3">Click the button below to make payment</h6>
+    <h5 class="mb-3"><span class="font-weight-bold">Subscription Amount: </span>₦ <!--{$settings->subscription->amount}--></h5>
+    <form action="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/dashboard/subscription" method="post" accept-charset="utf-8">
+
+      <button class="btn btn-sm btn-info" type="submit" name="pay" value="paystack"><i class="fa fa-credit-card"></i> Make Payment Now</button> 
+    </form>
+    <!--{else}-->
+      <p>Your subscription status is currently in <span class="font-weight-bold">active state</span></p>
+    <!--{/if}--> 
+  </div>
+  <!--{if !empty($fail)}-->
+    <div class="form-group">
+      <!--{$fail}-->
+    </div>
+  <!--{/if}-->
+ </div>
+</section>
+<!--{/block}-->

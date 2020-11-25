@@ -1,0 +1,37 @@
+<!--{extends 'default.html'}-->
+<!--{block name="main-slider"}-->
+<section class="replace-slider-main border border-top-0 border-left-0 border-right-0 border-warning site-bg-2 py-4 text-center">
+    <h3 class="font-weight-bold text-white">Frequently Asked Questions</h3>
+</section>
+<!--{/block}-->
+<!--{block name="main_content"}-->
+    <section id="why-us" class="wow fadeIn">
+        <div class="container-fluid mt-5">
+			<div class="row justify-content-center">
+				<div class="d-none col-sm-11"><h2>F.A.Q.</h2></div>
+				<div class="col-sm-11 mb-5">
+				<!--{if !empty($faqs)}-->
+					<div class="accordion" id="accordionExample">
+				  		<!--{foreach $faqs as $faqK=> $faq}-->
+						<div class="card">
+							<div id="heading<!--{$faqK}-->" class="card-header mb-0 bg-success0 py-1 text-white" type="button" data-toggle="collapse" data-target="#collapse<!--{$faqK}-->" aria-expanded="true" aria-controls="collapse<!--{$faqK}-->">
+								<h3>
+									<!--{$faq->question}-->
+								</h3>
+							</div>
+							<div id="collapse<!--{$faqK}-->" class="collapse site-bg-1 rounded <!--{if $faqK==0}-->show<!--{/if}-->" aria-labelledby="heading<!--{$faqK}-->" data-parent="#accordionExample">
+								<div class="card-body text-white">
+									<!--{$faq->answer}-->
+								</div>
+							</div>
+						</div>
+						<!--{/foreach}-->
+					</div>
+				<!--{else}-->
+					<div class="alert alert-info rounded-0 "><h5 class="alert-heading my-2 mx-2 py-2 px-2 text-center border border-success">F.A.Q. content is currently not available, contact admin</h5></div>
+				<!--{/if}-->
+				</div>
+			</div>
+		</div>
+	</section>
+<!--{/block}-->

@@ -1,0 +1,44 @@
+<!--{extends file="dashboard.html"}-->
+<!--{block name="breadcrumb"}-->
+<section class="breadcrumb"><strong class="uppercase">Dasboard |</strong> &nbsp;Subscription&nbsp;<i class="fa fa-credit-card"></i>
+</section>
+<!--{/block}-->
+<!--{block name="content"}-->
+<section class="container-fluid">
+ <div class="row justify-content-center mt-4">
+  <!--{if !empty($mainPayment) and is_object( $mainPayment)}-->
+  <div class="col-sm-7 alert alert-success text-center mt-3" role="alert">
+    <!--{if $mainPayment->lastPayment->isExpired==true}-->
+    <h6 class="font-weight-bold mb-3">Click the button below to make payment</h6>
+    <h5 class="mb-3"><span class="font-weight-bold"><!--{$mainPayment->purpose}--> Amount: </span>₦ <!--{$mainPayment->amount}--></h5>
+    <form action="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/dashboard/otherpayments?payid=<!--{$mainPayment->token}-->" method="post" accept-charset="utf-8">
+      <button class="btn btn-sm btn-info" type="submit" name="pay" value="paystack"><i class="fa fa-credit-card"></i> Make Payment Now</button> 
+    </form>
+    <!--{else}-->
+      <p>Your payment for <!--{$mainPayment->purpose}--> is currently <span class="font-weight-bold">active</span></p>
+    <!--{/if}--> 
+  </div>
+  <!--{else}-->
+    <h4 class="text-center col-sm-12 font-weight-bold mt-3">Other Payments</h4>
+    <!--{if !empty($otherPayments)}-->
+      <!--{foreach $otherPayments as $othPay}-->
+        <!--{if $othPay->lastPayment->isExpired==true}-->
+          <div class="col-sm-3 my-2">
+            <a class="btn btn-sm btn-danger" href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/dashboard/otherpayments?payid=<!--{$othPay->token}-->"><i class="fa fa-credit-card"></i> <!--{if !empty($othPay->lastPayment->expired)}-->Kindly Renew Your <!--{$othPay->purpose}--> Payment<!--{else}-->Make Payment for <!--{$othPay->purpose}--> Now<!--{/if}--></a>
+          </div>
+        <!--{else}-->
+          <div class="col-sm-3">
+            <div class="alert badge-pill badge-success text-white text-center py-2 my-2 px-2 mx-2">Your payment for <!--{$othPay->purpose}--> is currently <span class="font-weight-bold">active</span> </div>
+          </div>
+        <!--{/if}--> 
+      <!--{/foreach}--> 
+    <!--{/if}--> 
+  <!--{/if}-->
+  <!--{if !empty($fail)}-->
+    <div class="form-group">
+      <!--{$fail}-->
+    </div>
+  <!--{/if}-->
+ </div>
+</section>
+<!--{/block}-->

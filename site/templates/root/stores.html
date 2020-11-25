@@ -1,0 +1,89 @@
+<!--{extends file="root.html"}-->
+<!--{block name="breadcrumb"}-->
+<section class="breadcrumb"><strong class="uppercase">Dasboard |</strong> &nbsp;STORES&nbsp;<i class="fa fa-bank"></i> |&nbsp;
+	<!--{if !empty($Site.get.type) and $Site.get.type=='hidden'}--><i class="fa fa-times-circle"></i>&nbsp;Hidden Stores<!--{elseif !empty($Site.get.type) and $Site.get.type=='showing'}--><i class="fa fa-check-circle"></i>&nbsp;Showing Store<!--{else}--><i class="fa fa-list"></i>&nbsp;All Stores<!--{/if}--> 
+</section>
+<!--{/block}-->
+<!--{block name="content"}-->
+<section class="row no-gutters justify-content-center">
+	<div class="col-sm-10 form-group mb-3">
+		<ul class="nav nav-pills">
+		  <li class="nav-item mr-3">
+		    <a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/stores" class="nav-link btn-sm btn-success rounded-0 btn-success-hover <!--{if empty($Site.get.type) or !in_array($Site.get.type, array('hidden', 'showing'))}-->active<!--{/if}--> mb-1"><i class="fa fa-list"></i> All Stores</a>
+		  </li>
+		  <li class="nav-item mr-3">
+		    <a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/stores?type=hidden" class="nav-link btn-sm btn-success rounded-0 btn-success-hover <!--{if !empty($Site.get.type) and $Site.get.type=='hidden'}-->active<!--{/if}--> mb-1"><i class="fa fa-times-circle"></i> Hidden Stores</a>
+		  </li>
+		  <li class="nav-item">
+		    <a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/stores?type=showing" class="nav-link btn-sm btn-success rounded-0 btn-success-hover <!--{if !empty($Site.get.type) and $Site.get.type=='showing'}-->active<!--{/if}--> mb-1"><i class="fa fa-check-circle"></i> Showing Store</a>
+		  </li>
+		</ul>
+	</div>
+	<h4 class="font-weight-bold col-sm-10 mb-3">
+		<!--{if !empty($Site.get.type) and $Site.get.type=='hidden'}--><i class="fa fa-times-circle"></i>&nbsp;Hidden Stores<!--{elseif !empty($Site.get.type) and $Site.get.type=='showing'}--><i class="fa fa-check-circle"></i>&nbsp;Showing Store<!--{else}--><i class="fa fa-list"></i>&nbsp;All Stores<!--{/if}-->
+	</h4>
+	<div class="col-sm-10 form-group mb-3">
+		<!--{if !empty($fail)}-->
+		  <!--{$fail}-->
+		<!--{/if}-->
+	</div>
+	<div class="col-sm-11">
+		<!--{if !empty($stores)}-->
+		<div class="row justify-content-center">
+			<!--{include file="paging-top.html"}-->
+			<!--{$numCount}-->
+			<!--{foreach $stores as $store}-->
+				<div class="col-md-6 mb-4">
+					<div class="card store-card">
+						<div class="row no-gutters justify-content-center">
+							<img src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/<!--{if !empty($store->images) and is_array($store->images)}--><!--{$store->images[0]}--><!--{else}-->site/media/i/new-imgs/logo01.jpg<!--{/if}-->" class="col-sm-6 card-img-top" style="height: 300px;" alt="<!--{$store->store_title}-->">
+							<div class="col-sm-6 card-body text-white site-bg-1 px-4">
+								<h4 class="card-title text-center font-weight-bold"><!--{$store->store_title}--></h4>
+								<p class="card-text"><span class="font-weight-bold">Store Number: </span><!--{$store->store_number}--></p>
+								<p class="card-text"><span class="font-weight-bold">Client Email: </span><!--{$store->store_owner}--></p>
+								<p class="card-text"><span class="font-weight-bold">Owner's Email: </span><!--{$store->owner_detail->store_owner_email}--></p>
+								<p class="card-text"><span class="font-weight-bold">Date Added: </span><!--{$store->dateadded}--></p>
+								<p class="card-text"><span class="font-weight-bold">For Website Visitors: </span><!--{if $store->show=='0'}--><i class="badge badge-pill badge-warning">hidden</i><!--{elseif $store->show=='1'}--><i class="badge badge-pill badge-success">showing</i><!--{/if}--></p>
+								<p class="card-text"><span class="font-weight-bold">Opening Hour: </span><!--{$store->owner_detail->open_hour_string}--></p>
+								<p class="card-text"><span class="font-weight-bold">Closing Hour: </span><!--{$store->owner_detail->close_hour_string}--></p>
+								<p class="text-success">
+									<!--{if empty($store->rate) or $store->rate==0}-->
+									<!--{else}-->
+										<!--{for $j=0; $j < ($store->rateCeil); $j++}-->
+											<i class="fa fa-star"></i>
+										<!--{/for}-->
+									<!--{/if}-->
+									<!--{if ($store->rateFloor) > 0}-->
+									<i class="fa fa-star-half-empty"></i>
+									<!--{/if}-->
+									<!--{if ($store->rateRem) > 0}-->
+										<!--{for $j=0; $j < ($store->rateRem - $store->rateFloor); $j++}-->
+											<i class="fa fa-star-o"></i>
+										<!--{/for}-->
+									<!--{/if}-->
+								</p>
+								<p class="card-text max-h-100px overflow-y-hidden" style="height: 100px; overflow-y: hidden;"><!--{$store->description}--></p>
+								<p class="text-center">
+									<a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/store?id=<!--{$store->token}-->" class="btn btn-sm btn-success rounded-0 btn-success-hover mb-1"><i class="fa fa-ellipsis-v"></i> DETAIL</a>
+									<!--{if $store->show!='1'}-->
+										<a class="btn btn-sm btn-success rounded-0 confirmTrig mb-1" href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/stores?id=<!--{$store->token}-->&evt=show" what='show this record to website visitors'><i class="fa fa-check-circle"></i> Show</a>
+									<!--{/if}-->
+									<!--{if $store->show!='0'}-->
+										<a class="btn btn-sm btn-warning rounded-0 confirmTrig mb-1" href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/stores?id=<!--{$store->token}-->&evt=hide" what='hide this record from website visitors'><i class="fa fa-times-circle"></i> Hide</a>
+									<!--{/if}-->
+									<a class="btn btn-sm btn-danger rounded-0 confirmTrig mb-1" href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/stores?id=<!--{$store->token}-->&evt=delete" what='delete this record from the system'><i class="fa fa-trash"></i> Delete</a>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+		  		<!--{$numCount=$numCount+1}-->
+			<!--{/foreach}-->
+			<!--{include file="paging-bottom.html"}-->
+		</div>
+		<!--{else}-->
+		<div class="alert alert-success mt-5"><h4 class="alert-heading font-weight-bold text-center pt-2">No registered store yet</h4></div>
+		<!--{/if}-->
+	</div>
+</section>
+<!--{/block}-->

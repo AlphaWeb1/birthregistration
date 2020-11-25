@@ -1,0 +1,93 @@
+<div class="dash-side-menu">
+	<div class="side-menu-logo">
+		<img src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/site/media/i/logo1.png" class="header-logo bg-white" alt="<!--{$Site.companyName}-->">
+	</div>
+	<aside class="side-menu-wrapper pb-5 mb-5 overflow-y-auto">
+		<div class="sm-container">
+			<div class="side-menu-user">
+				<img src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/<!--{if !empty($userinfo->userimg)}--><!--{$userinfo->userimg}--><!--{else}-->site/media/i/icons/user-icon.png<!--{/if}-->">
+				<data><a data-toggle="collapse" class="fullname" href="#min-det" id="smartUser"><strong><!--{$userinfo->firstname}--> <!--{$userinfo->lastname}--> <i class="fa fa-angle-up"></i></strong></a></data>
+				<section id="min-det"  class="text-center collapse show">
+					<div>Dowlines</div>
+					<data class="text-white border border-top-0 border-left-0 border-right-0"><!--{$userinfo->username|capitalize}--></data>
+					<div>Level</div>
+					<data class="text-white border border-top-0 border-left-0 border-right-0"><!--{if !empty($def)}--><!--{$def->level}--><!--{else}-->0<!--{/if}--></data>
+					<div>Dowlines</div>
+					<data class="text-white border border-top-0 border-left-0 border-right-0"><!--{if !empty($def)}--><!--{$def->downlines}--><!--{else}-->0<!--{/if}--></data>
+				</section>
+			</div>
+			<div class="dash-menu-wrapper pb-5">
+				<ul class="side-menu-list">
+					<li class="side-menu-link <!--{if in_array($sitePage, array('home'))}-->isactive<!--{/if}-->">
+						<a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/dashboard/home"><i class="fa fa-home"></i> Dashboard</a>
+					</li>
+					<li class="side-menu-link <!--{if in_array($sitePage, array('activation', 'notifications', 'profile', 'bank', 'logout'))}-->isactive<!--{/if}-->">
+						<a href="#"><i class="fa fa-vcard"></i> My Profile <span><i class="fa fa-angle-down"></i></span></a>
+						<ul class="side-menu-sub-list">
+							<li class="side-menu-sub-link <!--{if $sitePage == 'profile'}-->isactive<!--{/if}-->">
+								<a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/dashboard/profile"><i class="fa fa-user"></i> My Profile</a>
+							</li>
+							<li class="side-menu-sub-link <!--{if $sitePage == 'activation'}-->isactive<!--{/if}-->">
+								<a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/dashboard/activation"><i class="fa fa-credit-card"></i> My Activation</a>
+							</li>
+							<li class="side-menu-sub-link <!--{if $sitePage == 'bank'}-->isactive<!--{/if}--> d-none">
+								<a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/dashboard/activation"><i class="fa fa-bank"></i> My Bank Detail</a>
+							</li>
+							<li class="side-menu-sub-link <!--{if $sitePage == 'notifications'}-->isactive<!--{/if}--> d-none">
+								<a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/dashboard/notifications"><i class="fa fa-bell"></i> Notifications</a>
+							</li>
+							<li class="side-menu-sub-link <!--{if $sitePage == 'logout'}-->isactive<!--{/if}-->">
+								<a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/dashboard/logout"><i class="fa fa-sign-out"></i> Logout</a>
+							</li>
+						</ul>
+					</li>
+					<li class="side-menu-link d-none <!--{if in_array($sitePage, array('packages', 'package'))}-->isactive<!--{/if}-->">
+						<a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/dashboard/packages"><i class="fa fa-shield"></i> Package</a>
+					</li>
+					<li class="side-menu-link <!--{if in_array($sitePage, array( 'summary', 'network','referral'))}-->isactive<!--{/if}-->">
+						<a href="#" class="side-menu-main-link"><i class="fa fa-sitemap"></i> Network & Referrals <span><i class="fa fa-angle-down"></i></span></a>
+						<ul class="side-menu-sub-list">
+							<li class="side-menu-sub-link <!--{if $sitePage == 'summary'}-->isactive<!--{/if}-->">
+								<a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/dashboard/summary"><i class="fa fa-list"></i> Summary</a>
+							</li>
+							<li class="side-menu-sub-link <!--{if $sitePage == 'network'}-->isactive<!--{/if}-->">
+								<a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/dashboard/network"><i class="fa fa-sitemap"></i> Network</a>
+							</li>
+							<li class="side-menu-sub-link <!--{if $sitePage == 'referral'}-->isactive<!--{/if}-->">
+								<a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/dashboard/referral"><i class="fa fa-users"></i> Referrals</a>
+							</li>
+						</ul>
+					</li>
+					<li class="side-menu-link <!--{if in_array($sitePage, array('receipt', 'transactions', 'earning', 'withdrawal'))}-->isactive<!--{/if}-->">
+						<a href="#" class="side-menu-main-link"><i class="fa fa-money"></i> Transactions <span><i class="fa fa-angle-down"></i></span></a>
+						<ul class="side-menu-sub-list">
+							<li class="side-menu-sub-link <!--{if $sitePage == 'summary'}-->isactive<!--{/if}-->">
+								<a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/dashboard/transactions"><i class="fa fa-list"></i> Transactions</a>
+							</li>
+							<li class="side-menu-sub-link <!--{if $sitePage == 'earning'}-->isactive<!--{/if}-->">
+								<a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/dashboard/earning"><i class="fa fa-sitemap"></i> Earnings</a>
+							</li>
+							<li class="side-menu-sub-link d-none <!--{if $sitePage == 'withdrawal'}-->isactive<!--{/if}-->">
+								<a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/dashboard/withdrawal"><i class="fa fa-download"></i> Withdrawal</a>
+							</li>
+						</ul>
+					</li>
+					<li class="side-menu-link <!--{if in_array($sitePage, array('compose','messages','inbox'))}-->isactive<!--{/if}-->">
+						<a href="#" class="side-menu-main-link"><i class="fa fa-envelope"></i> Messaging <span><i class="fa fa-angle-down"></i></span></a>
+						<ul class="side-menu-sub-list">
+							<li class="side-menu-sub-link <!--{if $sitePage == 'compose'}-->isactive<!--{/if}-->">
+								<a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/dashboard/compose"><i class="fa fa-pencil"></i> Compose</a>
+							</li>
+							<li class="side-menu-sub-link <!--{if $sitePage == 'messages'}-->isactive<!--{/if}-->">
+								<a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/dashboard/messages"><i class="fa fa-send"></i> Sent Messages</a>
+							</li>
+							<li class="side-menu-sub-link <!--{if $sitePage == 'inbox'}-->isactive<!--{/if}-->">
+								<a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/dashboard/inbox"><i class="fa fa-inbox"></i> Inbox</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</aside>
+</div>

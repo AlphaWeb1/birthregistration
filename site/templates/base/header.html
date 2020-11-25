@@ -1,0 +1,33 @@
+<!--==========================  Header  ============================-->
+<header class="border border-top-0 border-left-0 border-right-0 border-success" id="header">
+    <div class="container-fluid">
+        <div id="logo" class="pull-left mt-4 bg-white h-100">
+            <a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->">
+                <img class="header-image-logo h-100" src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/site/media/i/logo1.png" alt="" title="<!--{$Site.companyName}-->" />
+                <h6 class="font-weight-bold text-center"><!--{$Site.companyAbbr}--></h6>
+            </a>
+        </div>
+        <div class="icon-bar is-pulled-right"><i class="fa fa-bars fa-2x"></i></div>
+
+        <nav id="nav-menu-container" class="bg-white">
+            <ul class="nav-menu">
+                <li class="mb-1 <!--{if $sitePage=='default' or $sitePage=='home'}-->menu-active<!--{/if}-->"><a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/home"><i class="fa fa-home"></i> Home</a></li>
+                <li class="<!--{if in_array($sitePage, array('faq'))}-->active<!--{/if}-->"><a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/faq"><i class="fa fa-question"></i> F.A.Q.</a></li>
+                <li class="mb-1 <!--{if $sitePage=='about'}-->menu-active<!--{/if}-->"><a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/about"><i class="fa fa-info"></i> About Us</a></li>
+                <li class="mb-1 <!--{if $sitePage=='contact'}-->menu-active<!--{/if}-->"><a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/contact"><i class="fa fa-headphones"></i> Contact</a></li>
+                <li class="mb-1 <!--{if $sitePage=='register'}-->menu-active<!--{/if}-->"><a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/register"><i class="fa fa-register"></i> Register Now</a></li>
+                <li class="mb-1 <!--{if $sitePage=='find-registration'}-->menu-active<!--{/if}-->"><a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/find-registation"><i class="fa fa-print"></i> Print Certificate</a></li>
+                <!--{if !empty($Site.session.User.client.Token)}-->
+                    <li class="d-none"><a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/dashboard/home"></i><i class="fa fa-dashboard"></i> Visit Dashboard</a></li>
+                <!--{elseif !empty($Site.session.User.admin.Token)}-->
+                    <li class="d-none"><a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/home"></i><i class="fa fa-dashboard"></i> Visit Dashboard</a></li>
+                <!--{else}-->
+                    <!--{block name="login-link"}-->
+                        <li class="mb-1 d-none <!--{if $sitePage=='signup'}-->menu-active<!--{/if}-->"><a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/signup"><i class="fa fa-sign-in"></i> Register</a></li>
+                    <!--{/block}-->
+                <!--{/if}-->
+            </ul>
+        </nav><!-- #nav-menu-container -->
+    </div>
+</header><!-- #header -->
+<button type="button" class="btn btn-primary d-none" data-toggle="modal" data-target="#myModal3" id="contact-button"><b><i class="fa fa-headphones"></i> Contact</b></button>

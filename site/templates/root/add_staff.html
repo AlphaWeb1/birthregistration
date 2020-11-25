@@ -1,0 +1,128 @@
+<!--{extends file="root.html"}-->
+<!--{block name="breadcrumb"}-->
+<section class="breadcrumb"><strong class="uppercase">Dasboard |</strong> USERS&nbsp;<i class="fa fa-users"></i>&nbsp;| New Staff&nbsp;<i class="fa fa-user-plus"></i></section>
+<!--{/block}-->
+<!--{block name="content"}-->
+<form class="form" method="post" action="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/add_staff" enctype="multipart/form-data" style="width: 100%;">
+	<section class="row justify-content-center">
+		<h5 class="col-md-12 font-weight-bold text-center">New Staff Detail</h5>
+		<div class="col-md-7">
+			<div class="card card-heading pt-3 pb-3">
+				<div class="text-center">
+					<div class="img-scope">
+						<label for="img-upload">
+							<img class="img img-thumbnail" id="dataImg" src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/site/media/i/admin-user.png">
+							<data class="text-center jsonly">Update Photo</data>
+						</label>
+						<input type="file" accept="image/*" id="img-upload" name="img_upload"/>
+						<noscript><button class="text-center" id="ppUpload" name="ppUpload" type="button">Upload Photo</button></noscript>
+					</div>
+				</div>
+			</div>
+			<div class="card card-body mt-3 mb-3">
+					<!--{if !empty($fail)}-->
+						<!--{$fail}-->
+					<!--{/if}-->
+				<fieldset class="w-100">
+					<legend>Personal Information</legend>
+					<!--{if !empty($referrers)}-->
+                    <div class="form-group">
+                        <label for="refid">Referrer</label>
+						<select name="refid" class="form-control form-control-sm badge-pill" id="refid" required>
+							<!--{foreach $referrers as $referrer}-->
+								<option value="<!--{$referrer->refid}-->" ><!--{$referrer->names|capitalize}--> (<!--{$referrer->email}-->)</option>
+							<!--{/foreach}-->
+						</select>
+                    </div>
+					<!--{/if}-->
+					<div class="form-group">
+						<label for="firstName" class="label">First Name</label>
+						<input type="text" id="firstName" name="firstname" class="form-control badge-pill" required />
+					</div>
+					<div class="form-group">
+						<label for="lastName">Last Name</label>
+						<input type="text" id="lastName" name="lastname" class="form-control badge-pill" required/>
+					</div>
+					<div class="form-group">
+						<label for="lastName">Other Names</label>
+						<input type="text" id="otherName" name="othername" class="form-control badge-pill"/>
+					</div>
+					<div class="form-group">
+						<label for="gender">Gender</label>
+						<select name="gender" class="form-control badge-pill" id="gender" required>
+							<option value="female">Female</option>
+							<option value="male">Male</option>
+						</select>
+					</div>
+					<div class="form-group"><hr/></div>
+				</fieldset>
+				<fieldset class="w-100 p-3 alert-warning">
+					<legend>Contact Information</legend>
+					<div class="form-group">
+						<label for="phone">Phone Number</label>
+						<input type="tel" id="phone" name="phone" class="form-control badge-pill"/>
+					</div>
+						<div class="form-group">
+						<label for="address1">Address</label>
+						<textarea id="address1" name="address" rows="3" class="form-control badge-pill"></textarea>
+					</div>
+					<div class="form-group">
+						<label for="country">Country</label>
+						<select id="country" name="country" required class="form-control badge-pill">
+							<!--{if !empty($countries)}-->
+							<!--{foreach $countries as $country}-->
+								<option value="<!--{$country->name}-->" <!--{if 'Nigeria'==$country->name}-->selected<!--{/if}-->><!--{$country->name|capitalize}--></option>
+							<!--{/foreach}-->
+							<!--{/if}-->
+						</select>
+					</div>
+					<div class="form-group"><hr/></div>
+				</fieldset>
+				<fieldset class="w-100 p-3 alert-success1">
+					<legend>Login Detail</legend>
+					<div class="form-group">
+						<label for="username">Username</label>
+						<input type="text" id="username" name="username" class="form-control badge-pill" value="" required/>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-8">
+							<label for="password">Staff's Login Password</label>
+							<input type="password" id="password" name="password" value="<!--{$genPassword}-->" class="form-control text-secondary badge-pill" required/>
+							<span class="small cpassword"></span>
+						</div>
+						<div class="form-group col-4">
+							<label>&nbsp;</label>
+							<button class="btn btn-warning btn-sm text-white badge-pill btn-block viewPassword" type="button"><i class="fa fa-eye"></i> View Password</button>
+						</div>
+						<div class="form-group col-12">
+							<button class="btn btn-success1 btn-sm text-white badge-pill genPassword" type="button"><i class="fa fa-code"></i> Generate Password</button> Password: <span class="genedPass"><!--{$genPassword}--></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="email">Email</label>
+						<input type="email" id="email" name="email" class="form-control text-secondary badge-pill" required/>
+					</div>
+					<div class="form-group">
+						<label for="userrole">Admin Role</label>
+						<select id="userrole" name="userrole" required class="form-control badge-pill">
+							<option value="level1">Super User</option>
+							<option value="level2">Operator</option>
+							<option value="level3">Executives</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="active">Ability to Operate on Dashboard</label>
+						<select name="active" class="form-control badge-pill" id="active" required>
+							<option value="1">Active</option>
+							<option value="0">Block</option>
+						</select>
+					</div>
+					<div class="form-group text-center">
+						<button class="btn site-bg-1 text-white rounded-0" type="submit" name="add_staff"><i class="fa fa-save"></i> Add Staff</button>
+					</div>
+				</fieldset>
+			</div>
+		</div>
+	</section>
+</form>
+<!--{/block}-->

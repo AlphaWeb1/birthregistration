@@ -1,0 +1,74 @@
+<!--{extends file="root.html"}-->
+<!--{block name="breadcrumb"}-->
+<section class="breadcrumb"><strong class="uppercase">Dasboard |</strong> &nbsp;PROMOTIONS&nbsp;<i class="fa fa-ticket"></i> | Add New Promo&nbsp;<i class="fa fa-plus"></i>
+</section>
+<!--{/block}-->
+<!--{block name="content"}-->
+<section class="container-fluid">
+	<div class="row justify-content-center">
+		<!--{if in_array( $Site.session.User.userinfo->userrole, array('level0','level1')) and  $Site.session.User.userinfo->active==true}-->
+			<div class="col-md-9">
+				<form method="post" action="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/add_promo" enctype="multipart/form-data">
+					<div class="row justify-content-center">	
+						<div class="col-md-8 card card-body">
+							<fieldset class="border border-success rounded-0 px-3">
+								<legend class="text-center">New Promotion</legend>
+								<div class="form-group">
+									<div class="img-scope card-heading pt-3 pb-3">
+										<label for="img-upload">
+											<img class="img img-thumbnail w-100" id="dataImg" src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/site/media/i/default-icon/logo-blog.png">
+											<data class="text-center jsonly">Upload Banner</data>
+										</label>
+										<input type="file" accept="image/*" id="img-upload" class="input-rounded w-100" name="img_upload"/>
+										<noscript><button class="text-center" id="ppUpload" name="ppUpload" type="button">Upload Banner</button></noscript>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="stores" class="form-control-label">Attached Stores</label>
+									<select id="stores" name="store[]" class="form-control form-control-sm rounded" multiple="" />
+										<option value="">Select Store</option>
+										<!--{if !empty($stores)}-->
+											<!--{foreach $stores as $store}-->
+												<option value="<!--{$store->token}-->" i='<!--{json_encode($store)}-->'><!--{$store->store_title}--> (<!--{$store->store_number}-->)</option>
+											<!--{/foreach}-->
+										<!--{/if}-->
+									</select>
+								</div>
+								<div class="form-row">
+									<div class="form-group col-sm-6">
+										<label for="company" class="form-control-label">Company | Organization</label>
+										<input type="text" id="company" name="company" class="form-control form-control-sm  form-control-sm badge-pill"/>
+									</div>
+									<div class="form-group col-sm-6">
+										<label for="category" class="form-control-label">Category</label>
+										<input type="text" id="category" name="category" class="form-control form-control-sm badge-pill" list="categ" required/>
+										<datalist id="categ">
+											<!--{if !empty($categories)}-->
+												<!--{foreach $categories as $cat}-->
+													<option value="<!--{$cat}-->"><!--{$cat}--></option>
+												<!--{/foreach}-->
+											<!--{/if}-->
+										</datalist>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="description" class="form-control-label">Promo Content | Description</label>
+									<textarea class="form-control form-control-sm" id="description" rows="4" name="description" placeholder="Enter Promo Description Here..."></textarea>
+								</div>
+								<!--{if !empty($fail)}-->
+									<div class="form-group">
+										<!--{$fail}-->
+									</div>
+								<!--{/if}-->
+								<div class="form-group text-center">
+									<button class="btn btn-success rounded-0 btn-sm" type="submit" name="add_promo"><i class="fa fa-save"></i> Add Promo</button>
+								</div>
+							</fieldset>
+						</div>
+					</div>
+				</form>
+			</div>
+		<!--{/if}-->
+	</div>
+</section>
+<!--{/block}-->

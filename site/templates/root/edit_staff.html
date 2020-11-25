@@ -1,0 +1,198 @@
+<!--{extends file="root.html"}-->
+<!--{block name="breadcrumb"}-->
+<section class="breadcrumb"><strong class="uppercase">Dashboard |</strong> USERS&nbsp;<i class="fa fa-users"></i>&nbsp;| Staff Detail&nbsp;<i class="fa fa-users"></i> </section>
+<!--{/block}-->
+<!--{block name="content"}-->
+<section class="row d-none">
+	<div class="col-sm-12"><a class="btn btn-primary1 btn-sm" href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/add_staff"><i class="fa fa-plus"></i> Add New Staff</a></div>
+</section>
+<section class="jumbotron mt-2 row justify-content-center">
+	<div class="card col-md-10 card-body pt-3 pb-3 team-prf">
+		<div class="row justify-content-center mb-3 mt-3">
+			<h3 class="col-md-12">Staff Detail</h3>
+			<div class="col-md-6 mb-2">
+				<img class="img img-thumbnail profile-img-detail" src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/<!--{if !empty($staff->userimg)}--><!--{$staff->userimg}--><!--{else}-->site/media/i/icons/admin-user.png<!--{/if}-->">
+			</div>
+			<div class="col-md-6 mb-2">
+				<fieldset>
+					<legend><!--{$staff->firstname}--> <!--{$staff->lastname}--> <!--{$staff->middlename}--></legend>
+					<div class="form-group">
+						<h5><!--{$staff->email}--></h5>
+						<h5><!--{$urole[$staff->userrole]}--></h5>
+					</div>
+					<div class="form-group">
+						<h6><span class="float-left font-weight-bold">Gender: </span>&nbsp;&nbsp;&nbsp;&nbsp;<!--{$staff->gender|capitalize}--></h6>
+					</div>
+					<!--{if !empty($staff->address1)}-->
+					<div class="form-group">
+						<h6><span class="float-left font-weight-bold">Address: </span>&nbsp;&nbsp;&nbsp;&nbsp;<!--{$staff->address1}--> <!--{$staff->address2}--></h6>
+					</div>
+					<!--{/if}-->
+					<!--{if !empty($staff->phone)}-->
+					<div class="form-group">
+						<h6><span class="float-left font-weight-bold">Contact No: </span>&nbsp;&nbsp;&nbsp;&nbsp;<!--{$staff->phone}--></h6>
+					</div>
+					<!--{/if}-->
+					<!--{if !empty($staff->refid) and in_array($staff->userrole, array("level1", "level3"))}-->
+					<div class="form-group">
+						<h6><span class="float-left font-weight-bold">Referral URL: </span>&nbsp;&nbsp;&nbsp;&nbsp;<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/signup?id=<!--{$staff->refid}--></h6>
+					</div>
+					<!--{/if}-->
+				</fieldset>
+			</div>
+			<div class="col-md-9" id="accordion">
+				<div class="form-group mb-2 border border-success1 p-2 text-center">
+			      	<a class="btn btn-warning rounded-0" href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/staffs"><i class="fa fa-undo"></i> Back</a>
+					<!--{if in_array( $Site.session.User.userinfo->userrole, array('level0','level1')) and  $Site.session.User.userinfo->active==true}-->
+						<!--{if (in_array( $userinfo->userrole, array('level0')) and $staff->userrole=='level1') or !in_array( $staff->userrole, array('level0','level1')) }-->
+						<button class="btn btn-success1 rounded-0" type="button" data-toggle="collapse" data-target="#editstaffDetail" aria-expanded="true" aria-controls="editstaffDetail" id="editstaff"><i class="fa fa-pencil"></i> Edit Staff Detail</button>
+						<button class="btn btn-danger rounded-0" type="button" data-toggle="collapse" data-target="#deletestaffDetail" aria-expanded="true" aria-controls="deletestaffDetail" id="deletestaff"><i class="fa fa-trash"></i> Delete staff</button>
+						<!--{/if}-->
+					<!--{/if}-->
+				</div>
+				<div class="form-group">
+					<!--{if !empty($fail)}-->
+						<!--{$fail}-->
+					<!--{/if}-->
+				</div>
+				<!--{if in_array( $Site.session.User.userinfo->userrole, array('level0','level1')) and  $Site.session.User.userinfo->active==true}-->
+				<form method="post" action="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/edit_staff?id=<!--{$staff->email}-->" class="w-100">
+					<div id="editstaffDetail" class="collapse" aria-labelledby="editstaff" data-parent="#accordion">
+						<div class="card border-success1 py-3">
+							<fieldset>
+								<legend class="text-center"><i class="fa fa-info"></i> Staff Information</legend>
+								<div class="form-group">
+									<div class="card-heading text-center">
+										<div class="img-scope">
+											<label for="img-upload">
+												<img class="img img-thumbnail" id="dataImg" src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/<!--{if !empty($staff->userimg)}--><!--{$staff->userimg}--><!--{else}-->site/media/i/icons/admin-user.png<!--{/if}-->">
+												<data class="text-center jsonly">Update Photo</data>
+											</label>
+											<input type="file" accept="image/*" id="img-upload" name="img_upload"/>
+											<noscript><button class="text-center" id="ppUpload" name="ppUpload" type="button">Upload Photo</button></noscript>
+										</div>
+									</div>
+								</div>
+								<div class="card-body">
+									<legend>Personal Information</legend>
+									<!--{if !empty($referrers)}-->
+				                    <div class="form-group <!--{if $staff->userrole=='level1'}-->d-none<!--{/if}-->">
+				                        <label for="refid">Referrer</label>
+										<select name="refid" class="form-control form-control-sm badge-pill" id="refid" required readonly>
+											<!--{foreach $referrers as $referrer}-->
+												<option value="<!--{$referrer->refid}-->" <!--{if $staff->referrer==$referrer->refid}-->selected<!--{/if}-->><!--{$referrer->names|capitalize}--> (<!--{$referrer->email}-->)</option>
+											<!--{/foreach}-->
+										</select>
+				                    </div>
+									<!--{/if}-->
+									<div class="form-group">
+										<label for="firstName" class="label">First Name</label>
+										<input type="text" id="firstName" name="firstname" class="form-control badge-pill" value="<!--{$staff->firstname}-->" required />
+									</div>
+									<div class="form-group">
+										<label for="lastName">Last Name</label>
+										<input type="text" id="lastName" name="lastname" class="form-control badge-pill" value="<!--{$staff->lastname}-->" required/>
+									</div>
+									<div class="form-group">
+										<label for="lastName">Other Names</label>
+										<input type="text" id="otherName" name="othername" class="form-control badge-pill"  value="<!--{$staff->middlename}-->"/>
+									</div>
+									<div class="form-group">
+										<label for="gender">Gender</label>
+										<select name="gender" class="form-control badge-pill" id="gender" required>
+											<option value="female" <!--{if $staff->gender=='female'}-->selected<!--{/if}-->>Female</option>
+											<option value="male" <!--{if $staff->gender=='male'}-->selected<!--{/if}-->>Male</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-group"><hr/></div>
+							</fieldset>
+							<fieldset class="w-100 p-3 mt-0 alert-warning">
+								<legend>Contact Information</legend>
+								<div class="form-group">
+									<label for="phone">Phone Number</label>
+									<input type="tel" id="phone" name="phone" class="form-control badge-pill" value="<!--{$staff->phone}-->"/>
+								</div>
+								<div class="form-group">
+									<label for="address1">Address</label>
+									<textarea id="address1" name="address" rows="3" class="form-control badge-pill" readonly><!--{$staff->address1}--></textarea>
+								</div>
+								<div class="form-group">
+									<label for="country">Country</label>
+									<select id="country" name="country" required class="form-control badge-pill">
+										<!--{if !empty($countries)}-->
+										<!--{foreach $countries as $country}-->
+											<option value="<!--{$country->name}-->" <!--{if $staff->country==$country->name}-->selected<!--{/if}-->><!--{$country->name|capitalize}--></option>
+										<!--{/foreach}-->
+										<!--{/if}-->
+									</select>
+								</div>
+								<div class="form-group"><hr/></div>
+							</fieldset>
+							<fieldset class="w-100 p-3 mt-0 alert-success1">
+								<legend>Login Detail</legend>
+								<div class="form-group">
+									<label for="username">Username</label>
+									<input type="text" id="username" name="username" value="<!--{$staff->username}-->" class="form-control badge-pill" required/>
+								</div>
+								<div class="form-group">
+									<label for="email">Email</label>
+									<input type="email" id="email" name="email" class="form-control text-secondary badge-pill" value="<!--{$staff->email}-->" required readonly/>
+								</div>
+								<div class="form-row">
+									<div class="form-group col-8">
+										<label for="password">Staff's Login Password</label>
+										<input type="password" id="password" name="password" value="<!--{$staff->password}-->" class="form-control text-secondary badge-pill" required/>
+										<span class="small cpassword"></span>
+									</div>
+									<div class="form-group col-4">
+										<label>&nbsp;</label>
+										<button class="btn btn-warning btn-sm text-white badge-pill btn-block viewPassword" type="button"><i class="fa fa-eye"></i> View Password</button>
+									</div>
+									<div class="form-group col-12">
+										<button class="btn btn-success1 btn-sm text-white badge-pill genPassword" type="button"><i class="fa fa-code"></i> Generate Password</button> Password: <span class="genedPass"><!--{$staff->password}--></span>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="userrole">Admin Role</label>
+									<select id="userrole" name="userrole" required class="form-control badge-pill" readonly>
+										<option value="level1" <!--{if $staff->userrole=='level1'}-->selected<!--{/if}-->>Super User</option>
+										<option value="level2" <!--{if $staff->userrole=='level2'}-->selected<!--{/if}-->>Operator</option>
+										<option value="level3" <!--{if $staff->userrole=='level3'}-->selected<!--{/if}-->>Executive</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label for="active">Ability to Operate on Dashboard</label>
+									<select name="active" class="form-control badge-pill" id="active" required>
+										<option value="1" <!--{if $staff->active=='1'}-->selected<!--{/if}-->>Active</option>
+										<option value="0" <!--{if $staff->active=='0'}-->selected<!--{/if}-->>Block</option>
+									</select>
+								</div>
+								<div class="form-group text-center">
+									<button class="btn site-bg-1 text-white rounded-0" type="submit" name="edit_staff"><i class="fa fa-save"></i> Update Detail</button>
+								</div>
+							</fieldset>
+						</div>
+					</div>
+				</form>
+				<form method="post" action="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/edit_staff?id=<!--{$staff->email}-->" class="w-100">
+					<div id="deletestaffDetail" class="collapse" aria-labelledby="deletestaff" data-parent="#accordion">
+						<fieldset>
+							<legend>Staff Delete Confirmation</legend>
+							<div class="alert alert-danger alert-dismissible" role="alert">
+								<p>Are you sure to delete this staff?</p>
+								<p>Note that every stored details relating to this staff will be entirely lost and unrecoverable afther this event is triggered</p>
+								<p class="text-center">
+									<button class="btn btn-danger rounded-0" type="submit" name="delete_staff">Proceed</button>&nbsp;
+									<button class="btn btn-secondary rounded-0" type="button" data-toggle="collapse" data-target="#deletestaffDetail" aria-expanded="true" aria-controls="deletestaffDetail" id="deletestaff">Cancel</button>
+								</p>
+							</div>
+						</fieldset>
+					</div>
+				</form>
+				<!--{/if}-->
+			</div>
+		</div>
+	</div>
+</section>
+<!--{/block}-->

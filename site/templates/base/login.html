@@ -1,0 +1,39 @@
+<!--{extends 'default.html'}-->
+<!--{block name="main-slider"}-->
+<section class="bg-white py-3 text-center">&nbsp;
+</section>
+<!--{/block}-->
+<!--{block name="main-wrapper"}-->
+<main id="main" class="main">
+<!--{/block}-->
+<!--{block name="main_content"}-->
+    <form class="form-signin bg-white my-5 px-3 border border-success rounded" method="post">
+        <div class="text-center mb-4">
+            <img class="mb-4 d-none" src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/site/media/i/new-imgs/backgrounds/background0.jpg" alt=""  height="150">
+            <h4 class="h3 mb-3 font-weight-normal"><!--{block name="login-title"}--><h4><i class="fa fa-lock"></i>  Investors Login</h4><!--{/block}--></h4>
+        </div>
+
+        <div class="form-label-group m-1">
+            <label for="inputEmail"><b>Email address <!--{if $sitePage=='admin'}-->/ Username <!--{else}--> User ID <!--{/if}--></b></label>
+            <input type="<!--{if $sitePage=='admin'}-->text<!--{else}-->email<!--{/if}-->" id="inputEmail" class="form-control badge-pill" name="dataUsername" placeholder="Email address or <!--{if $sitePage=='admin'}-->Username<!--{else}-->User ID<!--{/if}-->" required="" autofocus="">
+        </div>
+
+        <div class="form-label-group m-1">
+            <label for="inputPassword"><b>Password</b></label>
+            <input type="password" id="inputPassword" class="form-control badge-pill" name="dataPass" placeholder="Password" required="">
+        </div>
+        <!--{if !empty($fail)}-->
+            <div class="form-label-group m-1 mt-3">
+                <div class="alert alert-danger alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><h3>Error:</h3> 
+                    <!--{$fail}-->
+                </div>
+            </div>
+        <!--{/if}-->
+        <div class="form-group text-center">
+            <a class="text-success" href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/forgot-password">Forgot Password?</a>
+        </div>
+        <button class="btn btn-lg btn-success mt-3 btn-block badge-pill" type="submit">Sign in</button>
+    </form>
+<!--{/block}--> 
+<!--{block name="general-message"}-->
+<!--{/block}-->
