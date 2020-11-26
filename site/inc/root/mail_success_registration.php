@@ -88,10 +88,10 @@ $divElements='<div class="row justify-content-center">
 
     $fail='<div class="alert text-primary alert-dismissible" role="alert">
         <i class="fa fa-checked"></i> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h3>Success!</h3><p>Your Registration of birth detail is successfully sent for verification</p>
-        <p>A mail had been sent to you regarding this registration</p>
-        <p>Your Registration Search ID is <strong>'.$genRefid.'</strong> encure to copy and keep it safe. You can also find it in the informant\'s email</p>
-        <p>Kindly visit your email form time to time for you will receive email notification with link to print the birth certificate if approved.</p>
+        <h3>Success!</h3><p>Registration of birth detail is successfully added</p>
+        <p>A mail had been sent to informant\'s email regarding this registration</p>
+        <p>Your Registration Search ID is <strong>'.$genRefid.'</strong>.</p>
+        <p>Kindly notify informat to check email form time to time for notification with link to print the birth certificate if approved.</p>
     </div>';
 
 } catch (Exception $e) {

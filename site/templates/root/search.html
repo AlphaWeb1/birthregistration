@@ -1,0 +1,30 @@
+<!--{extends file="root.html"}-->
+<!--{block name="breadcrumb"}-->
+<section class="breadcrumb"><strong class="uppercase">Dasboard |</strong> FIND CERTIFICATE&nbsp;<i class="fa fa-search"></i>&nbsp;</section>
+<!--{/block}-->
+<!--{block name="content"}-->
+<section class="row justify-content-center">
+	<div class="col-sm-10 form-group mb-3">
+		<!--{if !empty($fail)}-->
+		  <!--{$fail}-->
+		<!--{/if}-->
+    </div>
+    <div class="card col-sm-10 float-right p-3" id="logn-frame">
+        <form method="get" action="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/search">
+            <fieldset class="card p-2">
+                <legend class="text-center"><h3 class="font-weight-bold">Search for Detail</h3></legend>
+                <div class="form-group text-justify mb-2">
+                    <label for="regId">Registration Id</label>
+                    <input type="text" id="regId" name="regId" placeholder="Enter Registration Id" class="form-control badge-pill" required="">
+                </div>
+                <div class="form-group text-center">
+                    <button class="btn btn-success btn-block badge-pill" type="submit">Find Certificate</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+	<div class="col-sm-10 form-group my-3">
+        <h6 class="text-center">Under Development</h6>
+    </div>
+</section>
+<!--{/block}-->

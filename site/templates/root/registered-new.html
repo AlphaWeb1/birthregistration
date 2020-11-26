@@ -1,6 +1,6 @@
 <!--{extends file="root.html"}-->
 <!--{block name="breadcrumb"}-->
-<section class="breadcrumb"><strong class="uppercase">Dasboard |</strong> BIRTH REGISTRATIONS&nbsp;<i class="fa fa-certificate"></i>&nbsp; | All Registered</section>
+<section class="breadcrumb"><strong class="uppercase">Dasboard |</strong> BIRTH REGISTRATIONS&nbsp;<i class="fa fa-certificate"></i>&nbsp; | Pending</section>
 <!--{/block}-->
 <!--{block name="content"}-->
 <section class="row justify-content-center">
@@ -121,7 +121,7 @@
                   <!--{/if}-->
                 </td>
                 <td>
-                    <a class="btn btn-sm btn-info rounded-0"  href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/register-detail?id=<!--{$all_birth->email}-->"><i class="fa fa-ellipsis-v"></i> Detail</a>
+                    <a class="btn btn-sm btn-info rounded-0"  href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/birth-detail?id=<!--{$all_birth->email}-->"><i class="fa fa-ellipsis-v"></i> Detail</a>
                 </td>
               </tr>
               <!--{$numCount=$numCount+1}-->

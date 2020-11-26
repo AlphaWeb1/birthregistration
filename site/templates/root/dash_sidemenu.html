@@ -10,7 +10,7 @@
 				<section id="min-det"  class="text-center collapse show">
 					<div>TOTAL Registered <span class="text-warning"><!--{$defaults->not.reg}--></span></div>
 					<div>TOTAL Approved <span class="text-warning"><!--{$defaults->not.approved}--></span></div>
-					<div>ACTIVE Reject<span class="text-warning"><!--{$defaults->not.rejected}--></span></div>
+					<div>TOTAL Reject <span class="text-warning"><!--{$defaults->not.rejected}--></span></div>
 					<div class="d-none">ACCOUNT STATUS</div>
 					<data class="d-none"><!--{if $Site.session.User.userinfo->active==true}--><span class="badge site-bg-1">Active</span><!--{else}--><span class="badge badge-danger">Blocked</span><!--{/if}--></data>
 				</section>
@@ -34,7 +34,7 @@
 						</ul>
 					</li>
 					<!--{if in_array( $Site.session.User.userinfo->userrole, array('level0','level1')) and  $Site.session.User.userinfo->active==true}-->
-					<li class="side-menu-link <!--{if in_array($sitePage, array('settings'))}-->isactive<!--{/if}-->">
+					<li class="side-menu-link d-none <!--{if in_array($sitePage, array('settings'))}-->isactive<!--{/if}-->">
 						<a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/settings"><i class="fa fa-gear"></i> Settings</a>
 					</li>
 					<!--{/if}-->
@@ -42,24 +42,24 @@
 					<li class="side-menu-link <!--{if in_array($sitePage, array('search','certificate'))}-->isactive<!--{/if}-->">
 						<a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/search"><i class="fa fa-search"></i> Find Certificate</a>
 					</li>
-					<li class="side-menu-link <!--{if in_array($sitePage, array('registered-approved', 'registered-new', 'registered-unverified', 'registered-all', 
-						'registered-manual', 'birth-detail'))}-->isactive<!--{/if}-->">Registrations
+					<li class="side-menu-link <!--{if in_array($sitePage, array('registered-approved', 'registered-new', 'registered-declined', 'registered-all', 
+						'registered-manual', 'birth-detail'))}-->isactive<!--{/if}-->">
 						<a href="#"><i class="fa fa-certificate"></i> Birth Certificates <span><i class="fa fa-angle-down"></i></span></a>
 						<ul class="side-menu-sub-list">
 							<li class="side-menu-sub-link <!--{if in_array($sitePage, array( 'registered-all'))}-->isactive<!--{/if}-->">
 								<a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/registered-all"><i class="fa fa-list"></i> All</a>
 							</li>
 							<li class="side-menu-sub-link <!--{if in_array($sitePage, array('registered-new'))}-->isactive<!--{/if}-->">
-								<a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/registered-new"><i class="fa fa-list"></i> Newly Registered</a>
+								<a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/registered-new"><i class="fa fa-list"></i> Pending</a>
 							</li>
 							<li class="side-menu-sub-link <!--{if in_array($sitePage, array('registered-approved'))}-->isactive<!--{/if}-->">
 								<a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/registered-approved"><i class="fa fa-list"></i> Approved</a>
 							</li>
-							<li class="side-menu-sub-link <!--{if in_array($sitePage, array('registered-unverified'))}-->isactive<!--{/if}-->">
-								<a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/registered-unverified"><i class="fa fa-list"></i> Unverified</a>
+							<li class="side-menu-sub-link <!--{if in_array($sitePage, array('registered-declined'))}-->isactive<!--{/if}-->">
+								<a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/registered-declined"><i class="fa fa-list"></i> Declined</a>
 							</li>
 							<li class="side-menu-sub-link <!--{if in_array($sitePage, array('registered-manual'))}-->isactive<!--{/if}-->">
-								<a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/registered-manual"><i class="fa fa-list"></i> Add New</a>
+								<a href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/registered-manual"><i class="fa fa-plus"></i> Add New</a>
 							</li>
 						</ul>
 					</li>

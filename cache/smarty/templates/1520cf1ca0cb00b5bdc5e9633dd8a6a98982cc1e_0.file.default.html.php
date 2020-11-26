@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.27, created on 2020-11-25 16:30:38
+<?php /* Smarty version 3.1.27, created on 2020-11-26 18:16:11
          compiled from "C:\wamp\www\birthregistration\site\templates\base\default.html" */ ?>
 <?php
-/*%%SmartyHeaderCode:139305fbe789e3fedf3_15417240%%*/
+/*%%SmartyHeaderCode:312595fbfe2dbc6a1a4_31471676%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -31,7 +31,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '139305fbe789e3fedf3_15417240',
+  'nocache_hash' => '312595fbfe2dbc6a1a4_31471676',
   'variables' => 
   array (
     'Site' => 0,
@@ -44,14 +44,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => '3.1.27',
-  'unifunc' => 'content_5fbe78a036ed11_02943477',
+  'unifunc' => 'content_5fbfe2df5f4d33_99370631',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_5fbe78a036ed11_02943477')) {
-function content_5fbe78a036ed11_02943477 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_5fbfe2df5f4d33_99370631')) {
+function content_5fbfe2df5f4d33_99370631 ($_smarty_tpl) {
 if (!is_callable('smarty_modifier_capitalize')) require_once 'C:\\wamp\\www\\birthregistration\\lib\\Smarty\\plugins\\modifier.capitalize.php';
 
-$_smarty_tpl->properties['nocache_hash'] = '139305fbe789e3fedf3_15417240';
+$_smarty_tpl->properties['nocache_hash'] = '312595fbfe2dbc6a1a4_31471676';
 ?>
 <!DOCTYPE html>
 <?php echo $_smarty_tpl->getSubTemplate ('declare.html', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0);
@@ -85,14 +85,14 @@ echo $_smarty_tpl->tpl_vars['Site']->value['domainName'];?>
     <body class="body">
 		
 			<?php /*  Call merged included template "header.html" */
-echo $_smarty_tpl->getInlineSubTemplate('header.html', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, '112565fbe789e7d52e0_40395316', 'content_5fbe789e7ceee4_15582029');
+echo $_smarty_tpl->getInlineSubTemplate('header.html', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, '270255fbfe2dcc20bc1_78583873', 'content_5fbfe2dcc1a9c5_01959071');
 /*  End of included template "header.html" */?>
 
 		
 		
 			
 				<?php /*  Call merged included template "main-slider.html" */
-echo $_smarty_tpl->getInlineSubTemplate('main-slider.html', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, '202785fbe789f4657c6_23545992', 'content_5fbe789f44fb56_86476957');
+echo $_smarty_tpl->getInlineSubTemplate('main-slider.html', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, '74155fbfe2ddc52c01_56831637', 'content_5fbfe2ddc4d147_18801409');
 /*  End of included template "main-slider.html" */?>
 
 			
@@ -213,7 +213,7 @@ $_smarty_tpl->tpl_vars['promo'] = $foreach_promo_Sav;
 		
 		
 			<?php /*  Call merged included template "modal-file.html" */
-echo $_smarty_tpl->getInlineSubTemplate('modal-file.html', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, '40045fbe789fb1a042_39325152', 'content_5fbe789fb14979_44860901');
+echo $_smarty_tpl->getInlineSubTemplate('modal-file.html', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, '35335fbfe2dee1b237_89883010', 'content_5fbfe2dee10669_60913806');
 /*  End of included template "modal-file.html" */?>
 
 		
@@ -323,12 +323,12 @@ echo $_smarty_tpl->tpl_vars['Site']->value['domainName'];?>
 <?php }
 }
 ?><?php
-/*%%SmartyHeaderCode:112565fbe789e7d52e0_40395316%%*/
-if ($_valid && !is_callable('content_5fbe789e7ceee4_15582029')) {
-function content_5fbe789e7ceee4_15582029 ($_smarty_tpl) {
+/*%%SmartyHeaderCode:270255fbfe2dcc20bc1_78583873%%*/
+if ($_valid && !is_callable('content_5fbfe2dcc1a9c5_01959071')) {
+function content_5fbfe2dcc1a9c5_01959071 ($_smarty_tpl) {
 ?>
 <?php
-$_smarty_tpl->properties['nocache_hash'] = '112565fbe789e7d52e0_40395316';
+$_smarty_tpl->properties['nocache_hash'] = '270255fbfe2dcc20bc1_78583873';
 ?>
 <!--==========================  Header  ============================-->
 <header class="border border-top-0 border-left-0 border-right-0 border-success" id="header">
@@ -387,16 +387,16 @@ echo $_smarty_tpl->tpl_vars['Site']->value['domainName'];?>
     </div>
 </header><!-- #header -->
 <button type="button" class="btn btn-primary d-none" data-toggle="modal" data-target="#myModal3" id="contact-button"><b><i class="fa fa-headphones"></i> Contact</b></button><?php
-/*/%%SmartyNocache:112565fbe789e7d52e0_40395316%%*/
+/*/%%SmartyNocache:270255fbfe2dcc20bc1_78583873%%*/
 }
 }
 ?><?php
-/*%%SmartyHeaderCode:202785fbe789f4657c6_23545992%%*/
-if ($_valid && !is_callable('content_5fbe789f44fb56_86476957')) {
-function content_5fbe789f44fb56_86476957 ($_smarty_tpl) {
+/*%%SmartyHeaderCode:74155fbfe2ddc52c01_56831637%%*/
+if ($_valid && !is_callable('content_5fbfe2ddc4d147_18801409')) {
+function content_5fbfe2ddc4d147_18801409 ($_smarty_tpl) {
 ?>
 <?php
-$_smarty_tpl->properties['nocache_hash'] = '202785fbe789f4657c6_23545992';
+$_smarty_tpl->properties['nocache_hash'] = '74155fbfe2ddc52c01_56831637';
 ?>
 <!--==========================Intro Section============================-->
 <section id="intro d-none">
@@ -490,16 +490,16 @@ echo $_smarty_tpl->tpl_vars['Site']->value['domainName'];?>
         </div>
     </div>
 </section><!-- #intro --><?php
-/*/%%SmartyNocache:202785fbe789f4657c6_23545992%%*/
+/*/%%SmartyNocache:74155fbfe2ddc52c01_56831637%%*/
 }
 }
 ?><?php
-/*%%SmartyHeaderCode:40045fbe789fb1a042_39325152%%*/
-if ($_valid && !is_callable('content_5fbe789fb14979_44860901')) {
-function content_5fbe789fb14979_44860901 ($_smarty_tpl) {
+/*%%SmartyHeaderCode:35335fbfe2dee1b237_89883010%%*/
+if ($_valid && !is_callable('content_5fbfe2dee10669_60913806')) {
+function content_5fbfe2dee10669_60913806 ($_smarty_tpl) {
 ?>
 <?php
-$_smarty_tpl->properties['nocache_hash'] = '40045fbe789fb1a042_39325152';
+$_smarty_tpl->properties['nocache_hash'] = '35335fbfe2dee1b237_89883010';
 ?>
 <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModal1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document" >
@@ -566,7 +566,7 @@ echo $_smarty_tpl->tpl_vars['Site']->value['domainName'];?>
     <?php echo $_smarty_tpl->tpl_vars['msg']->value;?>
 
 <?php }?><?php
-/*/%%SmartyNocache:40045fbe789fb1a042_39325152%%*/
+/*/%%SmartyNocache:35335fbfe2dee1b237_89883010%%*/
 }
 }
 ?>

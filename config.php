@@ -62,20 +62,20 @@ foreach ($myGlobals as $key => $value) {
 
 
 /*System Mail Addres Config*/
-$mailConfig->contact["email"]="info@$domainName";//info@$domainName amajoyeogbe.hofftech@gmail.com
+$mailConfig->contact["email"]="amajoyeogbe.hofftech@gmail.com";//info@$domainName amajoyeogbe.hofftech@gmail.com
 $mailConfig->contact["title"]="Conatct@$companyName";
 $mailConfig->contact["subject"]="";
 $mailConfig->contact["password"]="";
-$mailConfig->newsletter["email"]="newsletter@$domainName";
+$mailConfig->newsletter["email"]="amajoyeogbe.hofftech@gmail.com";
 $mailConfig->newsletter["title"]="Newsletter@$companyName";
 $mailConfig->newsletter["subject"]="$companyName Newsletter Subscription";
 $mailConfig->newsletter["password"]="";
 $mailConfig->payment["email"]="payments@$domainName";
-$mailConfig->payment["title"]="Payments@$companyName";
+$mailConfig->payment["title"]="amajoyeogbe.hofftech@gmail.com";
 $mailConfig->payment["subject"]="$companyName Payment";
 $mailConfig->payment["password"]="";
-$mailConfig->auth["email"]="contact@ajahcity.com.ng";
-$mailConfig->auth["password"]="mB!5CeJru;bb";
+$mailConfig->auth["email"]="amajoyeogbe.hofftech@gmail.com";
+$mailConfig->auth["password"]="AdeRonke4Eva@0";
 
 /*System Payment Key Config*/
 $paymentConfig->paystack["test_sk"]="sk_test_89518f69f25f13f55c61d1a9d275c79dfa75fd00";

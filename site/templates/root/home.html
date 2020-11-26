@@ -8,7 +8,7 @@
 			<div class="card text-center">
 				<h5 class="card-header site-bg-1"><i class="fa fa-list"></i> Newly Registered</h5>
 				<div class="card-body">
-					<h3 class="font-weight-bold text-center"><!--{$dashStat->trans}--></h3>
+					<h3 class="font-weight-bold text-center"><!--{$summary->birth_reg_new}--></h3>
 				</div>
 				<div class="card-footer"> <a class="btn btn-block btn-success" href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/registered-new">Check List</a></div>
 			</div>
@@ -17,7 +17,7 @@
 			<div class="card text-center">
 				<h5 class="card-header site-bg-1"><i class="fa fa-list"></i> Approved Certificate</h5>
 				<div class="card-body">
-					<h3 class="font-weight-bold text-center"><!--{$dashStat->user}--></h3>
+					<h3 class="font-weight-bold text-center"><!--{$summary->birth_reg_approved}--></h3>
 				</div>
 				<div class="card-footer"> <a class="btn btn-block btn-success" href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/registered-approved">Check List</a></div>
 			</div>
@@ -26,7 +26,7 @@
 			<div class="card text-center">
 				<h5 class="card-header site-bg-1"><i class="fa fa-list"></i> Rejected Certificates</h5>
 				<div class="card-body">
-					<h3 class="font-weight-bold text-center"><!--{$dashStat->jobs}--></h3>
+					<h3 class="font-weight-bold text-center"><!--{$summary->birth_reg_rejected}--></h3>
 				</div>
 				<div class="card-footer"> <a class="btn btn-block btn-success" href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/registered-unverified">Check List</a></div>
 			</div>
@@ -35,7 +35,7 @@
 			<div class="card text-center">
 				<h5 class="card-header site-bg-1"><i class="fa fa-search"></i> Find Certificate</h5>
 				<div class="card-body">
-					<h3 class="font-weight-bold text-center"><!--{$dashStat->stores}--></h3>
+					<h3 class="font-weight-bold text-center"><!--{$summary->birth_reg_all}--></h3>
 				</div>
 				<div class="card-footer"> <a class="btn btn-block btn-success" href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/search">Go Search</a></div>
 			</div>
@@ -44,7 +44,7 @@
 			<div class="card text-center">
 				<h5 class="card-header site-bg-1"><i class="fa fa-certificate"></i>  Create New Certificate </h5>
 				<div class="card-body">
-					<h3 class="font-weight-bold text-center"><!--{$dashStat->properties}--></h3>
+					<h3 class="font-weight-bold text-center"><i class="fa fa-plus"></i></h3>
 				</div>
 				<div class="card-footer"> <a class="btn btn-block btn-success" href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/registered-manual">Create</a></div>
 			</div>
@@ -53,7 +53,7 @@
 			<div class="card text-center">
 				<h5 class="card-header site-bg-1"><i class="fa fa-question"></i>  F.A.Q</h5>
 				<div class="card-body">
-					<h3 class="font-weight-bold text-center"><!--{$dashStat->properties}--></h3>
+					<h3 class="font-weight-bold text-center"><!--{$summary->faq}--></h3>
 				</div>
 				<div class="card-footer"> <a class="btn btn-block btn-success" href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/faq">Check List</a></div>
 			</div>

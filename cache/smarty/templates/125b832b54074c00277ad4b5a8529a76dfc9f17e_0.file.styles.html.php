@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.27, created on 2020-11-25 16:30:29
+<?php /* Smarty version 3.1.27, created on 2020-11-26 18:16:19
          compiled from "C:\wamp\www\birthregistration\site\templates\base\styles.html" */ ?>
 <?php
-/*%%SmartyHeaderCode:274045fbe7895821a90_76939135%%*/
+/*%%SmartyHeaderCode:44995fbfe2e3536088_99063893%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -13,20 +13,20 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '274045fbe7895821a90_76939135',
+  'nocache_hash' => '44995fbfe2e3536088_99063893',
   'variables' => 
   array (
     'Site' => 0,
   ),
   'has_nocache_code' => false,
   'version' => '3.1.27',
-  'unifunc' => 'content_5fbe7895de3a53_96001687',
+  'unifunc' => 'content_5fbfe2e36f10f1_58637996',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_5fbe7895de3a53_96001687')) {
-function content_5fbe7895de3a53_96001687 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_5fbfe2e36f10f1_58637996')) {
+function content_5fbfe2e36f10f1_58637996 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '274045fbe7895821a90_76939135';
+$_smarty_tpl->properties['nocache_hash'] = '44995fbfe2e3536088_99063893';
 ?>
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">

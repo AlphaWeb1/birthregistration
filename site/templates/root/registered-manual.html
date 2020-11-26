@@ -1,9 +1,11 @@
-<!--{extends 'default.html'}-->
-
-<!--{block name="login"}-->
-<section class="row no-gutters justify-content-end bg-image-1">
-    <div class="card col-sm-8 my-5 float-left p-3" id="logn-frame">
-        <form method="post" action="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/register">
+<!--{extends file="root.html"}-->
+<!--{block name="breadcrumb"}-->
+<section class="breadcrumb"><strong class="uppercase">Dasboard |</strong> BIRTH REGISTRATIONS&nbsp;<i class="fa fa-certificates"></i>&nbsp; | New Registration</section>
+<!--{/block}-->
+<!--{block name="content"}-->
+<section class="row justify-content-center">
+    <div class="card col-sm-10 my-5 float-left p-3" id="logn-frame">
+        <form method="post" action="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/registered-manual">
             <fieldset class="card p-4 mt-3">
                 <legend class="text-center mb-4"><h3 class="font-weight-bold"><i class="fa fa-certificate"></i> Birth Registration Form</h3></legend>
                 <!--{if !empty($fail)}-->
@@ -286,28 +288,11 @@
                     <label for="informant_place_of_residence">Place of Residence</label>
                     <input type="text" id="informant_place_of_residence" name="informant_place_of_residence" placeholder="Place of Residence" class="form-control form-control-sm badge-pill">
                 </div>
-                <div class="form-group">
-                    <span class="matches"></span>
-                </div>
-                <div class="form-group">
-                    <div class="custom-control custom-checkbox m-3">
-                        <input type="checkbox" class="custom-control-input" name="terms" value="1" id="agree-terms">
-                        <label class="custom-control-label" for="agree-terms">I confirm that all information entered is true, uinque and strict to the birth registration <a class="text-success" href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/terms" target="__top">Terms &amp; Regulation</a>.</label>
-                    </div>
-                </div>      
                 <div class="form-group text-center">
-                    <button class="btn btn-success btn-block badge-pill" type="submit" name="signup" value="signup">Register</button>
-                </div>
-                <div class="form-group text-center">
-                    <h5 class="font-weight-bold">OR</h5>    
-                </div>
-                <div class="form-group text-center">
-                    <a class="btn btn-link" href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/find-registration">Confirm Registration</a>
+                    <button class="btn btn-success btn-block badge-pill" type="submit" name="signup" value="signup">Add Detail</button>
                 </div>
             </fieldset>
         </form>
     </div>
 </section>
-<!--{/block}-->
-<!--{block name="general-message"}-->
 <!--{/block}-->
