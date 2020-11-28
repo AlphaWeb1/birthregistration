@@ -137,7 +137,7 @@ if(!empty($posts->register) and $posts->register=='register' and $sitePage=='reg
 		$fail.='<p class="border border-danger p-2">Invalid Father\'s Age: Enter father\'s age during birth</p>';
 		$err++;
 	endif;
-	if( empty($posts->father_marital_status) || !in_array($posts->father_marital_status, array("single", "married", "separated", "divorced", "widow"))):
+	if( empty($posts->father_marital_status) || !in_array($posts->father_marital_status, array("single", "married", "separated", "divorced", "widower"))):
 		$fail.='<p class="border border-danger p-2">Invalid Father\'s Marital Status: Select a valid marital status</p>';
 		$err++;
 	endif;
@@ -180,10 +180,6 @@ if(!empty($posts->register) and $posts->register=='register' and $sitePage=='reg
 	endif;
 	if( empty($posts->informant_email) or !checkEmail($posts->informant_email)):
 		$fail.='<p class="border border-danger p-2">Invalid Informant\'s Detail: Enter a valid informant\'s email to receive notification if approved</p>';
-		$err++;
-	endif;
-	if( empty($posts->terms) or $posts->terms!='1'):
-		$fail.='<p class="border border-danger p-2">Confirmation Is Required: kindly confirm the checkbox provided in this form that all entered detail is valid </p>';
 		$err++;
 	endif;
 

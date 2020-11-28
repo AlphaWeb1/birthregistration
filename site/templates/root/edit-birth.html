@@ -5,7 +5,7 @@
 <!--{block name="content"}-->
 <section class="row justify-content-center">
     <div class="card col-sm-10 my-5 float-left p-3" id="logn-frame">
-        <form method="post" action="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/edit-birth">
+        <form method="post" action="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/edit-birth?id=<!--{$regId}-->">
             <fieldset class="card p-4 mt-3">
                 <legend class="text-center mb-4"><h3 class="font-weight-bold"><i class="fa fa-certificate"></i> Birth Registration Detail</h3></legend>
                 <!--{if !empty($fail)}-->
@@ -19,39 +19,39 @@
                     <div class="col-sm-12"><h5 class="text-center">Birth Center</h5></div>
                     <div class="form-group col-sm-6 mb-3">
                         <label for="center">Registration Center</label>
-                        <input type="text" class="form-control form-control-sm badge-pill" name="center" id="center" value="" placeholder="Registration Center">
+                        <input type="text" class="form-control form-control-sm badge-pill" name="center" id="center" value="<!--{$birth_reg->center}-->" placeholder="Registration Center">
                     </div>
                     <div class="form-group col-sm-6 mb-3">
                         <label for="register_volume">Register Volume</label>
-                        <input type="text" class="form-control form-control-sm badge-pill" name="register_volume" id="register_volume" value="" placeholder="Register Volume">
+                        <input type="text" class="form-control form-control-sm badge-pill" name="register_volume" id="register_volume" value="<!--{$birth_reg->register_volume}-->" placeholder="Register Volume">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-sm-6 mb-3">
                         <label for="town">Town / Village</label>
-                        <input type="text" class="form-control form-control-sm badge-pill" name="town" id="town" value="" placeholder="Town / Village">
+                        <input type="text" class="form-control form-control-sm badge-pill" name="town" id="town" value="<!--{$birth_reg->town}-->" placeholder="Town / Village">
                     </div>
                     <div class="form-group col-sm-6 mb-3">
                         <label for="entry_number">Entry Number</label>
-                        <input type="text" class="form-control form-control-sm badge-pill" name="entry_number" id="entry_number" value="" placeholder="Entry Number">
+                        <input type="text" class="form-control form-control-sm badge-pill" name="entry_number" id="entry_number" value="<!--{$birth_reg->entry_number}-->" placeholder="Entry Number">
                     </div>
                 </div>
                 <div class="form-row justify-content-center mb-3">
                     <div class="form-group col-sm-6">
                         <label for="lga">Local Government Area</label>
-                        <input type="text" class="form-control form-control-sm badge-pill" id="lga" name="lga" placeholder="Local Government Area" value="">
+                        <input type="text" class="form-control form-control-sm badge-pill" id="lga" name="lga" placeholder="Local Government Area" value="<!--{$birth_reg->lga}-->">
                     </div>
                     <div class="form-group col-sm-6 mb-3">
                         <label for="date_of_registraton">Date of Registration</label>
                         <div class="row">
                             <div class="col-4">
-                                <input type="text" class="form-control form-control-sm badge-pill" id="reg_day" name="reg_day" placeholder="Day" value="" required="">
+                                <input type="text" class="form-control form-control-sm badge-pill" id="reg_day" name="reg_day" placeholder="Day" value="<!--{$birth_reg->reg_day}-->" required="">
                             </div>
                             <div class="col-4">
-                                <input type="text" class="form-control form-control-sm badge-pill" id="reg_month" name="reg_month" placeholder="Month" value="" required="">
+                                <input type="text" class="form-control form-control-sm badge-pill" id="reg_month" value="<!--{$birth_reg->reg_month}-->" name="reg_month" placeholder="Month" required="">
                             </div>
                             <div class="col-4">
-                                <input type="text" class="form-control form-control-sm badge-pill" id="reg_year" name="reg_year" placeholder="Year" value="" required="">
+                                <input type="text" class="form-control form-control-sm badge-pill" id="reg_year" value="<!--{$birth_reg->reg_year}-->" name="reg_year" placeholder="Year" required="">
                             </div>
                         </div>
                     </div>
@@ -61,7 +61,7 @@
                     <select class="form-control form-control-sm badge-pill" id="state" name="state" placeholder="State" required="">
                         <!--{if !empty($states)}-->
                         <!--{foreach $states as $state}-->
-                            <option value="<!--{$state->name}-->"><!--{$state->name|capitalize}--></option>
+                            <option value="<!--{$state->name}-->" <!--{if $birth_reg->state==$state->name}-->selected<!--{/if}-->><!--{$state->name|capitalize}--></option>
                         <!--{/foreach}-->
                         <!--{/if}-->
                     </select>
@@ -71,13 +71,13 @@
                     <label for="child_name">Child Name</label>
                     <div class="row">
                         <div class="col-4">
-                            <input type="text" class="form-control form-control-sm badge-pill" id="child_surname" name="child_surname" placeholder="Surname" required="">
+                            <input type="text" class="form-control form-control-sm badge-pill" id="child_surname" value="<!--{$birth_reg->child_surname}-->" name="child_surname" placeholder="Surname" required="">
                         </div>
                         <div class="col-4">
-                            <input type="text" class="form-control form-control-sm badge-pill" id="child_firstname" name="child_firstname" placeholder="First Name" required="">
+                            <input type="text" class="form-control form-control-sm badge-pill" id="child_firstname" value="<!--{$birth_reg->child_firstname}-->" name="child_firstname" placeholder="First Name" required="">
                         </div>
                         <div class="col-4">
-                            <input type="text" class="form-control form-control-sm badge-pill" id="child_other_name" name="child_other_name" placeholder="Middle Name" required="">
+                            <input type="text" class="form-control form-control-sm badge-pill" id="child_other_name" value="<!--{$birth_reg->child_other_name}-->" name="child_other_name" placeholder="Middle Name" required="">
                         </div>
                     </div>
                 </div>
@@ -86,21 +86,21 @@
                         <label for="child_date">Date of Birth</label>
                         <div class="row">
                             <div class="col-4">
-                                <input type="text" class="form-control form-control-sm badge-pill" id="child_birth_day" name="child_birth_day" placeholder="Day" required="">
+                                <input type="text" class="form-control form-control-sm badge-pill" id="child_birth_day" value="<!--{$birth_reg->child_birth_day}-->" name="child_birth_day" placeholder="Day" required="">
                             </div>
                             <div class="col-4">
-                                <input type="text" class="form-control form-control-sm badge-pill" id="child_birth_month" name="child_birth_month" placeholder="Month" required="">
+                                <input type="text" class="form-control form-control-sm badge-pill" id="child_birth_month" value="<!--{$birth_reg->child_birth_month}-->" name="child_birth_month" placeholder="Month" required="">
                             </div>
                             <div class="col-4">
-                                <input type="text" class="form-control form-control-sm badge-pill" id="child_birth_year" name="child_birth_year" placeholder="Year" required="">
+                                <input type="text" class="form-control form-control-sm badge-pill" id="child_birth_year" value="<!--{$birth_reg->child_birth_year}-->" name="child_birth_year" placeholder="Year" required="">
                             </div>
                         </div>
                     </div>
                     <div class="form-group col-sm-6 text-justify mb-3">
                         <label for="sex">Sex</label>
                         <select id="sex" name="sex" placeholder="Sex" class="form-control form-control-sm badge-pill" required>
-                            <option value="male">Male</option>
-                            <option value="female">Femaile</option>
+                            <option value="male" <!--{if $birth_reg->sex=='male'}-->selected<!--{/if}-->>Male</option>
+                            <option value="female"> <!--{if $birth_reg->sex=='female'}-->selected<!--{/if}-->Femaile</option>
                         </select>
                     </div>
                 </div>
@@ -108,16 +108,16 @@
                     <div class="form-group col-sm-6 text-justify mb-3">
                         <label for="place_of_birth">Place of Birth</label>
                         <select id="place_of_birth" name="place_of_birth" placeholder="Place of Birth" class="form-control form-control-sm badge-pill" required>
-                            <option value="hospital">Hospital</option>
-                            <option value="maternity home">Maternity Home</option>
-                            <option value="at home">At Home</option>
-                            <option value="traditional doctor's place">Traditional Doctor's Place</option>
-                            <option value="others">Others</option>
+                            <option value="hospital" <!--{if $birth_reg->place_of_birth=='hospital'}-->selected<!--{/if}-->>Hospital</option>
+                            <option value="maternity home" <!--{if $birth_reg->place_of_birth=='maternity home'}-->selected<!--{/if}-->>Maternity Home</option>
+                            <option value="at home" <!--{if $birth_reg->place_of_birth=='at home'}-->selected<!--{/if}-->>At Home</option>
+                            <option value="traditional doctor's place" <!--{if $birth_reg->place_of_birth=='traditional doctor\'s place'}-->selected<!--{/if}-->>Traditional Doctor's Place</option>
+                            <option value="others" <!--{if $birth_reg->place_of_birth=='others'}-->selected<!--{/if}-->>Others</option>
                         </select>
                     </div>
                     <div class="form-group col-sm-6 text-justify mb-3">
                         <label for="town_village">Village / Town</label>
-                        <input type="text" id="town_village" name="town_village" placeholder="Town / Village" class="form-control form-control-sm badge-pill" required="">
+                        <input type="text" id="town_village" name="town_village" placeholder="Town / Village" value="<!--{$birth_reg->town_village}-->" class="form-control form-control-sm badge-pill" required="">
                     </div>
                 </div>
                 <h5 class="text-center">Particulars of Mother</h5>
@@ -125,30 +125,31 @@
                     <label for="mother_name">Mother's Name</label>
                     <div class="row">
                         <div class="col-6">
-                            <input type="text" class="form-control form-control-sm badge-pill" id="mother_surname" name="mother_surname" placeholder="Surname" required="">
+                            <input type="text" class="form-control form-control-sm badge-pill" id="mother_surname" value="<!--{$birth_reg->mother_surname}-->" name="mother_surname" placeholder="Surname" required="">
                         </div>
                         <div class="col-6">
-                            <input type="text" class="form-control form-control-sm badge-pill" id="mother_firstname" name="mother_firstname" placeholder="First Name" required="">
+                            <input type="text" class="form-control form-control-sm badge-pill" id="mother_firstname" value="<!--{$birth_reg->mother_firstname}-->" name="mother_firstname" placeholder="First Name" required="">
                         </div>
                     </div>
                 </div>
                 <div class="form-group text-justify mb-3">
                     <label for="mother_place_of_residence">Place of Residence</label>
-                    <input type="text" id="mother_place_of_residence" name="mother_place_of_residence" placeholder="Place of Residence" class="form-control form-control-sm badge-pill" required="">
+                    <input type="text" id="mother_place_of_residence" name="mother_place_of_residence" placeholder="Place of Residence" value="<!--{$birth_reg->mother_place_of_residence}-->" 
+                    class="form-control form-control-sm badge-pill" required="">
                 </div>
                 <div class="form-row">
                     <div class="form-group col-sm-6 text-justify mb-3">
                         <label for="mother_age">Age at Birth of Child</label>
-                        <input type="number" id="mother_age" name="mother_age" placeholder="Age At Birth of Child" class="form-control form-control-sm badge-pill" required="">
+                        <input type="number" id="mother_age" name="mother_age" placeholder="Age At Birth of Child" value="<!--{$birth_reg->mother_age}-->" class="form-control form-control-sm badge-pill" required="">
                     </div>
                     <div class="form-group col-sm-6 text-justify mb-3">
                         <label for="mother_marital_status">Marital Status</label>
                         <select id="mother_marital_status" name="mother_marital_status" placeholder="Marital Status" class="form-control form-control-sm badge-pill" required>
-                            <option value="single">Single</option>
-                            <option value="married">Married</option>
-                            <option value="separated">Separated</option>
-                            <option value="divorced">Divorced</option>
-                            <option value="widow">Widow</option>
+                            <option value="single" <!--{if $birth_reg->mother_marital_status=='single'}-->selected<!--{/if}-->>Single</option>
+                            <option value="married" <!--{if $birth_reg->mother_marital_status=='married'}-->selected<!--{/if}-->>Married</option>
+                            <option value="separated" <!--{if $birth_reg->mother_marital_status=='separated'}-->selected<!--{/if}-->>Separated</option>
+                            <option value="divorced" <!--{if $birth_reg->mother_marital_status=='divorced'}-->selected<!--{/if}-->>Divorced</option>
+                            <option value="widow" <!--{if $birth_reg->mother_marital_status=='widow'}-->selected<!--{/if}-->>Widow</option>
                         </select>
                     </div>
                 </div>
@@ -156,8 +157,8 @@
                     <div class="form-group col-sm-6 text-justify mb-3">
                         <label for="mother_nationality">Nationality</label>
                         <select id="mother_nationality" name="mother_nationality" placeholder="Nationality" class="form-control form-control-sm badge-pill" required>
-                            <option value="nigerian">Nigerian</option>
-                            <option value="non-nigerian">Non Nigerian</option>
+                            <option value="nigerian" <!--{if $birth_reg->mother_nationality=='nigerian'}-->selected<!--{/if}-->>Nigerian</option>
+                            <option value="non-nigerian" <!--{if $birth_reg->mother_nationality=='non-nigerian'}-->selected<!--{/if}-->>Non Nigerian</option>
                         </select>
                     </div>
                     <div class="form-group col-sm-6 text-justify mb-3">
@@ -168,13 +169,13 @@
                                     <option value="others">Select State of Origin</option>
                                     <!--{if !empty($states)}-->
                                     <!--{foreach $states as $state}-->
-                                        <option value="<!--{$state->name}-->"><!--{$state->name|capitalize}--></option>
+                                        <option value="<!--{$state->name}-->" <!--{if $birth_reg->mother_state==$state->name}-->selected<!--{/if}-->><!--{$state->name|capitalize}--></option>
                                     <!--{/foreach}-->
                                     <!--{/if}-->
                                 </select>
                             </div>
                             <div class="col-6">
-                                <input type="text" class="form-control form-control-sm badge-pill" id="mother_ethnic" name="mother_ethnic" placeholder="Ethnic of Origin">
+                                <input type="text" class="form-control form-control-sm badge-pill" id="mother_ethnic" value="<!--{$birth_reg->mother_ethnic}-->" name="mother_ethnic" placeholder="Ethnic of Origin">
                             </div>
                         </div>
                     </div>
@@ -183,13 +184,14 @@
                     <div class="form-group col-sm-6 text-justify mb-3">
                         <label for="mother_literacy">Literacy</label>
                         <select id="mother_literacy" name="mother_literacy" placeholder="Literacy" class="form-control form-control-sm badge-pill" required>
-                            <option value="literate">Literate</option>
-                            <option value="illiterate">Illiterate</option>
+                            <option value="literate" <!--{if $birth_reg->mother_literacy=='literate'}-->selected<!--{/if}-->>Literate</option>
+                            <option value="illiterate" <!--{if $birth_reg->mother_literacy=='illiterate'}-->selected<!--{/if}-->>Illiterate</option>
                         </select>
                     </div>
                     <div class="form-group col-sm-6 text-justify mb-3">
                         <label for="mother_level_of_education">Level of Education <small>if literate</small></label>
-                        <input type="text" id="mother_level_of_education" name="mother_level_of_education" placeholder="Level of Education" class="form-control form-control-sm badge-pill">
+                        <input type="text" id="mother_level_of_education" name="mother_level_of_education" placeholder="Level of Education" value="<!--{$birth_reg->mother_level_of_education}-->"
+                         class="form-control form-control-sm badge-pill">
                     </div>
                 </div>
                 <h5 class="text-center">Particulars of Father</h5>
@@ -197,30 +199,30 @@
                     <label for="father_name">Father's Name</label>
                     <div class="row">
                         <div class="col-6">
-                            <input type="text" class="form-control form-control-sm badge-pill" id="father_surname" name="father_surname" placeholder="Surname">
+                            <input type="text" class="form-control form-control-sm badge-pill" id="father_surname" value="<!--{$birth_reg->father_surname}-->" name="father_surname" placeholder="Surname">
                         </div>
                         <div class="col-6">
-                            <input type="text" class="form-control form-control-sm badge-pill" id="father_firstname" name="father_firstname" placeholder="First Name">
+                            <input type="text" class="form-control form-control-sm badge-pill" id="father_firstname" value="<!--{$birth_reg->father_firstname}-->" name="father_firstname" placeholder="First Name">
                         </div>
                     </div>
                 </div>
                 <div class="form-group text-justify mb-3">
                     <label for="father_place_of_residence">Place of Residence</label>
-                    <input type="text" id="father_place_of_residence" name="father_place_of_residence" placeholder="Place of Residence" class="form-control form-control-sm badge-pill">
+                    <input type="text" id="father_place_of_residence" name="father_place_of_residence" value="<!--{$birth_reg->father_place_of_residence}--><" placeholder="Place of Residence" class="form-control form-control-sm badge-pill">
                 </div>
                 <div class="form-row">
                     <div class="form-group col-sm-6 text-justify mb-3">
                         <label for="father_age">Age at Birth of Child</label>
-                        <input type="text" id="father_age" name="father_age" placeholder="Age At Birth of Child" class="form-control form-control-sm badge-pill">
+                        <input type="text" id="father_age" name="father_age" value="<!--{$birth_reg->father_age}-->" placeholder="Age At Birth of Child" class="form-control form-control-sm badge-pill">
                     </div>
                     <div class="form-group col-sm-6 text-justify mb-3">
                         <label for="father_marital_status">Marital Status</label>
                         <select id="father_marital_status" name="father_marital_status" placeholder="Marital Status" class="form-control form-control-sm badge-pill">
-                            <option value="single">Single</option>
-                            <option value="married">Married</option>
-                            <option value="separated">Separated</option>
-                            <option value="divorced">Divorced</option>
-                            <option value="widow">Widow</option>
+                            <option value="single" <!--{if $birth_reg->father_marital_status=='single'}-->selected<!--{/if}-->>Single</option>
+                            <option value="married" <!--{if $birth_reg->father_marital_status=='married'}-->selected<!--{/if}-->>Married</option>
+                            <option value="separated" <!--{if $birth_reg->father_marital_status=='separated'}-->selected<!--{/if}-->>Separated</option>
+                            <option value="divorced" <!--{if $birth_reg->father_marital_status=='divorced'}-->selected<!--{/if}-->>Divorced</option>
+                            <option value="widower" <!--{if $birth_reg->father_marital_status=='widower'}-->selected<!--{/if}-->>Widower</option>
                         </select>
                     </div>
                 </div>
@@ -228,8 +230,8 @@
                     <div class="form-group col-sm-6 text-justify mb-3">
                         <label for="father_nationality">Nationality</label>
                         <select id="father_nationality" name="father_nationality" placeholder="Nationality" class="form-control form-control-sm badge-pill">
-                            <option value="nigerian">Nigerian</option>
-                            <option value="non-nigerian">Non Nigerian</option>
+                            <option value="nigerian" <!--{if $birth_reg->father_nationality=='nigerian'}-->selected<!--{/if}-->>Nigerian</option>
+                            <option value="non-nigerian" <!--{if $birth_reg->father_nationality=='non-nigerian'}-->selected<!--{/if}-->>Non Nigerian</option>
                         </select>
                     </div>
                     <div class="form-group col-sm-6 text-justify mb-3">
@@ -240,13 +242,13 @@
                                     <option value="others">Select State of Origin</option>
                                     <!--{if !empty($states)}-->
                                     <!--{foreach $states as $state}-->
-                                        <option value="<!--{$state->name}-->"><!--{$state->name|capitalize}--></option>
+                                        <option value="<!--{$state->name}-->" <!--{if $birth_reg->father_state==$state->name}-->selected<!--{/if}-->><!--{$state->name|capitalize}--></option>
                                     <!--{/foreach}-->
                                     <!--{/if}-->
                                 </select>
                             </div>
                             <div class="col-6">
-                                <input type="text" class="form-control form-control-sm badge-pill" id="father_ethnic" name="father_ethnic" placeholder="Ethnic of Origin">
+                                <input type="text" class="form-control form-control-sm badge-pill" id="father_ethnic" value="<!--{ucwords($birth_reg->father_ethnic)}-->" name="father_ethnic" placeholder="Ethnic of Origin">
                             </div>
                         </div>
                     </div>
@@ -255,38 +257,47 @@
                     <div class="form-group col-sm-6 text-justify mb-3">
                         <label for="father_literacy">Literacy</label>
                         <select id="father_literacy" name="father_literacy" placeholder="Literacy" class="form-control form-control-sm badge-pill">
-                            <option value="literate">Literate</option>
-                            <option value="illiterate">Illiterate</option>
+                            <option value="literate" <!--{if $birth_reg->father_literacy=='literate'}-->selected<!--{/if}-->>Literate</option>
+                            <option value="illiterate" <!--{if $birth_reg->father_literacy=='illiterate'}-->selected<!--{/if}-->>Illiterate</option>
                         </select>
                     </div>
                     <div class="form-group col-sm-6 text-justify mb-3">
                         <label for="father_level_of_education">Level of Education <small>if literate</small></label>
-                        <input type="text" id="father_level_of_education" name="father_level_of_education" placeholder="Level of Education" class="form-control form-control-sm badge-pill">
+                        <input type="text" id="father_level_of_education" name="father_level_of_education" placeholder="Level of Education" value="<!--{$birth_reg->father_level_of_education}-->"
+                         class="form-control form-control-sm badge-pill">
                     </div>
                 </div>
                 <h5 class="text-center">Particulars of Informant / Guardian</h5>
                 <div class="form-group text-justify mb-3">
                     <label for="informant_email">Informant's Active Email</label>
-                    <input type="text" id="informant_email" name="informant_email" placeholder="Informat's Active Email" class="form-control form-control-sm badge-pill">
+                    <input type="text" id="informant_email" name="informant_email" placeholder="Informat's Active Email" value="<!--{$birth_reg->informant_email}-->" class="form-control form-control-sm badge-pill">
                 </div>
                 <div class="form-group text-justify mb-3">
                     <label for="informant_relationship_to_child">Relationship to Child</label>
-                    <input type="text" id="informant_relationship_to_child" name="informant_relationship_to_child" placeholder="Relationship to Child" class="form-control form-control-sm badge-pill">
+                    <input type="text" id="informant_relationship_to_child" name="informant_relationship_to_child" placeholder="Relationship to Child" value="<!--{$birth_reg->informant_relationship_to_child}-->" class="form-control form-control-sm badge-pill">
                 </div>
                 <div class="form-group text-justify mb-3">
                     <label for="informant_name">Full Name</label>
                     <div class="row">
                         <div class="col-6">
-                            <input type="text" class="form-control form-control-sm badge-pill" id="informant_surname" name="informant_surname" placeholder="Surname">
+                            <input type="text" class="form-control form-control-sm badge-pill" id="informant_surname" value="<!--{$birth_reg->informant_surname}-->" name="informant_surname" placeholder="Surname">
                         </div>
                         <div class="col-6">
-                            <input type="text" class="form-control form-control-sm badge-pill" id="informant_firstname" name="informant_firstname" placeholder="First Name">
+                            <input type="text" class="form-control form-control-sm badge-pill" id="informant_firstname" value="<!--{$birth_reg->informant_firstname}-->" name="informant_firstname" placeholder="First Name">
                         </div>
                     </div>
                 </div>
                 <div class="form-group text-justify mb-3">
                     <label for="informant_place_of_residence">Place of Residence</label>
-                    <input type="text" id="informant_place_of_residence" name="informant_place_of_residence" placeholder="Place of Residence" class="form-control form-control-sm badge-pill">
+                    <input type="text" id="informant_place_of_residence" name="informant_place_of_residence" placeholder="Place of Residence" value="<!--{$birth_reg->informant_place_of_residence}-->" class="form-control form-control-sm badge-pill">
+                </div>
+                <div class="form-group">
+                    <h4><span class="text-center font-weight-bold my-2">Verify Status: </span></h4>
+                    <select name="status" id="status" class="form-control form-control-lg badge-pill">
+                        <option value="1" <!--{if $birth_reg->status==1}-->selected<!--{/if}-->>Approve</option>
+                        <option value="2" <!--{if $birth_reg->status==2}-->selected<!--{/if}-->>Decline</option>
+                    </select>
+                    <input type="hidden" name="registration_id" value="<!--{$birth_reg->registration_id}-->">
                 </div>
                 <div class="form-group text-center">
                     <button class="btn btn-success btn-block badge-pill" type="submit" name="edit" value="edit">Save Changes</button>

@@ -10,7 +10,7 @@ if (empty($birth_reg)) {
 
 $countries=getCountries();
 $states=getStates('Nigeria');
-if(!empty($posts->edit) and $posts->register=='edit' and $sitePage=='edit-birth'):
+if(!empty($posts->edit) and $posts->edit=='edit' and $sitePage=='edit-birth'):
     $fail = '';
     $err = 0;
 	if( empty($posts->center) ):
@@ -41,7 +41,7 @@ if(!empty($posts->edit) and $posts->register=='edit' and $sitePage=='edit-birth'
 		$fail.='<p class="border border-danger p-2">Invalid Registration Date: Enter registration month</p>';
 		$err++;
 	endif;
-	if( empty($posts->reg_year) || ($posts->reg_year < 10 || $posts->reg_year > date('y'))):
+	if( empty($posts->reg_year)):
 		$fail.='<p class="border border-danger p-2">Invalid Registration Date: Enter registration year</p>';
 		$err++;
 	endif;
@@ -70,7 +70,7 @@ if(!empty($posts->edit) and $posts->register=='edit' and $sitePage=='edit-birth'
 		$fail.='<p class="border border-danger p-2">Invalid Child Birth Date: Enter child\'s birth month</p>';
 		$err++;
 	endif;
-	if( empty($posts->child_birth_year) || ($posts->child_birth_year < 10 || $posts->child_birth_year > date('y'))):
+	if( empty($posts->child_birth_year) ):
 		$fail.='<p class="border border-danger p-2">Invalid Child Birth Date: Enter child\'s birth year</p>';
 		$err++;
 	endif;
@@ -144,7 +144,7 @@ if(!empty($posts->edit) and $posts->register=='edit' and $sitePage=='edit-birth'
 		$fail.='<p class="border border-danger p-2">Invalid Father\'s Age: Enter father\'s age during birth</p>';
 		$err++;
 	endif;
-	if( empty($posts->father_marital_status) || !in_array($posts->father_marital_status, array("single", "married", "separated", "divorced", "widow"))):
+	if( empty($posts->father_marital_status) || !in_array($posts->father_marital_status, array("single", "married", "separated", "divorced", "widower"))):
 		$fail.='<p class="border border-danger p-2">Invalid Father\'s Marital Status: Select a valid marital status</p>';
 		$err++;
 	endif;
@@ -189,27 +189,24 @@ if(!empty($posts->edit) and $posts->register=='edit' and $sitePage=='edit-birth'
 		$fail.='<p class="border border-danger p-2">Invalid Informant\'s Detail: Enter a valid informant\'s email to receive notification if approved</p>';
 		$err++;
 	endif;
-	if( empty($posts->terms) or $posts->terms!='1'):
-		$fail.='<p class="border border-danger p-2">Confirmation Is Required: kindly confirm the checkbox provided in this form that all entered detail is valid </p>';
-		$err++;
-	endif;
 
     if ($err == 0) {
 		$genRefid=getToken(15).$ezDb->get_var("SELECT IFNULL((`id`+1),'1') FROM `birth_registration` ORDER BY `id` DESC LIMIT 1;");
-		$ezDb->query("UPDATE `birth_registration` SET  `center`='$posts->center', `register_volume`, `town`, `entry_number`, `lga`, `reg_day`, `reg_month`, `reg_year`, 
-        `state`, `child_surname`, `child_firstname`, `child_other_name`, `child_birth_day`, `child_birth_month`, `child_birth_year`, `sex`, `place_of_birth`, `town_village`, 
-        `mother_surname`, `mother_firstname`, `mother_place_of_residence`, `mother_age`, `mother_marital_status`, `mother_nationality`, 
-        `mother_state`, `mother_ethnic`, `mother_literacy`, `mother_level_of_education`, `father_surname`, `father_firstname`, `father_place_of_residence`, 
-        `father_age`, `father_marital_status`, `father_nationality`, `father_state`, `father_ethnic`, `father_literacy`, `father_level_of_education`, 
-        `informant_relationship_to_child`, `informant_surname`, `informant_firstname`, `informant_place_of_residence`, `informant_email`, `status`, `updated_at`, `created_at`) 
-        VALUES , '$posts->register_volume', '$posts->town', '$posts->entry_number', '$posts->lga', '$posts->reg_day', '$posts->reg_month', 
-        '$posts->reg_year', '$posts->state', '$posts->child_surname', '$posts->child_firstname', '$posts->child_other_name', '$posts->child_birth_day', 
-        '$posts->child_birth_month', '$posts->child_birth_year', '$posts->sex', '$posts->place_of_birth', '$posts->town_village', '$posts->mother_surname', 
-        '$posts->mother_firstname', '$posts->mother_place_of_residence', '$posts->mother_age', '$posts->mother_marital_status', '$posts->mother_nationality', 
-        '$posts->mother_state', '$posts->mother_ethnic', '$posts->mother_literacy', '$posts->mother_level_of_education', '$posts->father_surname', '$posts->father_firstname', 
-        '$posts->father_place_of_residence', '$posts->father_age', '$posts->father_marital_status', '$posts->father_nationality', '$posts->father_state', 
-        '$posts->father_ethnic', '$posts->father_literacy', '$posts->father_level_of_education', '$posts->informant_relationship_to_child', '$posts->informant_surname', 
-        '$posts->informant_firstname', '$posts->informant_place_of_residence', '$posts->informant_email', '1', '$dateNow', '$dateNow' WHERE `registration_id`='$regId';");
+		$ezDb->query("UPDATE `birth_registration` SET  `center`='$posts->center', `register_volume`='$posts->register_volume', `town`='$posts->town', 
+        `entry_number`='$posts->entry_number', `lga`='$posts->lga', `reg_day`='$posts->reg_day', `reg_month`='$posts->reg_month', `reg_year`='$posts->reg_year', 
+        `state`='$posts->state', `child_surname`='$posts->child_surname', `child_firstname`='$posts->child_firstname', `child_other_name`='$posts->child_other_name', 
+        `child_birth_day`='$posts->child_birth_day', `child_birth_month`='$posts->child_birth_month', `child_birth_year`='$posts->child_birth_year', `sex`='$posts->sex', 
+        `place_of_birth`='$posts->place_of_birth', `town_village`='$posts->town_village', `mother_surname`='$posts->mother_surname', `mother_firstname`='$posts->mother_firstname', 
+        `mother_place_of_residence`='$posts->mother_place_of_residence', `mother_age`='$posts->mother_age', `mother_marital_status`='$posts->mother_marital_status', 
+        `mother_nationality`='$posts->mother_nationality', `mother_state`='$posts->mother_state', `mother_ethnic`='$posts->mother_ethnic', 
+        `mother_literacy`='$posts->mother_literacy', `mother_level_of_education`='$posts->mother_level_of_education', `father_surname`='$posts->father_surname', 
+        `father_firstname`='$posts->father_firstname', `father_place_of_residence`='$posts->father_place_of_residence', `father_age`='$posts->father_age', 
+        `father_marital_status`='$posts->father_marital_status', `father_nationality`='$posts->father_nationality', `father_state`='$posts->father_state', 
+        `father_ethnic`='$posts->father_ethnic', `father_literacy`='$posts->father_literacy', `father_level_of_education`='$posts->father_level_of_education', 
+        `informant_relationship_to_child`='$posts->informant_relationship_to_child', `informant_surname`='$posts->informant_surname', 
+        `informant_firstname`='$posts->informant_firstname', `informant_place_of_residence`='$posts->informant_place_of_residence', `informant_email`='$posts->informant_email', 
+        `status`='$posts->status', `updated_at`='$dateNow' WHERE `registration_id`='$regId';");
+        $birth_reg = $ezDb->get_row("SELECT * FROM `birth_registration` WHERE `registration_id`= '$regId'");
 
         require_once 'mail_success_registration.php';
         
@@ -222,4 +219,4 @@ if(!empty($posts->edit) and $posts->register=='edit' and $sitePage=='edit-birth'
 
 endif;
 
-$smarty->assign('birth_reg', $birth_reg)->assign('regId', $regId);
+$smarty->assign('birth_reg', $birth_reg)->assign('regId', $regId)->assign('states', $states);
