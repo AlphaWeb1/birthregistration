@@ -27,8 +27,6 @@
 			<main id="main wow fadeInUp slow">
 			<!--{/block}-->
 			<!--{block name="main_content"}-->
-				<!--{block name="top-default-about"}-->
-				<!--{/block}-->
 				<!--{block name="login"}-->
 				<section class="row no-gutters justify-content-end bg-image-1">
 					<div class="col-sm-6 float-left text-dark p-4" id="logn-frame">
@@ -37,13 +35,13 @@
 							<div id="complexPromo" class="carousel slide" data-ride="carousel">
 							  <div class="carousel-inner">
 							    <div class="carousel-item active">
-							      <h4 class="pt-2 text-center">Total Registered: <span class="badge badge-success">23</span></h4>
+							      <h4 class="pt-2 text-center">Total Registered: <span class="badge badge-success"><!--{$summary->birth_reg_all}--></span></h4>
 							    </div>
 							    <div class="carousel-item">
-							      <h4 class="pt-2 text-center">Total Approve: <span class="badge badge-success">23</span></h4>
+							      <h4 class="pt-2 text-center">Total Approve: <span class="badge badge-success"><!--{$summary->birth_reg_approved}--></span></h4>
 							    </div>
 							    <div class="carousel-item">
-							      <h4 class="pt-2 text-center">Total Pending: <span class="badge badge-success">23</span></h4>
+							      <h4 class="pt-2 text-center">Total Pending: <span class="badge badge-success"><!--{$summary->birth_reg_new}--></span></h4>
 							    </div>
 							  </div>
 							  <a class="carousel-control-prev d-none" href="#complexPromo" role="button" data-slide="prev">
@@ -58,7 +56,7 @@
 						</div>
 					</div>
 					<div class="card col-sm-5 my-5 float-right p-3" id="logn-frame">
-	                    <form method="get" action="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/find-registation">
+	                    <form method="get" action="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/find-registration">
 	                        <fieldset class="card p-2 mt-3">
 	                            <legend class="text-center mb-4"><h3 class="font-weight-bold">Search for Detail</h3></legend>
 	                            <div class="form-group text-justify mb-2">
@@ -78,41 +76,6 @@
 	                    </form>
 					</div>
 				</section>
-				<!--{/block}-->
-				<!--{block name="whatweoffer"}-->
-				<!--{/block}-->
-				<!--{block name="peoplestalk"}-->
-				<section class="row justify-content-center d-none no-gutters mb-3">
-					<div class="col-sm-3 text-center site-bg-2 py-3">
-						<h2 class="font-weight-bold wow flash slower infinite"> !!! Promotions !!!</h2>
-					</div>
-					<div class="col-sm-6 bg-light text-dark py-3">
-						<div id="complexPromo" class="carousel slide" data-ride="carousel">
-						  <div class="carousel-inner">
-		                  <!--{if !empty($homePageData->promos)}-->
-		                    <!--{foreach $homePageData->promos as $key=>$promo}-->
-						    <div class="carousel-item <!--{if $key==0}-->active<!--{/if}-->">
-						      <h4 class="pt-2 text-center"><!--{$promo->description}--></h4>
-						    </div>
-		                    <!--{/foreach}-->
-		                  <!--{/if}-->
-						  </div>
-						  <a class="carousel-control-prev d-none" href="#complexPromo" role="button" data-slide="prev">
-						    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-						    <span class="sr-only">Previous</span>
-						  </a>
-						  <a class="carousel-control-next d-none" href="#complexPromo" role="button" data-slide="next">
-						    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-						    <span class="sr-only">Next</span>
-						  </a>
-						</div>
-					</div>
-					<div class="col-sm-3 text-center site-bg-2 py-3">
-						<h2 class="font-weight-bold wow flash slower infinite"> !!! Promotions !!!</h2>
-					</div>
-				</section>
-				<!--{/block}-->
-				<!--{block name="contact"}-->
 				<!--{/block}-->
 			<!--{/block}-->
 			<!--{block name="main-wrapper-base"}-->
@@ -160,14 +123,6 @@
 		                            <!--{if !empty($msg_nl)}--><!--{$msg_nl}--><!--{/if}-->
 		                        </form>
 		                    </div>
-
-		                    <!--<div class="col-lg-3 col-md-6 footer-newsletter">
-		                        <h4>Our Newsletter</h4>
-		                        <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna veniam enim veniam illum dolore legam minim quorum culpa amet magna export quem marada parida nodela caramase seza.</p>
-		                        <form action="" method="post">
-		                            <input type="email" name="email"><input type="submit" value="Subscribe">
-		                        </form>
-		                    </div>-->
 
 		                </div>
 		                <div id="half-base" class="row justify-content-center">

@@ -21,7 +21,7 @@
                 <th scope="col">Registrantion ID</th>
                 <th scope="col">Child's Detail</th>
                 <th scope="col">Center Detail</th>
-                <th scope="col">Mother's Detail</th>
+                <th scope="col" class="d-none">Mother's Detail</th>
                 <th scope="col">Informant's Detail</th>
                 <th scope="col">Date Registered</th>
                 <th scope="col">Status</th>
@@ -76,7 +76,7 @@
                     <span class="font-weight-bold">State: </span> <!--{$all_birth->state}-->
                   </h6>
                 </td>
-                <td>
+                <td class="d-none">
                   <h6 class="my2">
                     <span class="font-weight-bold">Surname: </span> <!--{$all_birth->mother_surname}-->
                   </h6>
@@ -110,9 +110,6 @@
                     <span class="font-weight-bold">Relationship to Child: </span> <!--{$all_birth->informant_relationship_to_child}-->
                   </h6>
                 </td>
-                <td>
-                  
-                </td>
                 <td><!--{$all_birth->created_at}--></td>
                 <td>
                   <!--{if isset($all_birth->status) and $all_birth->status==1}--><span class="badge badge-success">Approved</span>
@@ -121,7 +118,7 @@
                   <!--{/if}-->
                 </td>
                 <td>
-                    <a class="btn btn-sm btn-info rounded-0"  href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/birth-detail?id=<!--{$all_birth->email}-->"><i class="fa fa-ellipsis-v"></i> Detail</a>
+                    <a class="btn btn-sm btn-info rounded-0"  href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/birth-detail?id=<!--{$all_birth->registration_id}-->"><i class="fa fa-ellipsis-v"></i> Detail</a>
                 </td>
               </tr>
               <!--{$numCount=$numCount+1}-->

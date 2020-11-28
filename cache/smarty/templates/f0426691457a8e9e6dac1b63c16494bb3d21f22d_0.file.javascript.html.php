@@ -1,45 +1,155 @@
+<?php /* Smarty version 3.1.27, created on 2020-11-28 12:17:13
+         compiled from "C:\wamp\www\birthregistration\site\templates\root\javascript.html" */ ?>
+<?php
+/*%%SmartyHeaderCode:246905fc231b9e6cd17_92731404%%*/
+if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    'f0426691457a8e9e6dac1b63c16494bb3d21f22d' => 
+    array (
+      0 => 'C:\\wamp\\www\\birthregistration\\site\\templates\\root\\javascript.html',
+      1 => 1606551470,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '246905fc231b9e6cd17_92731404',
+  'variables' => 
+  array (
+    'Site' => 0,
+    'sitePage' => 0,
+    'clients' => 0,
+    'client' => 0,
+    'centers' => 0,
+    'store_numbers' => 0,
+    'news' => 0,
+    'defaultDetail' => 0,
+    'transProgressM' => 0,
+    'transProgressW' => 0,
+    'chartStats' => 0,
+    'value' => 0,
+  ),
+  'has_nocache_code' => false,
+  'version' => '3.1.27',
+  'unifunc' => 'content_5fc231bba10fd9_43338116',
+),false);
+/*/%%SmartyHeaderCode%%*/
+if ($_valid && !is_callable('content_5fc231bba10fd9_43338116')) {
+function content_5fc231bba10fd9_43338116 ($_smarty_tpl) {
+
+$_smarty_tpl->properties['nocache_hash'] = '246905fc231b9e6cd17_92731404';
+?>
 <!-- JavaScript Libraries -->
-<script src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/lib/common/jquery/jquery.min.js"></script>
-<script src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/lib/common/jquery/jquery-migrate.min.js"></script>
+<?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['Site']->value['siteProtocol'];
+echo $_smarty_tpl->tpl_vars['Site']->value['domainName'];?>
+/lib/common/jquery/jquery.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['Site']->value['siteProtocol'];
+echo $_smarty_tpl->tpl_vars['Site']->value['domainName'];?>
+/lib/common/jquery/jquery-migrate.min.js"><?php echo '</script'; ?>
+>
 
-<script src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/lib/common/datatables/js/jquery.datatables.min.js"></script>
-<script src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/lib/common/datatables/js/datatables.min.js"></script>
-<!--{if !empty($sitePage) and in_array($sitePage, array('add_news', 'edit_news'))}-->
-<script src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/lib/common/bootstrap/popper.js"></script>
-<!--{/if}-->
+<?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['Site']->value['siteProtocol'];
+echo $_smarty_tpl->tpl_vars['Site']->value['domainName'];?>
+/lib/common/datatables/js/jquery.datatables.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['Site']->value['siteProtocol'];
+echo $_smarty_tpl->tpl_vars['Site']->value['domainName'];?>
+/lib/common/datatables/js/datatables.min.js"><?php echo '</script'; ?>
+>
+<?php if (!empty($_smarty_tpl->tpl_vars['sitePage']->value) && in_array($_smarty_tpl->tpl_vars['sitePage']->value,array('add_news','edit_news'))) {?>
+<?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['Site']->value['siteProtocol'];
+echo $_smarty_tpl->tpl_vars['Site']->value['domainName'];?>
+/lib/common/bootstrap/popper.js"><?php echo '</script'; ?>
+>
+<?php }?>
 
-<script src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/lib/common/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/lib/common/wow/wow.min.js"></script>
-<script src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/lib/common/waypoints/waypoints.min.js"></script>
-<script src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/lib/common/counterup/counterup.min.js"></script>
-<script src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/lib/common/owlcarousel/owl.carousel.min.js"></script>
-<script src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/lib/common/isotope/isotope.pkgd.min.js"></script>
-<script src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/lib/common/lightbox/js/lightbox.min.js"></script>
-<script src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/lib/common/touchSwipe/jquery.touchSwipe.min.js"></script>
+<?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['Site']->value['siteProtocol'];
+echo $_smarty_tpl->tpl_vars['Site']->value['domainName'];?>
+/lib/common/bootstrap/js/bootstrap.bundle.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['Site']->value['siteProtocol'];
+echo $_smarty_tpl->tpl_vars['Site']->value['domainName'];?>
+/lib/common/wow/wow.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['Site']->value['siteProtocol'];
+echo $_smarty_tpl->tpl_vars['Site']->value['domainName'];?>
+/lib/common/waypoints/waypoints.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['Site']->value['siteProtocol'];
+echo $_smarty_tpl->tpl_vars['Site']->value['domainName'];?>
+/lib/common/counterup/counterup.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['Site']->value['siteProtocol'];
+echo $_smarty_tpl->tpl_vars['Site']->value['domainName'];?>
+/lib/common/owlcarousel/owl.carousel.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['Site']->value['siteProtocol'];
+echo $_smarty_tpl->tpl_vars['Site']->value['domainName'];?>
+/lib/common/isotope/isotope.pkgd.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['Site']->value['siteProtocol'];
+echo $_smarty_tpl->tpl_vars['Site']->value['domainName'];?>
+/lib/common/lightbox/js/lightbox.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['Site']->value['siteProtocol'];
+echo $_smarty_tpl->tpl_vars['Site']->value['domainName'];?>
+/lib/common/touchSwipe/jquery.touchSwipe.min.js"><?php echo '</script'; ?>
+>
 
-<!--{if !empty($sitePage) and in_array($sitePage, array('add_news', 'edit_news', 'newsletter'))}-->
-<script type="text/javascript" src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/lib/common/quilljs/quill.min.js"></script>
-<!--{/if}-->
-<!--{if !empty($sitePage) and in_array($sitePage, array('home'))}-->
-<script src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/lib/common/canvasjs-2.3.2/canvasjs.min.js"></script>
-<!--{/if}-->
+<?php if (!empty($_smarty_tpl->tpl_vars['sitePage']->value) && in_array($_smarty_tpl->tpl_vars['sitePage']->value,array('add_news','edit_news','newsletter'))) {?>
+<?php echo '<script'; ?>
+ type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['Site']->value['siteProtocol'];
+echo $_smarty_tpl->tpl_vars['Site']->value['domainName'];?>
+/lib/common/quilljs/quill.min.js"><?php echo '</script'; ?>
+>
+<?php }?>
+<?php if (!empty($_smarty_tpl->tpl_vars['sitePage']->value) && in_array($_smarty_tpl->tpl_vars['sitePage']->value,array('home'))) {?>
+<?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['Site']->value['siteProtocol'];
+echo $_smarty_tpl->tpl_vars['Site']->value['domainName'];?>
+/lib/common/canvasjs-2.3.2/canvasjs.min.js"><?php echo '</script'; ?>
+>
+<?php }?>
 
 <!-- Template Main Javascript File -->
-<script src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/lib/common/js/main.js"></script>
+<?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['Site']->value['siteProtocol'];
+echo $_smarty_tpl->tpl_vars['Site']->value['domainName'];?>
+/lib/common/js/main.js"><?php echo '</script'; ?>
+>
 
-<script type="text/javascript" src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/lib/common/js/script.js"></script>
-<script type="text/javascript">
+<?php echo '<script'; ?>
+ type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['Site']->value['siteProtocol'];
+echo $_smarty_tpl->tpl_vars['Site']->value['domainName'];?>
+/lib/common/js/script.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ type="text/javascript">
 $(document).ready(function(){
   $("body").addClass("js");
   let globalParam={};
   let indexer=0;
-  let printTitle= `Nigerian Population Commission: Birth Certificate`;
+  let printTitle= `Nigerian Maritime Administration And Safety Agency`;
   /*Outer Logics*/
-  <!--{if $sitePage=='security'}-->
-    <!--{if !empty($Site.session.Site.User.security2)}-->
+  <?php if ($_smarty_tpl->tpl_vars['sitePage']->value == 'security') {?>
+    <?php if (!empty($_smarty_tpl->tpl_vars['Site']->value['session']['Site']['User']['security2'])) {?>
       $('.login-shield').hide();
-    <!--{/if}-->
-  <!--{/if}-->
+    <?php }?>
+  <?php }?>
   /*General Event Controller*/
   $(document).on('click','.side-menu-link',function(){
     $(this).toggleClass('isactive')
@@ -47,10 +157,13 @@ $(document).ready(function(){
   });
   $(document).on('click','#rootEvt', function(){
     /*Security Page Access Control*/
-    <!--{if $sitePage=='security'}-->
+    <?php if ($_smarty_tpl->tpl_vars['sitePage']->value == 'security') {?>
       var secDetail={username: $("#vUsername").val(), password: $("#vPassword").val()};
-       globalParam= {sp: `<!--{$sitePage}-->`, sd: secDetail};
-      $.post("<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/site/inc/root/general.php", globalParam, (res)=> {
+       globalParam= {sp: `<?php echo $_smarty_tpl->tpl_vars['sitePage']->value;?>
+`, sd: secDetail};
+      $.post("<?php echo $_smarty_tpl->tpl_vars['Site']->value['siteProtocol'];
+echo $_smarty_tpl->tpl_vars['Site']->value['domainName'];?>
+/site/inc/root/general.php", globalParam, (res)=> {
         if (res=='success') {
           $('.alert1').addClass('alert-success').removeClass('alert-danger');
           $('.alert1').html(`<p><strong>Notice:</strong> ${res}</p>`);
@@ -63,14 +176,17 @@ $(document).ready(function(){
         // $(this).addClass("hidden");
         // $(".sec-token-request").html('<a class="btn btn-sm">Security token sent</a>');
       });
-    <!--{/if}-->
+    <?php }?>
   });
   /*Changing of Country State City*/
-  <!--{if in_array($sitePage, array('profile', 'events', 'edit_event', 'add_news', 'edit_news', 'newsletter'))}-->
+  <?php if (in_array($_smarty_tpl->tpl_vars['sitePage']->value,array('profile','events','edit_event','add_news','edit_news','newsletter'))) {?>
     $(document).on('change','#country, #state', function(){
       let csd={ data: $(this).val(), type: $(this).attr('id') };
-      globalParam={sp: `<!--{$sitePage}-->`, csd: csd};
-      $.post("<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/site/inc/root/general.php", globalParam, (res)=> {
+      globalParam={sp: `<?php echo $_smarty_tpl->tpl_vars['sitePage']->value;?>
+`, csd: csd};
+      $.post("<?php echo $_smarty_tpl->tpl_vars['Site']->value['siteProtocol'];
+echo $_smarty_tpl->tpl_vars['Site']->value['domainName'];?>
+/site/inc/root/general.php", globalParam, (res)=> {
         let ret=JSON.parse(res);
         // console.log(ret);
         let target=( $(this).attr('id')=="country"? "#state": "#city");
@@ -84,7 +200,7 @@ $(document).ready(function(){
         }
       });
     });
-  <!--{/if}-->
+  <?php }?>
   $(document).on('change', "#img-upload", function() {
     readURL(this, '#dataImg');
     $('#dataImg').css('width', 'inherit');
@@ -95,7 +211,7 @@ $(document).ready(function(){
     $('#dataImg1').css('width', 'inherit');
     $('#dataImg1').css('display', 'block');
   });
-  <!--{if in_array($sitePage, array('new_store','post_ads','store', 'ads'))}-->
+  <?php if (in_array($_smarty_tpl->tpl_vars['sitePage']->value,array('new_store','post_ads','store','ads'))) {?>
     $(document).on('change', "#img-upload2", function() {
       readURL(this, '#dataImg2');
       $('#dataImg2').css('width', 'inherit');
@@ -106,7 +222,7 @@ $(document).ready(function(){
       $('#dataImg3').css('width', 'inherit');
       $('#dataImg3').css('display', 'block');
     });
-  <!--{/if}-->
+  <?php }?>
   $(document).on('click','.deleteTrig', function(){
     let deleConf=confirm(`Are you Sure to Remove This ${$(this).attr(`what`)}?`);
     if (deleConf!==true) {
@@ -132,23 +248,23 @@ $(document).ready(function(){
     $('#password').attr('value',`${genPass}`).val(genPass);
     $('.genedPass').text(genPass);
   });
-  <!--{if in_array($sitePage, array('add_client', 'client', 'add_staff', 'staff'))}-->
+  <?php if (in_array($_smarty_tpl->tpl_vars['sitePage']->value,array('add_client','client','add_staff','staff'))) {?>
     $(document).on('change keyup', "#firstName, #lastName", function() {
       $('#username').attr('value', `${$("#lastName").val().charAt(0).toLowerCase()}${$("#firstName").val().toLowerCase()}`);
     });
     $(document).on('change keyup', "#password", function() {
       $('.genedPass').text(`${$("#password").val()}`);
     });
-  <!--{/if}-->
-  <!--{if in_array($sitePage, array('package', 'course'))}-->
+  <?php }?>
+  <?php if (in_array($_smarty_tpl->tpl_vars['sitePage']->value,array('package','course'))) {?>
   $('#dataTableId').DataTable({
     // paging: false,
     // scrollY: 400,
     // scrollX: auto,
     ordering: false
   });
-  <!--{/if}-->
-  <!--{if in_array($sitePage, array('compose'))}-->
+  <?php }?>
+  <?php if (in_array($_smarty_tpl->tpl_vars['sitePage']->value,array('compose'))) {?>
     $(document).on('change', '#sendto', function() {
       let sendto=$("#sendto option:selected").attr('value').trim();
       if (sendto=='*') {
@@ -158,36 +274,72 @@ $(document).ready(function(){
         $('#singles').removeClass('d-none').html(`
           <label for="receiver"><h5>Receivers <sup class="text-danger">(*)</sup></h5></label>
           <select id="receiver" name="receivers[]" class="form-control input-block lh-3" multiple="" required>
-            <!--{if !empty($clients)}-->
-                <!--{foreach $clients as $ky => $client}-->
-                <option value="<!--{$client->email}-->" style="word-break: break-word;">(<!--{$client->names}-->) <!--{$client->email}--></option>
-                <!--{/foreach}-->
-            <!--{else}-->
+            <?php if (!empty($_smarty_tpl->tpl_vars['clients']->value)) {?>
+                <?php
+$_from = $_smarty_tpl->tpl_vars['clients']->value;
+if (!is_array($_from) && !is_object($_from)) {
+settype($_from, 'array');
+}
+$_smarty_tpl->tpl_vars['client'] = new Smarty_Variable;
+$_smarty_tpl->tpl_vars['client']->_loop = false;
+$_smarty_tpl->tpl_vars['ky'] = new Smarty_Variable;
+foreach ($_from as $_smarty_tpl->tpl_vars['ky']->value => $_smarty_tpl->tpl_vars['client']->value) {
+$_smarty_tpl->tpl_vars['client']->_loop = true;
+$foreach_client_Sav = $_smarty_tpl->tpl_vars['client'];
+?>
+                <option value="<?php echo $_smarty_tpl->tpl_vars['client']->value->email;?>
+" style="word-break: break-word;">(<?php echo $_smarty_tpl->tpl_vars['client']->value->names;?>
+) <?php echo $_smarty_tpl->tpl_vars['client']->value->email;?>
+</option>
+                <?php
+$_smarty_tpl->tpl_vars['client'] = $foreach_client_Sav;
+}
+?>
+            <?php } else { ?>
               <option value="">No Registered Client</option>
-            <!--{/if}--><hr/>
+            <?php }?><hr/>
           </select>
           <hr/>`);
       }else if(sendto=='$'){
         $('#singles').addClass('d-none').html('');
-        /*console.log(`<!--{json_encode($centers)}-->`);
+        /*console.log(`<?php echo json_encode($_smarty_tpl->tpl_vars['centers']->value);?>
+`);
         $('#filterclients').removeClass('d-none').html(`
           <label for="receiver"><h5>Search By Store e.g. (A, or A1)<sup class="text-danger">(*)</sup></h5></label>
           <input type="text" id="filter" name="filter" class="form-control form-control-sm input-block" value=""/>
           `);*/
-        // console.log(`<!--{json_encode($store_numbers)}-->`);
+        // console.log(`<?php echo json_encode($_smarty_tpl->tpl_vars['store_numbers']->value);?>
+`);
         $('#filterclients').removeClass('d-none').children().find('select').removeAttr(`disabled`);
       }else{
         $('#filterclients').addClass('d-none').children().find('select').attr('disabled', 'disabled');
         $('#singles').removeClass('d-none').html(`
           <label for="receivers"><h5>Receivers <sup class="text-danger">(*)</sup></h5></label>
           <select id="receivers" name="receivers[]" class="form-control input-block lh-3" multiple="" required>
-            <!--{if !empty($clients)}-->
-                <!--{foreach $clients as $ky => $client}-->
-                <option value="<!--{$client->email}-->" style="word-break: break-word;">(<!--{$client->names}-->) <!--{$client->email}--></option>
-                <!--{/foreach}-->
-            <!--{else}-->
+            <?php if (!empty($_smarty_tpl->tpl_vars['clients']->value)) {?>
+                <?php
+$_from = $_smarty_tpl->tpl_vars['clients']->value;
+if (!is_array($_from) && !is_object($_from)) {
+settype($_from, 'array');
+}
+$_smarty_tpl->tpl_vars['client'] = new Smarty_Variable;
+$_smarty_tpl->tpl_vars['client']->_loop = false;
+$_smarty_tpl->tpl_vars['ky'] = new Smarty_Variable;
+foreach ($_from as $_smarty_tpl->tpl_vars['ky']->value => $_smarty_tpl->tpl_vars['client']->value) {
+$_smarty_tpl->tpl_vars['client']->_loop = true;
+$foreach_client_Sav = $_smarty_tpl->tpl_vars['client'];
+?>
+                <option value="<?php echo $_smarty_tpl->tpl_vars['client']->value->email;?>
+" style="word-break: break-word;">(<?php echo $_smarty_tpl->tpl_vars['client']->value->names;?>
+) <?php echo $_smarty_tpl->tpl_vars['client']->value->email;?>
+</option>
+                <?php
+$_smarty_tpl->tpl_vars['client'] = $foreach_client_Sav;
+}
+?>
+            <?php } else { ?>
               <option value="">No Registered Client</option>
-            <!--{/if}--><hr/>
+            <?php }?><hr/>
           </select>
           <hr/>`);
       }
@@ -228,15 +380,15 @@ $(document).ready(function(){
         
 
     });
-  <!--{/if}-->
-  <!--{if !empty($sitePage) and in_array($sitePage, array('edit_news', 'add_news'))}-->
+  <?php }?>
+  <?php if (!empty($_smarty_tpl->tpl_vars['sitePage']->value) && in_array($_smarty_tpl->tpl_vars['sitePage']->value,array('edit_news','add_news'))) {?>
     let plOlder = 'news';
-  <!--{elseif !empty($sitePage) and in_array($sitePage, array('add_event', 'edit_event'))}-->
+  <?php } elseif (!empty($_smarty_tpl->tpl_vars['sitePage']->value) && in_array($_smarty_tpl->tpl_vars['sitePage']->value,array('add_event','edit_event'))) {?>
     let plOlder = 'event';
-  <!--{elseif !empty($sitePage) and in_array($sitePage, array('newsletter'))}-->
+  <?php } elseif (!empty($_smarty_tpl->tpl_vars['sitePage']->value) && in_array($_smarty_tpl->tpl_vars['sitePage']->value,array('newsletter'))) {?>
     let plOlder = 'newsletter';
-  <!--{/if}-->
-  <!--{if !empty($sitePage) and in_array($sitePage, array('add_news', 'edit_news', 'newsletter'))}-->
+  <?php }?>
+  <?php if (!empty($_smarty_tpl->tpl_vars['sitePage']->value) && in_array($_smarty_tpl->tpl_vars['sitePage']->value,array('add_news','edit_news','newsletter'))) {?>
     // Initialize Quill editor
     let toolbarOptions = [
       ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
@@ -277,11 +429,12 @@ $(document).ready(function(){
       $('#content').attr('value',htmlEntities($('#editcontent .ql-editor').html()));
       // console.log($('#content').attr('value'));
     });
-  <!--{/if}-->
-  <!--{if !empty($sitePage) and in_array($sitePage, array('edit_news', 'edit_event'))}-->
-    $('#editcontent .ql-editor').html(`<!--{$news->content_stripe}-->`);
-  <!--{/if}-->
-  <!--{if in_array($sitePage, array('user'))}-->
+  <?php }?>
+  <?php if (!empty($_smarty_tpl->tpl_vars['sitePage']->value) && in_array($_smarty_tpl->tpl_vars['sitePage']->value,array('edit_news','edit_event'))) {?>
+    $('#editcontent .ql-editor').html(`<?php echo $_smarty_tpl->tpl_vars['news']->value->content_stripe;?>
+`);
+  <?php }?>
+  <?php if (in_array($_smarty_tpl->tpl_vars['sitePage']->value,array('user'))) {?>
     $(document).on('click', '.payOutlet', function() {
       let pOut ={
         amount: $(this).attr('amount'),
@@ -295,7 +448,7 @@ $(document).ready(function(){
       $("#payid").attr('value', pOut.payid).val(pOut.payid);
       $("#discount").attr('value',`${ pOut.discount}%`).val(`${pOut.discount}%`);
     });
-  <!--{/if}-->
+  <?php }?>
   $(document).on('click', '.imgPreview', function() {
     $("#imgPreviewShow").attr('src', `${$(this).attr('src')}`);
     $("#gallImgName").text(`${$(this).attr('title')}`);
@@ -323,13 +476,15 @@ $(document).ready(function(){
   /*Print Event Handler*/
   $(document).on('click',"#printSect", function() {
     $("#printSect").hide();
-    printData('printMe', '<!--{$Site.companyName}-->: Manage');
+    printData('printMe', '<?php echo $_smarty_tpl->tpl_vars['Site']->value['companyName'];?>
+: Manage');
     $("#printSect").show();
   });
   /*Export to Excel*/
   $(document).on('click',"#toExcel", function() {
     $("#toExcel").hide();
-    exportToExcel('excelMe', '<!--{$Site.companyName}-->: Manage');
+    exportToExcel('excelMe', '<?php echo $_smarty_tpl->tpl_vars['Site']->value['companyName'];?>
+: Manage');
     $("#toExcel").show();
   });
   /*Side Menu Controller*/
@@ -365,12 +520,12 @@ function htmlReverseEntities(str) {
     return String(str).replace(/&quot;/g, '"').replace(/&gt;/g, '>').replace(/&lt;/g, '<').replace(/&amp;/g, '&');
     // return String(str).replace('&amp;', /&/g).replace('&lt;', '<');
 }
-  <!--{if !empty($sitePage) and in_array($sitePage, array('root', 'home')) and  0 == 1}-->
+  <?php if (!empty($_smarty_tpl->tpl_vars['sitePage']->value) && in_array($_smarty_tpl->tpl_vars['sitePage']->value,array('root','home')) && 0 == 1) {?>
     /*Statistics Scripts*/
     let dt = new Date();
     window.onload = function () {
       var chart ={ 
-        <!--{if !empty($defaultDetail->transProgressM)}-->
+        <?php if (!empty($_smarty_tpl->tpl_vars['defaultDetail']->value->transProgressM)) {?>
           chart1 : new CanvasJS.Chart("chartContainer", {
             exportEnabled: true,
             animationEnabled: true,
@@ -413,9 +568,24 @@ function htmlReverseEntities(str) {
               showInLegend: true,      
               yValueFormatString: "\"₦\"#,##0.#",
               dataPoints: [
-              <!--{foreach $defaultDetail->transProgressM as $transProgressM}-->
-                { y: <!--{$transProgressM->amount}-->, label: "<!--{$transProgressM->dateadded}-->"  },
-              <!--{/foreach}-->
+              <?php
+$_from = $_smarty_tpl->tpl_vars['defaultDetail']->value->transProgressM;
+if (!is_array($_from) && !is_object($_from)) {
+settype($_from, 'array');
+}
+$_smarty_tpl->tpl_vars['transProgressM'] = new Smarty_Variable;
+$_smarty_tpl->tpl_vars['transProgressM']->_loop = false;
+foreach ($_from as $_smarty_tpl->tpl_vars['transProgressM']->value) {
+$_smarty_tpl->tpl_vars['transProgressM']->_loop = true;
+$foreach_transProgressM_Sav = $_smarty_tpl->tpl_vars['transProgressM'];
+?>
+                { y: <?php echo $_smarty_tpl->tpl_vars['transProgressM']->value->amount;?>
+, label: "<?php echo $_smarty_tpl->tpl_vars['transProgressM']->value->dateadded;?>
+"  },
+              <?php
+$_smarty_tpl->tpl_vars['transProgressM'] = $foreach_transProgressM_Sav;
+}
+?>
               ]
             },
             {
@@ -425,14 +595,29 @@ function htmlReverseEntities(str) {
               showInLegend: true,
               yValueFormatString: "#,##0.# Items",
               dataPoints: [
-              <!--{foreach $defaultDetail->transProgressM as $transProgressM}-->
-                { y: <!--{$transProgressM->count}-->, label: "<!--{$transProgressM->dateadded}-->" },
-              <!--{/foreach}-->
+              <?php
+$_from = $_smarty_tpl->tpl_vars['defaultDetail']->value->transProgressM;
+if (!is_array($_from) && !is_object($_from)) {
+settype($_from, 'array');
+}
+$_smarty_tpl->tpl_vars['transProgressM'] = new Smarty_Variable;
+$_smarty_tpl->tpl_vars['transProgressM']->_loop = false;
+foreach ($_from as $_smarty_tpl->tpl_vars['transProgressM']->value) {
+$_smarty_tpl->tpl_vars['transProgressM']->_loop = true;
+$foreach_transProgressM_Sav = $_smarty_tpl->tpl_vars['transProgressM'];
+?>
+                { y: <?php echo $_smarty_tpl->tpl_vars['transProgressM']->value->count;?>
+, label: "<?php echo $_smarty_tpl->tpl_vars['transProgressM']->value->dateadded;?>
+" },
+              <?php
+$_smarty_tpl->tpl_vars['transProgressM'] = $foreach_transProgressM_Sav;
+}
+?>
               ]
             }]
           }),
-        <!--{/if}-->
-        <!--{if !empty($defaultDetail->transProgressW)}-->
+        <?php }?>
+        <?php if (!empty($_smarty_tpl->tpl_vars['defaultDetail']->value->transProgressW)) {?>
           chart2 : new CanvasJS.Chart("chartContainer1", {
             exportEnabled: true,
             animationEnabled: true,
@@ -475,9 +660,24 @@ function htmlReverseEntities(str) {
               showInLegend: true,      
               yValueFormatString: "\"₦\"#,##0.#",
               dataPoints: [
-              <!--{foreach $defaultDetail->transProgressW as $transProgressW}-->
-                { y: <!--{$transProgressW->amount}-->, label: "<!--{$transProgressW->dateadded}-->"  },
-              <!--{/foreach}-->
+              <?php
+$_from = $_smarty_tpl->tpl_vars['defaultDetail']->value->transProgressW;
+if (!is_array($_from) && !is_object($_from)) {
+settype($_from, 'array');
+}
+$_smarty_tpl->tpl_vars['transProgressW'] = new Smarty_Variable;
+$_smarty_tpl->tpl_vars['transProgressW']->_loop = false;
+foreach ($_from as $_smarty_tpl->tpl_vars['transProgressW']->value) {
+$_smarty_tpl->tpl_vars['transProgressW']->_loop = true;
+$foreach_transProgressW_Sav = $_smarty_tpl->tpl_vars['transProgressW'];
+?>
+                { y: <?php echo $_smarty_tpl->tpl_vars['transProgressW']->value->amount;?>
+, label: "<?php echo $_smarty_tpl->tpl_vars['transProgressW']->value->dateadded;?>
+"  },
+              <?php
+$_smarty_tpl->tpl_vars['transProgressW'] = $foreach_transProgressW_Sav;
+}
+?>
               ]
             },
             {
@@ -487,13 +687,28 @@ function htmlReverseEntities(str) {
               showInLegend: true,
               yValueFormatString: "#,##0.# Items",
               dataPoints: [
-              <!--{foreach $defaultDetail->transProgressW as $transProgressW}-->
-                { y: <!--{$transProgressW->count}-->, label: "<!--{$transProgressW->dateadded}-->" },
-              <!--{/foreach}-->
+              <?php
+$_from = $_smarty_tpl->tpl_vars['defaultDetail']->value->transProgressW;
+if (!is_array($_from) && !is_object($_from)) {
+settype($_from, 'array');
+}
+$_smarty_tpl->tpl_vars['transProgressW'] = new Smarty_Variable;
+$_smarty_tpl->tpl_vars['transProgressW']->_loop = false;
+foreach ($_from as $_smarty_tpl->tpl_vars['transProgressW']->value) {
+$_smarty_tpl->tpl_vars['transProgressW']->_loop = true;
+$foreach_transProgressW_Sav = $_smarty_tpl->tpl_vars['transProgressW'];
+?>
+                { y: <?php echo $_smarty_tpl->tpl_vars['transProgressW']->value->count;?>
+, label: "<?php echo $_smarty_tpl->tpl_vars['transProgressW']->value->dateadded;?>
+" },
+              <?php
+$_smarty_tpl->tpl_vars['transProgressW'] = $foreach_transProgressW_Sav;
+}
+?>
               ]
             }]
           }),
-        <!--{/if}-->
+        <?php }?>
          /* chart4: new CanvasJS.Chart("chartContainer4", {
           animationEnabled: true,
           exportEnabled: true,
@@ -510,9 +725,25 @@ function htmlReverseEntities(str) {
             legendMarkerColor: "grey",
             legendText: "Vehicles",
             dataPoints: [  
-              <!--{foreach $chartStats->vehicles as $value}-->
-                { y: <!--{$value->engagement}-->, label: `<!--{$value->model}--> (<!--{$value->vehicleid}-->)` },
-              <!--{/foreach}-->
+              <?php
+$_from = $_smarty_tpl->tpl_vars['chartStats']->value->vehicles;
+if (!is_array($_from) && !is_object($_from)) {
+settype($_from, 'array');
+}
+$_smarty_tpl->tpl_vars['value'] = new Smarty_Variable;
+$_smarty_tpl->tpl_vars['value']->_loop = false;
+foreach ($_from as $_smarty_tpl->tpl_vars['value']->value) {
+$_smarty_tpl->tpl_vars['value']->_loop = true;
+$foreach_value_Sav = $_smarty_tpl->tpl_vars['value'];
+?>
+                { y: <?php echo $_smarty_tpl->tpl_vars['value']->value->engagement;?>
+, label: `<?php echo $_smarty_tpl->tpl_vars['value']->value->model;?>
+ (<?php echo $_smarty_tpl->tpl_vars['value']->value->vehicleid;?>
+)` },
+              <?php
+$_smarty_tpl->tpl_vars['value'] = $foreach_value_Sav;
+}
+?>
             ]
           }]
         }),*/
@@ -538,5 +769,8 @@ function htmlReverseEntities(str) {
       }
       e.chart.render();
     }
-  <!--{/if}-->
-</script>
+  <?php }?>
+<?php echo '</script'; ?>
+><?php }
+}
+?>

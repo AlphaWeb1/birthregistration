@@ -3,39 +3,38 @@
 
 $countries=getCountries();
 $states=getStates('Nigeria');
-if(!empty($posts->signup) and $posts->signup=='register' and $sitePage=='register'):
+if(!empty($posts->register) and $posts->register=='register' and $sitePage=='register'):
     $fail = '';
     $err = 0;
 	if( empty($posts->center) ):
 		$fail.='<p class="border border-danger p-2">Invalid Birth Center: Enter birth center</p>';
 		$err++;
 	endif;
-	if( empty($posts->register_volume) ):
-		$fail.='<p class="border border-danger p-2">Invalid Center Register Volume: Enter register volume</p>';
-		$err++;
-	endif;
+	// if( empty($posts->register_volume) ):
+	// 	$fail.='<p class="border border-danger p-2">Invalid Center Register Volume: Enter register volume</p>';
+	// 	$err++;
+	// endif;
 	if( empty($posts->town) ):
 		$fail.='<p class="border border-danger p-2">Invalid Center Town / Village: Enter town or village</p>';
 		$err++;
 	endif;
-	if( empty($posts->entry_number) ):
-		$fail.='<p class="border border-danger p-2">Invalid Center Entry Number: Enter birth entry number</p>';
-		$err++;
-	endif;
+	// if( empty($posts->entry_number) ):
+	// 	$fail.='<p class="border border-danger p-2">Invalid Center Entry Number: Enter birth entry number</p>';
+	// 	$err++;
+	// endif;
 	if( empty($posts->lga) ):
 		$fail.='<p class="border border-danger p-2">Invalid Center Local Government Area: Enter local government area</p>';
 		$err++;
 	endif;
-    if( empty($posts->reg_day) || $posts->reg_day < 1 || $posts->reg_day > 31 || 
-        ($posts->reg_day > date('d') && $posts->reg_month >= date('m') && $posts->reg_year >= date('y')) ):
+    if( empty($posts->reg_day) || $posts->reg_day < 1 || $posts->reg_day > 31 ):
 		$fail.='<p class="border border-danger p-2">Invalid Registration Date: Enter registration day</p>';
 		$err++;
 	endif;
-	if( empty($posts->reg_month) || $posts->reg_month < 1 || $posts->reg_month > 12 || ( $posts->reg_month > date('m') && $posts->reg_year >= date('y')) ):
+	if( empty($posts->reg_month) || $posts->reg_month < 1 || $posts->reg_month > 12):
 		$fail.='<p class="border border-danger p-2">Invalid Registration Date: Enter registration month</p>';
 		$err++;
 	endif;
-	if( empty($posts->reg_year) || ($posts->reg_year < 10 || $posts->reg_year > date('y'))):
+	if( empty($posts->reg_year)):
 		$fail.='<p class="border border-danger p-2">Invalid Registration Date: Enter registration year</p>';
 		$err++;
 	endif;
@@ -56,17 +55,15 @@ if(!empty($posts->signup) and $posts->signup=='register' and $sitePage=='registe
 		$fail.='<p class="border border-danger p-2">Invalid Child\'s Name: Enter child\'s middle name</p>';
 		$err++;
 	endif;
-	if( empty($posts->child_birth_day)  || $posts->child_birth_day < 1 || $posts->child_birth_day > 31 || 
-        ($posts->child_birth_day > date('d') && $posts->child_birth_month >= date('m') && $posts->child_birth_year >= date('y')) ):
+	if( empty($posts->child_birth_day)  || $posts->child_birth_day < 1 || $posts->child_birth_day > 31 ):
 		$fail.='<p class="border border-danger p-2">Invalid Child Birth Date: Enter child\'s birth day</p>';
 		$err++;
 	endif;
-    if( empty($posts->child_birth_month) || $posts->child_birth_month < 1 || $posts->child_birth_month > 12 || ( $posts->reg_month > date('m') 
-        && $posts->child_birth_year >= date('y')) ):
+    if( empty($posts->child_birth_month) || $posts->child_birth_month < 1 || $posts->child_birth_month > 12 ):
 		$fail.='<p class="border border-danger p-2">Invalid Child Birth Date: Enter child\'s birth month</p>';
 		$err++;
 	endif;
-	if( empty($posts->child_birth_year) || ($posts->child_birth_year < 10 || $posts->child_birth_year > date('y'))):
+	if( empty($posts->child_birth_year)):
 		$fail.='<p class="border border-danger p-2">Invalid Child Birth Date: Enter child\'s birth year</p>';
 		$err++;
 	endif;
@@ -191,7 +188,7 @@ if(!empty($posts->signup) and $posts->signup=='register' and $sitePage=='registe
 	endif;
 
     if ($err == 0) {
-		$genRefid=getToken(8).$ezDb->get_var("SELECT IFNULL((`id`+1),'1') FROM `birth_registration` ORDER BY `id` DESC LIMIT 1;");
+		$genRefid=getToken(15).$ezDb->get_var("SELECT IFNULL((`id`+1),'1') FROM `birth_registration` ORDER BY `id` DESC LIMIT 1;");
 		$ezDb->query("INSERT INTO `birth_registration` (`registration_id`, `center`, `register_volume`, `town`, `entry_number`, `lga`, `reg_day`, `reg_month`, `reg_year`, 
         `state`, `child_surname`, `child_firstname`, `child_other_name`, `child_birth_day`, `child_birth_month`, `child_birth_year`, `sex`, `place_of_birth`, `town_village`, 
         `mother_surname`, `mother_firstname`, `mother_place_of_residence`, `mother_age`, `mother_marital_status`, `mother_nationality`, 

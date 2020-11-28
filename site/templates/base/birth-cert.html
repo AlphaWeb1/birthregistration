@@ -1,0 +1,107 @@
+<!--{extends 'default.html'}-->
+
+<!--{block name="login"}-->
+<section class="row no-gutters justify-content-end bg-image-1">
+    <!--{if !empty($birth_reg)}-->
+        <div class="card col-sm-10 my-5 float-left p-2 birth-cert-frame"  id="printMe">
+            <div class="card birth-cert-frame">
+                <fieldset class="p-4 mt-3 birth-cert-frame">
+                    <legend class="text-center mb-4">
+                        <h3 class="font-weight-bold">
+                            <img class="coat-logo" src="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/site/media/i/logo0.jpg" alt="Nigerian Coat of Arm">
+                        </h3> <span class="text-right float-right font-weight-bold text-uppercase">ORIGINAL</span>
+                        <h3 class="text-uppercase">
+                            FEDERAL REPUBLIC OF NIGERIA <br/>
+                            <span class="font-weight-bold">NATIONAL POPULATION COMMISSION</span>
+                        </h3>
+                    </legend>
+                    
+                    <div class="form-row">
+                        <div class="col-sm-12 text-center">
+                            <h5 class="text-uppercase"><u>Certificate of Birth</u></h5>
+                            <p class="h6">Issue under the Births and Deaths Etc. (Compulsory Regulation) Decree 69 of 1992</p>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <h5 class="my-2"><span class="float-left">Registration Center:&nbsp;</span> <!--{$birth_reg->center}--></h5>
+                            <h5 class="my-2"><span class="float-left">Town / Village:&nbsp;</span> <!--{$birth_reg->town}--></h5>
+                            <h5 class="my-2"><span class="float-left">L.G.A.:&nbsp;</span> <!--{$birth_reg->lga}--></h5>
+                            <h5 class="my-2"><span class="float-left">State:&nbsp;</span> <!--{$birth_reg->state}--></h5>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <p class="h5 my-3 text-center">Certficate Number:</p>
+                            <div class="my-3 text-center">
+                                <h5 class="d-inline-flex">
+                                    <span><u><!--{$birth_reg->register_volume}--></u>&nbsp;/&nbsp;<br/>&nbsp;Volume&nbsp;</span>
+                                    <span><u><!--{$birth_reg->register_volume}--></u>&nbsp;/&nbsp;<br/>&nbsp;Year&nbsp;</span>
+                                    <span><u><!--{$birth_reg->reg_year}--></u>&nbsp;<br/>&nbsp;Entry No</span>
+                                </h5>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 text-center">
+                            <p class="h6">This is to certify that thye birth details of which are recorded herein, has been registered on.</p>
+                            <h6 class="d-inline-flex">
+                                <span><u><!--{$birth_reg->reg_day}--></u><br/>Day</span>&nbsp;/&nbsp;<span><u><!--{$birth_reg->reg_month}--></u><br/>Month</span>&nbsp;/&nbsp;
+                                <span><u><!--{$birth_reg->reg_year}--></u><br/>Year</span>
+                                &nbsp;at this Registration Center
+                            </h6>
+                        </div>
+                        <div class="col-sm-12 text-left">
+                            <h5 class="h5 my-3">
+                                <span>1.&nbsp;&nbsp;&nbsp;&nbsp;Full Name:&nbsp;&nbsp;
+                                    <!--{$birth_reg->child_surname}--> <!--{$birth_reg->child_firstname}--> <!--{$birth_reg->child_other_name}-->
+                                </span>
+                            </h5>
+                            <h5 class="h5 my-3 text-center">
+                                <span class="float-left">2.&nbsp;&nbsp;&nbsp;&nbsp;Sex:&nbsp;<!--{$birth_reg->sex}-->&nbsp;</span>
+                                <span class="h5 d-inline-flex">3.&nbsp;&nbsp;&nbsp;&nbsp;Date of Birth:&nbsp;
+                                    <span><u><!--{$birth_reg->child_birth_day}--></u><br/>Day</span>&nbsp;/&nbsp;<span><u><!--{$birth_reg->child_birth_month}--></u><br/>Month</span>&nbsp;/&nbsp;
+                                    <span><u><!--{$birth_reg->child_birth_year}--></u><br/>Year</span>
+                                </span>
+                            </h5>
+                            <h5 class="h5 my-3">
+                                <span>
+                                    4.&nbsp;&nbsp;&nbsp;&nbsp;Place or Birth:&nbsp;&nbsp; <!--{$birth_reg->town_village}--> <!--{$birth_reg->place_of_birth}--> Town / Village
+                                </span>
+                            </h5>
+                            <h5 class="h5 my-3">
+                                <span>5.&nbsp;&nbsp;&nbsp;&nbsp;Full name of Father:&nbsp;&nbsp;
+                                    <!--{$birth_reg->father_surname}--> <!--{$birth_reg->father_firstname}-->
+                                </span>
+                            </h5>
+                            <h5 class="h5 my-3">
+                                <span>6.&nbsp;&nbsp;&nbsp;&nbsp;Full name of Mother:&nbsp;&nbsp;
+                                    <!--{$birth_reg->mother_surname}--> <!--{$birth_reg->mother_firstname}-->
+                                </span>
+                            </h5>
+                        </div>
+                        <div class="col-sm-12 text-left">
+                            <h5 class="my-5">
+                                <span class="float-left">Place of Issue:&nbsp;<!--{$birth_reg->lga}--> <!--{$birth_reg->state}-->&nbsp;</span>
+                                <span class=" float-right">Name of Register:&nbsp;_____________</span>
+                            </h5>
+                        </div>
+                        <div class="col-sm-12 text-left">
+                            <h5 class="my-3">
+                                <span class="float-left">Date:&nbsp;<!--{$birth_reg->updated_at}-->&nbsp;</span>
+                                <span class=" float-right">Signature:&nbsp;__________________</span>
+                            </h5>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-sm-12">
+                            <button class="btn btn-sm btn-info rounded-0" id="printSect"><i class="fa fa-print"></i> Print</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    <!--{else}-->
+        <div class="col-sm-10 form-group mb-3">
+            <h6 class="text-center">No record found</h6>
+        </div>
+    <!--{/if}-->
+</section>
+
+<!--{/block}-->
+<!--{block name="general-message"}-->
+<!--{/block}-->

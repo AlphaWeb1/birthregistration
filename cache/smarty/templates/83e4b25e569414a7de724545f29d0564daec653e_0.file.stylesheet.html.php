@@ -1,23 +1,76 @@
+<?php /* Smarty version 3.1.27, created on 2020-11-28 12:17:06
+         compiled from "C:\wamp\www\birthregistration\site\templates\root\stylesheet.html" */ ?>
+<?php
+/*%%SmartyHeaderCode:136075fc231b223d108_88142641%%*/
+if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    '83e4b25e569414a7de724545f29d0564daec653e' => 
+    array (
+      0 => 'C:\\wamp\\www\\birthregistration\\site\\templates\\root\\stylesheet.html',
+      1 => 1606556926,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '136075fc231b223d108_88142641',
+  'variables' => 
+  array (
+    'Site' => 0,
+    'sitePage' => 0,
+  ),
+  'has_nocache_code' => false,
+  'version' => '3.1.27',
+  'unifunc' => 'content_5fc231b2b12d56_44613247',
+),false);
+/*/%%SmartyHeaderCode%%*/
+if ($_valid && !is_callable('content_5fc231b2b12d56_44613247')) {
+function content_5fc231b2b12d56_44613247 ($_smarty_tpl) {
+
+$_smarty_tpl->properties['nocache_hash'] = '136075fc231b223d108_88142641';
+?>
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
 
-<link rel="stylesheet" type="text/css" href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/lib/common/datatables/css/datatables.min.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo $_smarty_tpl->tpl_vars['Site']->value['siteProtocol'];
+echo $_smarty_tpl->tpl_vars['Site']->value['domainName'];?>
+/lib/common/datatables/css/datatables.min.css" />
 
 <!-- Bootstrap CSS File -->
-<link href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/lib/common/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="<?php echo $_smarty_tpl->tpl_vars['Site']->value['siteProtocol'];
+echo $_smarty_tpl->tpl_vars['Site']->value['domainName'];?>
+/lib/common/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 <!-- Libraries CSS Files -->
-<link href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/lib/common/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-<link href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/lib/common/animate/animate.min.css" rel="stylesheet">
-<link href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/lib/common/ionicons/css/ionicons.min.css" rel="stylesheet">
-<link href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/lib/common/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-<link href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/lib/common/lightbox/css/lightbox.min.css" rel="stylesheet">
-<!--{if !empty($sitePage) and in_array($sitePage, array('add_news', 'edit_news', 'newsletter'))}-->
-<link rel="stylesheet" href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/lib/common/quilljs/quill.core.css">
-<link rel="stylesheet" href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/lib/common/quilljs/quill.bubble.css">
-<link rel="stylesheet" href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/lib/common/quilljs/quill.snow.css">
-<!--{/if}-->
-<link rel="stylesheet" type="text/css" href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/lib/common/css/style.css">
+<link href="<?php echo $_smarty_tpl->tpl_vars['Site']->value['siteProtocol'];
+echo $_smarty_tpl->tpl_vars['Site']->value['domainName'];?>
+/lib/common/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+<link href="<?php echo $_smarty_tpl->tpl_vars['Site']->value['siteProtocol'];
+echo $_smarty_tpl->tpl_vars['Site']->value['domainName'];?>
+/lib/common/animate/animate.min.css" rel="stylesheet">
+<link href="<?php echo $_smarty_tpl->tpl_vars['Site']->value['siteProtocol'];
+echo $_smarty_tpl->tpl_vars['Site']->value['domainName'];?>
+/lib/common/ionicons/css/ionicons.min.css" rel="stylesheet">
+<link href="<?php echo $_smarty_tpl->tpl_vars['Site']->value['siteProtocol'];
+echo $_smarty_tpl->tpl_vars['Site']->value['domainName'];?>
+/lib/common/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+<link href="<?php echo $_smarty_tpl->tpl_vars['Site']->value['siteProtocol'];
+echo $_smarty_tpl->tpl_vars['Site']->value['domainName'];?>
+/lib/common/lightbox/css/lightbox.min.css" rel="stylesheet">
+<?php if (!empty($_smarty_tpl->tpl_vars['sitePage']->value) && in_array($_smarty_tpl->tpl_vars['sitePage']->value,array('add_news','edit_news','newsletter'))) {?>
+<link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['Site']->value['siteProtocol'];
+echo $_smarty_tpl->tpl_vars['Site']->value['domainName'];?>
+/lib/common/quilljs/quill.core.css">
+<link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['Site']->value['siteProtocol'];
+echo $_smarty_tpl->tpl_vars['Site']->value['domainName'];?>
+/lib/common/quilljs/quill.bubble.css">
+<link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['Site']->value['siteProtocol'];
+echo $_smarty_tpl->tpl_vars['Site']->value['domainName'];?>
+/lib/common/quilljs/quill.snow.css">
+<?php }?>
+<link rel="stylesheet" type="text/css" href="<?php echo $_smarty_tpl->tpl_vars['Site']->value['siteProtocol'];
+echo $_smarty_tpl->tpl_vars['Site']->value['domainName'];?>
+/lib/common/css/style.css">
 <style type="text/css">
 /*Root Styles*/
 body,.main-container-wrapper,.dashboard-wrapper {
@@ -361,11 +414,11 @@ someDiv {
 	background-color: rgb(0,0,0,.7);
 	box-shadow: 10, 0, 10, 10;
 	padding: 60px 20px; 
-	<!--{if $sitePage=='security'}-->
-	    <!--{if !empty($Site.session.Site.User.security2)}-->
+	<?php if ($_smarty_tpl->tpl_vars['sitePage']->value == 'security') {?>
+	    <?php if (!empty($_smarty_tpl->tpl_vars['Site']->value['session']['Site']['User']['security2'])) {?>
 	     	display: none;
-	    <!--{/if}-->
-	<!--{/if}-->
+	    <?php }?>
+	<?php }?>
 }
 .login-shield>div>div{/*Security Page*/
 	margin: 50px 0px;
@@ -486,7 +539,7 @@ tr.collapse.show {
 .show{	display: block; }
 .hide{ display: none; }
 /*Settings Styling*/
-<!--{if $sitePage=='settings'}-->
+<?php if ($_smarty_tpl->tpl_vars['sitePage']->value == 'settings') {?>
 /*div.col-sm-6.justify-content-center{
 	margin-top: 30px;
 }
@@ -505,7 +558,7 @@ div.col-sm-6.justify-content-center fieldset legend{
     max-height: 200px;
     margin-top: 10px;
 }
-<!--{/if}-->
+<?php }?>
 /*Footer Styles*/
 footer {
 	background-color: #f7f7f7;
@@ -674,4 +727,6 @@ footer {
         max-height: 150px;
     }
 </style>
-<noscript><style type="text/css">.jsonly{display: none;}</style></noscript>
+<noscript><style type="text/css">.jsonly{display: none;}</style></noscript><?php }
+}
+?>

@@ -1,27 +1,34 @@
-<?php
+<?php 
 
+$regId = !empty($gets->id) ? $gets->id : '';
+
+$birth_reg = $ezDb->get_row("SELECT * FROM `birth_registration` WHERE `registration_id`= '$regId'");
+
+if (empty($birth_reg)) {
+    redirect("registered-all");
+}
 
 $countries=getCountries();
 $states=getStates('Nigeria');
-if(!empty($posts->register) and $posts->register=='register' and $sitePage=='registered-manual'):
+if(!empty($posts->edit) and $posts->register=='edit' and $sitePage=='edit-birth'):
     $fail = '';
     $err = 0;
 	if( empty($posts->center) ):
 		$fail.='<p class="border border-danger p-2">Invalid Birth Center: Enter birth center</p>';
 		$err++;
 	endif;
-	// if( empty($posts->register_volume) ):
-	// 	$fail.='<p class="border border-danger p-2">Invalid Center Register Volume: Enter register volume</p>';
-	// 	$err++;
-	// endif;
+	if( empty($posts->register_volume) ):
+		$fail.='<p class="border border-danger p-2">Invalid Center Register Volume: Enter register volume</p>';
+		$err++;
+	endif;
 	if( empty($posts->town) ):
 		$fail.='<p class="border border-danger p-2">Invalid Center Town / Village: Enter town or village</p>';
 		$err++;
 	endif;
-	// if( empty($posts->entry_number) ):
-	// 	$fail.='<p class="border border-danger p-2">Invalid Center Entry Number: Enter birth entry number</p>';
-	// 	$err++;
-	// endif;
+	if( empty($posts->entry_number) ):
+		$fail.='<p class="border border-danger p-2">Invalid Center Entry Number: Enter birth entry number</p>';
+		$err++;
+	endif;
 	if( empty($posts->lga) ):
 		$fail.='<p class="border border-danger p-2">Invalid Center Local Government Area: Enter local government area</p>';
 		$err++;
@@ -189,20 +196,20 @@ if(!empty($posts->register) and $posts->register=='register' and $sitePage=='reg
 
     if ($err == 0) {
 		$genRefid=getToken(15).$ezDb->get_var("SELECT IFNULL((`id`+1),'1') FROM `birth_registration` ORDER BY `id` DESC LIMIT 1;");
-		$ezDb->query("INSERT INTO `birth_registration` (`registration_id`, `center`, `register_volume`, `town`, `entry_number`, `lga`, `reg_day`, `reg_month`, `reg_year`, 
+		$ezDb->query("UPDATE `birth_registration` SET  `center`='$posts->center', `register_volume`, `town`, `entry_number`, `lga`, `reg_day`, `reg_month`, `reg_year`, 
         `state`, `child_surname`, `child_firstname`, `child_other_name`, `child_birth_day`, `child_birth_month`, `child_birth_year`, `sex`, `place_of_birth`, `town_village`, 
         `mother_surname`, `mother_firstname`, `mother_place_of_residence`, `mother_age`, `mother_marital_status`, `mother_nationality`, 
         `mother_state`, `mother_ethnic`, `mother_literacy`, `mother_level_of_education`, `father_surname`, `father_firstname`, `father_place_of_residence`, 
         `father_age`, `father_marital_status`, `father_nationality`, `father_state`, `father_ethnic`, `father_literacy`, `father_level_of_education`, 
         `informant_relationship_to_child`, `informant_surname`, `informant_firstname`, `informant_place_of_residence`, `informant_email`, `status`, `updated_at`, `created_at`) 
-        VALUES ('$genRefid', '$posts->center', '$posts->register_volume', '$posts->town', '$posts->entry_number', '$posts->lga', '$posts->reg_day', '$posts->reg_month', 
+        VALUES , '$posts->register_volume', '$posts->town', '$posts->entry_number', '$posts->lga', '$posts->reg_day', '$posts->reg_month', 
         '$posts->reg_year', '$posts->state', '$posts->child_surname', '$posts->child_firstname', '$posts->child_other_name', '$posts->child_birth_day', 
         '$posts->child_birth_month', '$posts->child_birth_year', '$posts->sex', '$posts->place_of_birth', '$posts->town_village', '$posts->mother_surname', 
         '$posts->mother_firstname', '$posts->mother_place_of_residence', '$posts->mother_age', '$posts->mother_marital_status', '$posts->mother_nationality', 
         '$posts->mother_state', '$posts->mother_ethnic', '$posts->mother_literacy', '$posts->mother_level_of_education', '$posts->father_surname', '$posts->father_firstname', 
         '$posts->father_place_of_residence', '$posts->father_age', '$posts->father_marital_status', '$posts->father_nationality', '$posts->father_state', 
         '$posts->father_ethnic', '$posts->father_literacy', '$posts->father_level_of_education', '$posts->informant_relationship_to_child', '$posts->informant_surname', 
-        '$posts->informant_firstname', '$posts->informant_place_of_residence', '$posts->informant_email', '1', '$dateNow', '$dateNow');");
+        '$posts->informant_firstname', '$posts->informant_place_of_residence', '$posts->informant_email', '1', '$dateNow', '$dateNow' WHERE `registration_id`='$regId';");
 
         require_once 'mail_success_registration.php';
         
@@ -215,5 +222,4 @@ if(!empty($posts->register) and $posts->register=='register' and $sitePage=='reg
 
 endif;
 
-
-$smarty->assign("states", $states);
+$smarty->assign('birth_reg', $birth_reg)->assign('regId', $regId);

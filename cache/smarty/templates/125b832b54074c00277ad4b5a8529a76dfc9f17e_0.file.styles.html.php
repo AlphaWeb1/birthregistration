@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.27, created on 2020-11-26 18:16:19
+<?php /* Smarty version 3.1.27, created on 2020-11-28 12:17:17
          compiled from "C:\wamp\www\birthregistration\site\templates\base\styles.html" */ ?>
 <?php
-/*%%SmartyHeaderCode:44995fbfe2e3536088_99063893%%*/
+/*%%SmartyHeaderCode:299915fc231bd805540_23218128%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,24 +9,24 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '125b832b54074c00277ad4b5a8529a76dfc9f17e' => 
     array (
       0 => 'C:\\wamp\\www\\birthregistration\\site\\templates\\base\\styles.html',
-      1 => 1605530086,
+      1 => 1606561884,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '44995fbfe2e3536088_99063893',
+  'nocache_hash' => '299915fc231bd805540_23218128',
   'variables' => 
   array (
     'Site' => 0,
   ),
   'has_nocache_code' => false,
   'version' => '3.1.27',
-  'unifunc' => 'content_5fbfe2e36f10f1_58637996',
+  'unifunc' => 'content_5fc231bddebe17_03725941',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_5fbfe2e36f10f1_58637996')) {
-function content_5fbfe2e36f10f1_58637996 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_5fc231bddebe17_03725941')) {
+function content_5fc231bddebe17_03725941 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '44995fbfe2e3536088_99063893';
+$_smarty_tpl->properties['nocache_hash'] = '299915fc231bd805540_23218128';
 ?>
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
@@ -354,6 +354,13 @@ nav#nav-menu-container ul li:hover, nav#nav-menu-container ul li.menu-active, .n
 .pspace-maxh{
     max-height: 400px;
     overflow-y: auto;
+}
+.birth-cert-frame{
+	background: #fffad9;
+	color: #000;
+}
+.coat-logo{
+	max-height: 150px;
 }
 </style>
 

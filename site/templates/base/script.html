@@ -40,6 +40,7 @@
 	/*Old Important JS*/
 	$("body").addClass("js");
 	let indexer=0;
+	let printTitle= `Nigerian Population Commission: Birth Certificate`;
 	window.addEventListener('scroll', function() {
 		// windowScroll();
 	});
@@ -101,6 +102,12 @@
 				$(this).hide();
 				printData('printMe', '<!--{$Site.companyName}-->: Printing');
 				$("#printNow").show();
+			});
+			/*Print Event Handler*/
+			$(document).on('click',"#printSect", function() {
+				$("#printSect").hide();
+				printData('printMe', '<!--{$Site.companyName}-->: Manage');
+				$("#printSect").show();
 			});
 	    	$(document).on('click', ".icon-bar", function() {
 	    		$("#nav-menu-container").fadeToggle('slow').toggleClass('showMenu');

@@ -1,11 +1,17 @@
-<?php /* Smarty version 3.1.27, created on 2020-11-28 12:17:25
-         compiled from "C:\wamp\www\birthregistration\site\templates\base\default.html" */ ?>
+<?php /* Smarty version 3.1.27, created on 2020-11-28 12:17:08
+         compiled from "C:\wamp\www\birthregistration\site\templates\base\find-registration.html" */ ?>
 <?php
-/*%%SmartyHeaderCode:65255fc231c59f5417_46923297%%*/
+/*%%SmartyHeaderCode:48735fc231b40a8f95_36592556%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
+    'e631103dc25bd97d9d6449776397c74523f88485' => 
+    array (
+      0 => 'C:\\wamp\\www\\birthregistration\\site\\templates\\base\\find-registration.html',
+      1 => 1606553115,
+      2 => 'file',
+    ),
     '1520cf1ca0cb00b5bdc5e9633dd8a6a98982cc1e' => 
     array (
       0 => 'C:\\wamp\\www\\birthregistration\\site\\templates\\base\\default.html',
@@ -24,14 +30,26 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       1 => 1587175773,
       2 => 'file',
     ),
+    '708103ae7a6909660d1c4f9f8c0c27470cd52dc1' => 
+    array (
+      0 => '708103ae7a6909660d1c4f9f8c0c27470cd52dc1',
+      1 => 0,
+      2 => 'string',
+    ),
     'e13f02a258e0ef1a5104493ac8a272c464ce5155' => 
     array (
       0 => 'C:\\wamp\\www\\birthregistration\\site\\templates\\base\\modal-file.html',
       1 => 1587823471,
       2 => 'file',
     ),
+    'c4f29984150e7dd0acdb2a43116e8610308ec7b7' => 
+    array (
+      0 => 'c4f29984150e7dd0acdb2a43116e8610308ec7b7',
+      1 => 0,
+      2 => 'string',
+    ),
   ),
-  'nocache_hash' => '65255fc231c59f5417_46923297',
+  'nocache_hash' => '48735fc231b40a8f95_36592556',
   'variables' => 
   array (
     'Site' => 0,
@@ -42,14 +60,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => '3.1.27',
-  'unifunc' => 'content_5fc231c7ab7857_87864125',
+  'unifunc' => 'content_5fc231b74c0217_70621800',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_5fc231c7ab7857_87864125')) {
-function content_5fc231c7ab7857_87864125 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_5fc231b74c0217_70621800')) {
+function content_5fc231b74c0217_70621800 ($_smarty_tpl) {
 if (!is_callable('smarty_modifier_capitalize')) require_once 'C:\\wamp\\www\\birthregistration\\lib\\Smarty\\plugins\\modifier.capitalize.php';
 
-$_smarty_tpl->properties['nocache_hash'] = '65255fc231c59f5417_46923297';
+$_smarty_tpl->properties['nocache_hash'] = '48735fc231b40a8f95_36592556';
 ?>
 <!DOCTYPE html>
 <?php echo $_smarty_tpl->getSubTemplate ('declare.html', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0);
@@ -83,14 +101,14 @@ echo $_smarty_tpl->tpl_vars['Site']->value['domainName'];?>
     <body class="body">
 		
 			<?php /*  Call merged included template "header.html" */
-echo $_smarty_tpl->getInlineSubTemplate('header.html', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, '155555fc231c60fd285_34569083', 'content_5fc231c60f7d13_57573205');
+echo $_smarty_tpl->getInlineSubTemplate('header.html', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, '202715fc231b482b784_34285661', 'content_5fc231b4824581_30161490');
 /*  End of included template "header.html" */?>
 
 		
 		
 			
 				<?php /*  Call merged included template "main-slider.html" */
-echo $_smarty_tpl->getInlineSubTemplate('main-slider.html', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, '206015fc231c6a7aa00_20371847', 'content_5fc231c6a76074_23183431');
+echo $_smarty_tpl->getInlineSubTemplate('main-slider.html', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, '222135fc231b54d5b80_89704930', 'content_5fc231b54d0cb7_74754199');
 /*  End of included template "main-slider.html" */?>
 
 			
@@ -98,63 +116,188 @@ echo $_smarty_tpl->getInlineSubTemplate('main-slider.html', $_smarty_tpl->cache_
 			<main id="main wow fadeInUp slow">
 			
 			
-				
-				<section class="row no-gutters justify-content-end bg-image-1">
-					<div class="col-sm-6 float-left text-dark p-4" id="logn-frame">
-						<div class="card p-5 mt-5">
-							<h2 class="text-center py-4">Birth Registration Statistics</h2>
-							<div id="complexPromo" class="carousel slide" data-ride="carousel">
-							  <div class="carousel-inner">
-							    <div class="carousel-item active">
-							      <h4 class="pt-2 text-center">Total Registered: <span class="badge badge-success"><?php echo $_smarty_tpl->tpl_vars['summary']->value->birth_reg_all;?>
-</span></h4>
-							    </div>
-							    <div class="carousel-item">
-							      <h4 class="pt-2 text-center">Total Approve: <span class="badge badge-success"><?php echo $_smarty_tpl->tpl_vars['summary']->value->birth_reg_approved;?>
-</span></h4>
-							    </div>
-							    <div class="carousel-item">
-							      <h4 class="pt-2 text-center">Total Pending: <span class="badge badge-success"><?php echo $_smarty_tpl->tpl_vars['summary']->value->birth_reg_new;?>
-</span></h4>
-							    </div>
-							  </div>
-							  <a class="carousel-control-prev d-none" href="#complexPromo" role="button" data-slide="prev">
-							    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-							    <span class="sr-only">Previous</span>
-							  </a>
-							  <a class="carousel-control-next d-none" href="#complexPromo" role="button" data-slide="next">
-							    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-							    <span class="sr-only">Next</span>
-							  </a>
-							</div>
-						</div>
-					</div>
-					<div class="card col-sm-5 my-5 float-right p-3" id="logn-frame">
-	                    <form method="get" action="<?php echo $_smarty_tpl->tpl_vars['Site']->value['siteProtocol'];
+				<?php
+$_smarty_tpl->properties['nocache_hash'] = '48735fc231b40a8f95_36592556';
+?>
+
+    <section class="row no-gutters justify-content-end bg-image-1">
+        <div class="card col-sm-10 my-5 float-left p-3" id="logn-frame">
+            <form method="get" action="<?php echo $_smarty_tpl->tpl_vars['Site']->value['siteProtocol'];
 echo $_smarty_tpl->tpl_vars['Site']->value['domainName'];?>
 /find-registration">
-	                        <fieldset class="card p-2 mt-3">
-	                            <legend class="text-center mb-4"><h3 class="font-weight-bold">Search for Detail</h3></legend>
-	                            <div class="form-group text-justify mb-2">
-	                                <label for="regId">Registration Id</label>
-	                                <input type="text" id="regId" name="regId" placeholder="Enter Registration Id" class="form-control badge-pill" required="">
-	                            </div>
-	                            <div class="form-group text-center">
-	                                <button class="btn btn-success btn-block badge-pill" type="submit">Find Certificate</button>
-	                            </div>
-	                            <div class="form-group text-center">
-	                                <h6 class="font-weight-bold">OR</h6>    
-	                            </div>
-	                            <div class="form-group text-center">
-	                                <a class="btn btn-link" href="<?php echo $_smarty_tpl->tpl_vars['Site']->value['siteProtocol'];
+                <fieldset class="card p-2">
+                    <legend class="text-center"><h3 class="font-weight-bold">Search for Detail</h3></legend>
+                    <div class="form-group text-justify mb-2">
+                        <label for="regId">Registration Id</label>
+                        <input type="text" id="regId" name="regId" value="<?php if (!empty($_smarty_tpl->tpl_vars['Site']->value['get']['regId'])) {
+echo $_smarty_tpl->tpl_vars['Site']->value['get']['regId'];
+}?>" placeholder="Enter Registration Id" class="form-control badge-pill" required="">
+                    </div>
+                    <div class="form-group text-center">
+                        <button class="btn btn-success btn-block badge-pill" type="submit">Find Certificate</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        <?php if (!empty($_smarty_tpl->tpl_vars['birth_reg']->value)) {?>
+            <div class="card col-sm-10 my-5 float-left p-3" id="logn-frame">
+                <fieldset class="card p-4 mt-3">
+                    <legend class="text-center mb-4"><h3 class="font-weight-bold"><i class="fa fa-certificate"></i> Birth Registration Detail</h3></legend>
+                    
+                    <div class="form-row">
+                        <div class="col-sm-12"><h4 class="text-center">Birth Center</h4></div>
+                        <div class="form-group col-sm-6">
+                            <h5 class="my-2"><span class="float-left">Registration Center: </span> <?php echo $_smarty_tpl->tpl_vars['birth_reg']->value->center;?>
+</h5>
+                            <h5 class="my-2"><span class="float-left">Town / Village: </span> <?php echo $_smarty_tpl->tpl_vars['birth_reg']->value->town;?>
+</h5>
+                            <h5 class="my-2"><span class="float-left">Local Government Area: </span> <?php echo $_smarty_tpl->tpl_vars['birth_reg']->value->lga;?>
+</h5>
+                            <h5 class="my-2"><span class="float-left">State: </span> <?php echo $_smarty_tpl->tpl_vars['birth_reg']->value->state;?>
+</h5>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <h5 class="my-2"><span class="float-left">Register Volume: </span> <?php echo $_smarty_tpl->tpl_vars['birth_reg']->value->register_volume;?>
+</h5>
+                            <h5 class="my-2"><span class="float-left">Entry Number: </span> <?php echo $_smarty_tpl->tpl_vars['birth_reg']->value->entry_number;?>
+</h5>
+                            <h5 class="my-2"><span class="float-left">Date of Registration: </span> <?php echo $_smarty_tpl->tpl_vars['birth_reg']->value->reg_day;?>
+ - <?php echo $_smarty_tpl->tpl_vars['birth_reg']->value->reg_month;?>
+ - <?php echo $_smarty_tpl->tpl_vars['birth_reg']->value->reg_year;?>
+</h5>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-sm-12"><h4 class="text-center">Particulars of Child</h4></div>
+                        <div class="form-group col-sm-12">
+                            <h5 class="my-2"><span class="float-left">Child Name: </span> <?php echo $_smarty_tpl->tpl_vars['birth_reg']->value->child_surname;?>
+ <?php echo $_smarty_tpl->tpl_vars['birth_reg']->value->child_firstname;?>
+ <?php echo $_smarty_tpl->tpl_vars['birth_reg']->value->child_other_name;?>
+</h5>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <h5 class="my-2"><span class="float-left">Date of Birth: </span> <?php echo $_smarty_tpl->tpl_vars['birth_reg']->value->child_birth_day;?>
+ - <?php echo $_smarty_tpl->tpl_vars['birth_reg']->value->child_birth_month;?>
+ - <?php echo $_smarty_tpl->tpl_vars['birth_reg']->value->child_birth_year;?>
+</h5>
+                            <h5 class="my-2"><span class="float-left">Place of Birth: </span> <?php echo ucwords($_smarty_tpl->tpl_vars['birth_reg']->value->place_of_birth);?>
+</h5>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <h5 class="my-2"><span class="float-left">Sex: </span> <?php echo ucwords($_smarty_tpl->tpl_vars['birth_reg']->value->sex);?>
+</h5>
+                            <h5 class="my-2"><span class="float-left">Village / Town: </span> <?php echo $_smarty_tpl->tpl_vars['birth_reg']->value->town_village;?>
+</h5>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-sm-12"><h4 class="text-center">Particulars of Mother</h4></div>
+                        <div class="form-group col-sm-12">
+                            <h5 class="my-2"><span class="float-left">Mother's Name: </span> <?php echo $_smarty_tpl->tpl_vars['birth_reg']->value->mother_surname;?>
+ <?php echo $_smarty_tpl->tpl_vars['birth_reg']->value->mother_firstname;?>
+</h5>
+                            <h5 class="my-2"><span class="float-left">Place of Residence: </span> <?php echo $_smarty_tpl->tpl_vars['birth_reg']->value->mother_place_of_residence;?>
+</h5>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <h5 class="my-2"><span class="float-left">Age at Birth of Child: </span> <?php echo $_smarty_tpl->tpl_vars['birth_reg']->value->mother_age;?>
+</h5>
+                            <h5 class="my-2"><span class="float-left">Nationality: </span> <?php echo ucwords($_smarty_tpl->tpl_vars['birth_reg']->value->mother_nationality);?>
+</h5>
+                            <h5 class="my-2"><span class="float-left">Literacy: </span> <?php echo ucwords($_smarty_tpl->tpl_vars['birth_reg']->value->mother_literacy);?>
+</h5>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <h5 class="my-2"><span class="float-left">Marital Status: </span> <?php echo ucwords(str_replace('-',' ',$_smarty_tpl->tpl_vars['birth_reg']->value->mother_marital_status));?>
+</h5>
+                            <?php if (!empty($_smarty_tpl->tpl_vars['birth_reg']->value->mother_state)) {?>
+                            <h5 class="my-2"><span class="float-left">State of Origin: </span> <?php echo ucwords($_smarty_tpl->tpl_vars['birth_reg']->value->mother_state);?>
+</h5>
+                            <?php }?>
+                            <?php if (!empty($_smarty_tpl->tpl_vars['birth_reg']->value->mother_ethnic)) {?>
+                            <h5 class="my-2"><span class="float-left">Ethnic of Origin: </span> <?php echo ucwords($_smarty_tpl->tpl_vars['birth_reg']->value->mother_ethnic);?>
+</h5>
+                            <?php }?>
+                            <h5 class="my-2"><span class="float-left">Level of Education: </span> <?php echo $_smarty_tpl->tpl_vars['birth_reg']->value->mother_level_of_education;?>
+</h5>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-sm-12"><h4 class="text-center">Particulars of Father</h4></div>
+                        <div class="form-group col-sm-12">
+                            <h5 class="my-2"><span class="float-left">Father's Name: </span> <?php echo $_smarty_tpl->tpl_vars['birth_reg']->value->father_surname;?>
+ <?php echo $_smarty_tpl->tpl_vars['birth_reg']->value->father_firstname;?>
+</h5>
+                            <h5 class="my-2"><span class="float-left">Place of Residence: </span> <?php echo $_smarty_tpl->tpl_vars['birth_reg']->value->father_place_of_residence;?>
+</h5>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <h5 class="my-2"><span class="float-left">Age at Birth of Child: </span> <?php echo $_smarty_tpl->tpl_vars['birth_reg']->value->father_age;?>
+</h5>
+                            <h5 class="my-2"><span class="float-left">Nationality: </span> <?php echo ucwords($_smarty_tpl->tpl_vars['birth_reg']->value->father_nationality);?>
+</h5>
+                            <h5 class="my-2"><span class="float-left">Literacy: </span> <?php echo ucwords($_smarty_tpl->tpl_vars['birth_reg']->value->father_literacy);?>
+</h5>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <h5 class="my-2"><span class="float-left">Marital Status: </span> <?php echo ucwords(str_replace('-',' ',$_smarty_tpl->tpl_vars['birth_reg']->value->father_marital_status));?>
+</h5>
+                            <?php if (!empty($_smarty_tpl->tpl_vars['birth_reg']->value->father_state)) {?>
+                            <h5 class="my-2"><span class="float-left">State of Origin: </span> <?php echo ucwords($_smarty_tpl->tpl_vars['birth_reg']->value->father_state);?>
+</h5>
+                            <?php }?>
+                            <?php if (!empty($_smarty_tpl->tpl_vars['birth_reg']->value->father_ethnic)) {?>
+                            <h5 class="my-2"><span class="float-left">Ethnic of Origin: </span> <?php echo ucwords($_smarty_tpl->tpl_vars['birth_reg']->value->father_ethnic);?>
+</h5>
+                            <?php }?>
+                            <h5 class="my-2"><span class="float-left">Level of Education: </span> <?php echo $_smarty_tpl->tpl_vars['birth_reg']->value->father_level_of_education;?>
+</h5>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-sm-12"><h4class="text-center">Particulars of Informant / Guardian</h4></div>
+                        <div class="form-group col-sm-6">
+                            <h5 class="my-2"><span class="float-left">Informant's Active Email: </span> <?php echo $_smarty_tpl->tpl_vars['birth_reg']->value->informant_email;?>
+</h5>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <h5 class="my-2"><span class="float-left">Relationship to Child: </span> <?php echo $_smarty_tpl->tpl_vars['birth_reg']->value->informant_relationship_to_child;?>
+</h5>
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <h5 class="my-2"><span class="float-left">Full Name: </span> <?php echo $_smarty_tpl->tpl_vars['birth_reg']->value->informant_surname;?>
+ <?php echo $_smarty_tpl->tpl_vars['birth_reg']->value->informant_firstname;?>
+</h5>
+                            <h5 class="my-2"><span class="float-left">Place of Residence: </span> <?php echo $_smarty_tpl->tpl_vars['birth_reg']->value->informant_place_of_residence;?>
+</h5>
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <h4><span class="float-left">Status: </span>
+                                <?php if (isset($_smarty_tpl->tpl_vars['birth_reg']->value->status) && $_smarty_tpl->tpl_vars['birth_reg']->value->status == 1) {?><span class="badge badge-success">Approved</span>
+                                <?php } elseif (isset($_smarty_tpl->tpl_vars['birth_reg']->value->status) && $_smarty_tpl->tpl_vars['birth_reg']->value->status == 2) {?><span class="badge badge-danger">Declined</span>
+                                <?php } else { ?><span class="badge badge-info">Pending</span>
+                                <?php }?>
+                            </h4>
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <?php if (isset($_smarty_tpl->tpl_vars['birth_reg']->value->status) && $_smarty_tpl->tpl_vars['birth_reg']->value->status == 1) {?>
+                            <a class="btn btn-sm btn-info rounded-0"  href="<?php echo $_smarty_tpl->tpl_vars['Site']->value['siteProtocol'];
 echo $_smarty_tpl->tpl_vars['Site']->value['domainName'];?>
-/register">Register a New Birth Record</a>
-	                            </div>
-	                        </fieldset>
-	                    </form>
-					</div>
-				</section>
-				
+/birth-cert?id=<?php echo $_smarty_tpl->tpl_vars['birth_reg']->value->registration_id;?>
+"><i class="fa fa-ellipsis-v"></i> View Certificate</a>
+                            <?php }?>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        <?php } else { ?>
+            <div class="col-sm-10 form-group mb-3">
+                <h6 class="text-center">No record found</h6>
+            </div>
+        <?php }?>
+    </section>
+
+
 			
 			
 			</main>
@@ -162,16 +305,15 @@ echo $_smarty_tpl->tpl_vars['Site']->value['domainName'];?>
 		
 		
 			<?php /*  Call merged included template "modal-file.html" */
-echo $_smarty_tpl->getInlineSubTemplate('modal-file.html', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, '251195fc231c7202484_99213756', 'content_5fc231c71fc2b8_69270784');
+echo $_smarty_tpl->getInlineSubTemplate('modal-file.html', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, '115605fc231b6dc37c1_99721388', 'content_5fc231b6dbe188_75547258');
 /*  End of included template "modal-file.html" */?>
 
 		
-		
-			<?php if (!empty($_smarty_tpl->tpl_vars['fail']->value)) {?>
-				<?php echo $_smarty_tpl->tpl_vars['fail']->value;?>
+		<?php
+$_smarty_tpl->properties['nocache_hash'] = '48735fc231b40a8f95_36592556';
+?>
 
-			<?php }?>
-		
+
 		
 			<!--========================== Footer ============================-->
 		    <footer id="footer" class="footer-bg-img">
@@ -264,12 +406,12 @@ echo $_smarty_tpl->tpl_vars['Site']->value['domainName'];?>
 <?php }
 }
 ?><?php
-/*%%SmartyHeaderCode:155555fc231c60fd285_34569083%%*/
-if ($_valid && !is_callable('content_5fc231c60f7d13_57573205')) {
-function content_5fc231c60f7d13_57573205 ($_smarty_tpl) {
+/*%%SmartyHeaderCode:202715fc231b482b784_34285661%%*/
+if ($_valid && !is_callable('content_5fc231b4824581_30161490')) {
+function content_5fc231b4824581_30161490 ($_smarty_tpl) {
 ?>
 <?php
-$_smarty_tpl->properties['nocache_hash'] = '155555fc231c60fd285_34569083';
+$_smarty_tpl->properties['nocache_hash'] = '202715fc231b482b784_34285661';
 ?>
 <!--==========================  Header  ============================-->
 <header class="border border-top-0 border-left-0 border-right-0 border-success" id="header">
@@ -328,16 +470,16 @@ echo $_smarty_tpl->tpl_vars['Site']->value['domainName'];?>
     </div>
 </header><!-- #header -->
 <button type="button" class="btn btn-primary d-none" data-toggle="modal" data-target="#myModal3" id="contact-button"><b><i class="fa fa-headphones"></i> Contact</b></button><?php
-/*/%%SmartyNocache:155555fc231c60fd285_34569083%%*/
+/*/%%SmartyNocache:202715fc231b482b784_34285661%%*/
 }
 }
 ?><?php
-/*%%SmartyHeaderCode:206015fc231c6a7aa00_20371847%%*/
-if ($_valid && !is_callable('content_5fc231c6a76074_23183431')) {
-function content_5fc231c6a76074_23183431 ($_smarty_tpl) {
+/*%%SmartyHeaderCode:222135fc231b54d5b80_89704930%%*/
+if ($_valid && !is_callable('content_5fc231b54d0cb7_74754199')) {
+function content_5fc231b54d0cb7_74754199 ($_smarty_tpl) {
 ?>
 <?php
-$_smarty_tpl->properties['nocache_hash'] = '206015fc231c6a7aa00_20371847';
+$_smarty_tpl->properties['nocache_hash'] = '222135fc231b54d5b80_89704930';
 ?>
 <!--==========================Intro Section============================-->
 <section id="intro d-none">
@@ -431,16 +573,16 @@ echo $_smarty_tpl->tpl_vars['Site']->value['domainName'];?>
         </div>
     </div>
 </section><!-- #intro --><?php
-/*/%%SmartyNocache:206015fc231c6a7aa00_20371847%%*/
+/*/%%SmartyNocache:222135fc231b54d5b80_89704930%%*/
 }
 }
 ?><?php
-/*%%SmartyHeaderCode:251195fc231c7202484_99213756%%*/
-if ($_valid && !is_callable('content_5fc231c71fc2b8_69270784')) {
-function content_5fc231c71fc2b8_69270784 ($_smarty_tpl) {
+/*%%SmartyHeaderCode:115605fc231b6dc37c1_99721388%%*/
+if ($_valid && !is_callable('content_5fc231b6dbe188_75547258')) {
+function content_5fc231b6dbe188_75547258 ($_smarty_tpl) {
 ?>
 <?php
-$_smarty_tpl->properties['nocache_hash'] = '251195fc231c7202484_99213756';
+$_smarty_tpl->properties['nocache_hash'] = '115605fc231b6dc37c1_99721388';
 ?>
 <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModal1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document" >
@@ -507,7 +649,7 @@ echo $_smarty_tpl->tpl_vars['Site']->value['domainName'];?>
     <?php echo $_smarty_tpl->tpl_vars['msg']->value;?>
 
 <?php }?><?php
-/*/%%SmartyNocache:251195fc231c7202484_99213756%%*/
+/*/%%SmartyNocache:115605fc231b6dc37c1_99721388%%*/
 }
 }
 ?>

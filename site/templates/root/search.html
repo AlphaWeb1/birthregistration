@@ -15,7 +15,7 @@
                 <legend class="text-center"><h3 class="font-weight-bold">Search for Detail</h3></legend>
                 <div class="form-group text-justify mb-2">
                     <label for="regId">Registration Id</label>
-                    <input type="text" id="regId" name="regId" placeholder="Enter Registration Id" class="form-control badge-pill" required="">
+                    <input type="text" id="regId" name="regId" placeholder="Enter Registration Id" class="form-control badge-pill" value="<!--{$regId}-->" required="">
                 </div>
                 <div class="form-group text-center">
                     <button class="btn btn-success btn-block badge-pill" type="submit">Find Certificate</button>
@@ -23,8 +23,132 @@
             </fieldset>
         </form>
     </div>
-	<div class="col-sm-10 form-group my-3">
-        <h6 class="text-center">Under Development</h6>
-    </div>
+    <!--{if !empty($birth_reg)}-->
+        <div class="card col-sm-10 my-5 float-left p-3" id="logn-frame">
+            <fieldset class="card p-4 mt-3">
+                <legend class="text-center mb-4"><h3 class="font-weight-bold"><i class="fa fa-certificate"></i> Birth Registration Detail</h3></legend>
+                
+                <!--{if isset($birth_reg->status) and $birth_reg->status==0}-->
+                    <form action="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/search" method="post">
+                    <div class="form-group">
+                        <h4><span class="text-center font-weight-bold my-2">Verify Status: </span></h4>
+                        <select name="status" id="status" class="form-control form-control-lg badge-pill">
+                            <option value="1">Approve</option>
+                            <option value="2">Decline</option>
+                        </select>
+                        <input type="hidden" name="registration_id" value="<!--{$birth_reg->registration_id}-->">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-block badge-pill btn-info" name="update_status" value="update_status">Confirm Update</button>
+                    </div>
+                </form>
+                <!--{/if}-->
+                
+                <div class="form-row">
+                    <div class="col-sm-12"><h5 class="text-center">Birth Center</h5></div>
+                    <div class="form-group col-sm-6">
+                        <h5 class="my-2"><span class="float-left">Registration Center: </span> <!--{$birth_reg->center}--></h5>
+                        <h5 class="my-2"><span class="float-left">Town / Village: </span> <!--{$birth_reg->town}--></h5>
+                        <h5 class="my-2"><span class="float-left">Local Government Area: </span> <!--{$birth_reg->lga}--></h5>
+                        <h5 class="my-2"><span class="float-left">State: </span> <!--{$birth_reg->state}--></h5>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <h5 class="my-2"><span class="float-left">Register Volume: </span> <!--{$birth_reg->register_volume}--></h5>
+                        <h5 class="my-2"><span class="float-left">Entry Number: </span> <!--{$birth_reg->entry_number}--></h5>
+                        <h5 class="my-2"><span class="float-left">Date of Registration: </span> <!--{$birth_reg->reg_day}--> - <!--{$birth_reg->reg_month}--> - <!--{$birth_reg->reg_year}--></h5>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-sm-12"><h5 class="text-center">Particulars of Child</h5></div>
+                    <div class="form-group col-sm-12">
+                        <h5 class="my-2"><span class="float-left">Child Name: </span> <!--{$birth_reg->child_surname}--> <!--{$birth_reg->child_firstname}--> <!--{$birth_reg->child_other_name}--></h5>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <h5 class="my-2"><span class="float-left">Date of Birth: </span> <!--{$birth_reg->child_birth_day}--> - <!--{$birth_reg->child_birth_month}--> - <!--{$birth_reg->child_birth_year}--></h5>
+                        <h5 class="my-2"><span class="float-left">Place of Birth: </span> <!--{ucwords($birth_reg->place_of_birth)}--></h5>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <h5 class="my-2"><span class="float-left">Sex: </span> <!--{ucwords($birth_reg->sex)}--></h5>
+                        <h5 class="my-2"><span class="float-left">Village / Town: </span> <!--{$birth_reg->town_village}--></h5>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-sm-12"><h5 class="text-center">Particulars of Mother</h5></div>
+                    <div class="form-group col-sm-12">
+                        <h5 class="my-2"><span class="float-left">Mother's Name: </span> <!--{$birth_reg->mother_surname}--> <!--{$birth_reg->mother_firstname}--></h5>
+                        <h5 class="my-2"><span class="float-left">Place of Residence: </span> <!--{$birth_reg->mother_place_of_residence}--></h5>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <h5 class="my-2"><span class="float-left">Age at Birth of Child: </span> <!--{$birth_reg->mother_age}--></h5>
+                        <h5 class="my-2"><span class="float-left">Nationality: </span> <!--{ucwords($birth_reg->mother_nationality)}--></h5>
+                        <h5 class="my-2"><span class="float-left">Literacy: </span> <!--{ucwords($birth_reg->mother_literacy)}--></h5>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <h5 class="my-2"><span class="float-left">Marital Status: </span> <!--{ucwords(str_replace('-', ' ', $birth_reg->mother_marital_status))}--></h5>
+                        <!--{if !empty($birth_reg->mother_state)}-->
+                        <h5 class="my-2"><span class="float-left">State of Origin: </span> <!--{ucwords($birth_reg->mother_state)}--></h5>
+                        <!--{/if}-->
+                        <!--{if !empty($birth_reg->mother_ethnic)}-->
+                        <h5 class="my-2"><span class="float-left">Ethnic of Origin: </span> <!--{ucwords($birth_reg->mother_ethnic)}--></h5>
+                        <!--{/if}-->
+                        <h5 class="my-2"><span class="float-left">Level of Education: </span> <!--{$birth_reg->mother_level_of_education}--></h5>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-sm-12"><h5 class="text-center">Particulars of Father</h5></div>
+                    <div class="form-group col-sm-12">
+                        <h5 class="my-2"><span class="float-left">Father's Name: </span> <!--{$birth_reg->father_surname}--> <!--{$birth_reg->father_firstname}--></h5>
+                        <h5 class="my-2"><span class="float-left">Place of Residence: </span> <!--{$birth_reg->father_place_of_residence}--></h5>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <h5 class="my-2"><span class="float-left">Age at Birth of Child: </span> <!--{$birth_reg->father_age}--></h5>
+                        <h5 class="my-2"><span class="float-left">Nationality: </span> <!--{ucwords($birth_reg->father_nationality)}--></h5>
+                        <h5 class="my-2"><span class="float-left">Literacy: </span> <!--{ucwords($birth_reg->father_literacy)}--></h5>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <h5 class="my-2"><span class="float-left">Marital Status: </span> <!--{ucwords(str_replace('-', ' ', $birth_reg->father_marital_status))}--></h5>
+                        <!--{if !empty($birth_reg->father_state)}-->
+                        <h5 class="my-2"><span class="float-left">State of Origin: </span> <!--{ucwords($birth_reg->father_state)}--></h5>
+                        <!--{/if}-->
+                        <!--{if !empty($birth_reg->father_ethnic)}-->
+                        <h5 class="my-2"><span class="float-left">Ethnic of Origin: </span> <!--{ucwords($birth_reg->father_ethnic)}--></h5>
+                        <!--{/if}-->
+                        <h5 class="my-2"><span class="float-left">Level of Education: </span> <!--{$birth_reg->father_level_of_education}--></h5>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-sm-12"><h5 class="text-center">Particulars of Informant / Guardian</h5></div>
+                    <div class="form-group col-sm-6">
+                        <h5 class="my-2"><span class="float-left">Informant's Active Email: </span> <!--{$birth_reg->informant_email}--></h5>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <h5 class="my-2"><span class="float-left">Relationship to Child: </span> <!--{$birth_reg->informant_relationship_to_child}--></h5>
+                    </div>
+                    <div class="form-group col-sm-12">
+                        <h5 class="my-2"><span class="float-left">Full Name: </span> <!--{$birth_reg->informant_surname}--> <!--{$birth_reg->informant_firstname}--></h5>
+                        <h5 class="my-2"><span class="float-left">Place of Residence: </span> <!--{$birth_reg->informant_place_of_residence}--></h5>
+                    </div>
+                    <div class="form-group col-sm-12">
+                        <h4><span class="float-left">Status: </span>
+                            <!--{if isset($birth_reg->status) and $birth_reg->status==1}--><span class="badge badge-success">Approved</span>
+                            <!--{elseif isset($birth_reg->status) and $birth_reg->status==2}--><span class="badge badge-danger">Declined</span>
+                            <!--{else}--><span class="badge badge-info">Pending</span>
+                            <!--{/if}-->
+                        </h4>
+                    </div>
+                    <div class="form-group col-sm-12">
+                        <a class="btn btn-sm btn-info rounded-0"  href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/edit-birth?id=<!--{$birth_reg->registration_id}-->"><i class="fa fa-pencil"></i> Edit Detail</a>
+                        <!--{if isset($birth_reg->status) and $birth_reg->status==1}-->
+                        <a class="btn btn-sm btn-info rounded-0"  href="<!--{$Site.siteProtocol}--><!--{$Site.domainName}-->/root/birth-cert?id=<!--{$birth_reg->registration_id}-->"><i class="fa fa-ellipsis-v"></i> View Certificate</a>
+                        <!--{/if}-->
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    <!--{else}-->
+        <div class="col-sm-10 form-group mb-3">
+            <h6 class="text-center">No record found</h6>
+        </div>
+    <!--{/if}-->
 </section>
 <!--{/block}-->

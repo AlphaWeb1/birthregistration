@@ -1,11 +1,17 @@
-<?php /* Smarty version 3.1.27, created on 2020-11-28 12:17:25
-         compiled from "C:\wamp\www\birthregistration\site\templates\base\default.html" */ ?>
+<?php /* Smarty version 3.1.27, created on 2020-11-28 12:17:55
+         compiled from "C:\wamp\www\birthregistration\site\templates\base\birth-cert.html" */ ?>
 <?php
-/*%%SmartyHeaderCode:65255fc231c59f5417_46923297%%*/
+/*%%SmartyHeaderCode:239945fc231e33d9025_61453308%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
+    '0ce6ef7e0b16d7fb68d41607269e76593809e4ac' => 
+    array (
+      0 => 'C:\\wamp\\www\\birthregistration\\site\\templates\\base\\birth-cert.html',
+      1 => 1606561543,
+      2 => 'file',
+    ),
     '1520cf1ca0cb00b5bdc5e9633dd8a6a98982cc1e' => 
     array (
       0 => 'C:\\wamp\\www\\birthregistration\\site\\templates\\base\\default.html',
@@ -24,14 +30,26 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       1 => 1587175773,
       2 => 'file',
     ),
+    '35d2027052a9a1cb1894b295fbeb552d115184bc' => 
+    array (
+      0 => '35d2027052a9a1cb1894b295fbeb552d115184bc',
+      1 => 0,
+      2 => 'string',
+    ),
     'e13f02a258e0ef1a5104493ac8a272c464ce5155' => 
     array (
       0 => 'C:\\wamp\\www\\birthregistration\\site\\templates\\base\\modal-file.html',
       1 => 1587823471,
       2 => 'file',
     ),
+    'a6f43ba78ce6fe2c92dbdbc34c3ea2c38dbf75b4' => 
+    array (
+      0 => 'a6f43ba78ce6fe2c92dbdbc34c3ea2c38dbf75b4',
+      1 => 0,
+      2 => 'string',
+    ),
   ),
-  'nocache_hash' => '65255fc231c59f5417_46923297',
+  'nocache_hash' => '239945fc231e33d9025_61453308',
   'variables' => 
   array (
     'Site' => 0,
@@ -42,14 +60,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => '3.1.27',
-  'unifunc' => 'content_5fc231c7ab7857_87864125',
+  'unifunc' => 'content_5fc231e62da549_19290800',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_5fc231c7ab7857_87864125')) {
-function content_5fc231c7ab7857_87864125 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_5fc231e62da549_19290800')) {
+function content_5fc231e62da549_19290800 ($_smarty_tpl) {
 if (!is_callable('smarty_modifier_capitalize')) require_once 'C:\\wamp\\www\\birthregistration\\lib\\Smarty\\plugins\\modifier.capitalize.php';
 
-$_smarty_tpl->properties['nocache_hash'] = '65255fc231c59f5417_46923297';
+$_smarty_tpl->properties['nocache_hash'] = '239945fc231e33d9025_61453308';
 ?>
 <!DOCTYPE html>
 <?php echo $_smarty_tpl->getSubTemplate ('declare.html', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0);
@@ -83,14 +101,14 @@ echo $_smarty_tpl->tpl_vars['Site']->value['domainName'];?>
     <body class="body">
 		
 			<?php /*  Call merged included template "header.html" */
-echo $_smarty_tpl->getInlineSubTemplate('header.html', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, '155555fc231c60fd285_34569083', 'content_5fc231c60f7d13_57573205');
+echo $_smarty_tpl->getInlineSubTemplate('header.html', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, '275925fc231e38dac19_96486602', 'content_5fc231e38d5aa6_14872192');
 /*  End of included template "header.html" */?>
 
 		
 		
 			
 				<?php /*  Call merged included template "main-slider.html" */
-echo $_smarty_tpl->getInlineSubTemplate('main-slider.html', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, '206015fc231c6a7aa00_20371847', 'content_5fc231c6a76074_23183431');
+echo $_smarty_tpl->getInlineSubTemplate('main-slider.html', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, '70465fc231e43c5a32_67086563', 'content_5fc231e43a1723_99475326');
 /*  End of included template "main-slider.html" */?>
 
 			
@@ -98,63 +116,140 @@ echo $_smarty_tpl->getInlineSubTemplate('main-slider.html', $_smarty_tpl->cache_
 			<main id="main wow fadeInUp slow">
 			
 			
-				
-				<section class="row no-gutters justify-content-end bg-image-1">
-					<div class="col-sm-6 float-left text-dark p-4" id="logn-frame">
-						<div class="card p-5 mt-5">
-							<h2 class="text-center py-4">Birth Registration Statistics</h2>
-							<div id="complexPromo" class="carousel slide" data-ride="carousel">
-							  <div class="carousel-inner">
-							    <div class="carousel-item active">
-							      <h4 class="pt-2 text-center">Total Registered: <span class="badge badge-success"><?php echo $_smarty_tpl->tpl_vars['summary']->value->birth_reg_all;?>
-</span></h4>
-							    </div>
-							    <div class="carousel-item">
-							      <h4 class="pt-2 text-center">Total Approve: <span class="badge badge-success"><?php echo $_smarty_tpl->tpl_vars['summary']->value->birth_reg_approved;?>
-</span></h4>
-							    </div>
-							    <div class="carousel-item">
-							      <h4 class="pt-2 text-center">Total Pending: <span class="badge badge-success"><?php echo $_smarty_tpl->tpl_vars['summary']->value->birth_reg_new;?>
-</span></h4>
-							    </div>
-							  </div>
-							  <a class="carousel-control-prev d-none" href="#complexPromo" role="button" data-slide="prev">
-							    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-							    <span class="sr-only">Previous</span>
-							  </a>
-							  <a class="carousel-control-next d-none" href="#complexPromo" role="button" data-slide="next">
-							    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-							    <span class="sr-only">Next</span>
-							  </a>
-							</div>
-						</div>
-					</div>
-					<div class="card col-sm-5 my-5 float-right p-3" id="logn-frame">
-	                    <form method="get" action="<?php echo $_smarty_tpl->tpl_vars['Site']->value['siteProtocol'];
+				<?php
+$_smarty_tpl->properties['nocache_hash'] = '239945fc231e33d9025_61453308';
+?>
+
+<section class="row no-gutters justify-content-end bg-image-1">
+    <?php if (!empty($_smarty_tpl->tpl_vars['birth_reg']->value)) {?>
+        <div class="card col-sm-10 my-5 float-left p-2 birth-cert-frame"  id="printMe">
+            <div class="card birth-cert-frame">
+                <fieldset class="p-4 mt-3 birth-cert-frame">
+                    <legend class="text-center mb-4">
+                        <h3 class="font-weight-bold">
+                            <img class="coat-logo" src="<?php echo $_smarty_tpl->tpl_vars['Site']->value['siteProtocol'];
 echo $_smarty_tpl->tpl_vars['Site']->value['domainName'];?>
-/find-registration">
-	                        <fieldset class="card p-2 mt-3">
-	                            <legend class="text-center mb-4"><h3 class="font-weight-bold">Search for Detail</h3></legend>
-	                            <div class="form-group text-justify mb-2">
-	                                <label for="regId">Registration Id</label>
-	                                <input type="text" id="regId" name="regId" placeholder="Enter Registration Id" class="form-control badge-pill" required="">
-	                            </div>
-	                            <div class="form-group text-center">
-	                                <button class="btn btn-success btn-block badge-pill" type="submit">Find Certificate</button>
-	                            </div>
-	                            <div class="form-group text-center">
-	                                <h6 class="font-weight-bold">OR</h6>    
-	                            </div>
-	                            <div class="form-group text-center">
-	                                <a class="btn btn-link" href="<?php echo $_smarty_tpl->tpl_vars['Site']->value['siteProtocol'];
-echo $_smarty_tpl->tpl_vars['Site']->value['domainName'];?>
-/register">Register a New Birth Record</a>
-	                            </div>
-	                        </fieldset>
-	                    </form>
-					</div>
-				</section>
-				
+/site/media/i/logo0.jpg" alt="Nigerian Coat of Arm">
+                        </h3> <span class="text-right float-right font-weight-bold text-uppercase">ORIGINAL</span>
+                        <h3 class="text-uppercase">
+                            FEDERAL REPUBLIC OF NIGERIA <br/>
+                            <span class="font-weight-bold">NATIONAL POPULATION COMMISSION</span>
+                        </h3>
+                    </legend>
+                    
+                    <div class="form-row">
+                        <div class="col-sm-12 text-center">
+                            <h5 class="text-uppercase"><u>Certificate of Birth</u></h5>
+                            <p class="h6">Issue under the Births and Deaths Etc. (Compulsory Regulation) Decree 69 of 1992</p>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <h5 class="my-2"><span class="float-left">Registration Center:&nbsp;</span> <?php echo $_smarty_tpl->tpl_vars['birth_reg']->value->center;?>
+</h5>
+                            <h5 class="my-2"><span class="float-left">Town / Village:&nbsp;</span> <?php echo $_smarty_tpl->tpl_vars['birth_reg']->value->town;?>
+</h5>
+                            <h5 class="my-2"><span class="float-left">L.G.A.:&nbsp;</span> <?php echo $_smarty_tpl->tpl_vars['birth_reg']->value->lga;?>
+</h5>
+                            <h5 class="my-2"><span class="float-left">State:&nbsp;</span> <?php echo $_smarty_tpl->tpl_vars['birth_reg']->value->state;?>
+</h5>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <p class="h5 my-3 text-center">Certficate Number:</p>
+                            <div class="my-3 text-center">
+                                <h5 class="d-inline-flex">
+                                    <span><u><?php echo $_smarty_tpl->tpl_vars['birth_reg']->value->register_volume;?>
+</u>&nbsp;/&nbsp;<br/>&nbsp;Volume&nbsp;</span>
+                                    <span><u><?php echo $_smarty_tpl->tpl_vars['birth_reg']->value->register_volume;?>
+</u>&nbsp;/&nbsp;<br/>&nbsp;Year&nbsp;</span>
+                                    <span><u><?php echo $_smarty_tpl->tpl_vars['birth_reg']->value->reg_year;?>
+</u>&nbsp;<br/>&nbsp;Entry No</span>
+                                </h5>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 text-center">
+                            <p class="h6">This is to certify that thye birth details of which are recorded herein, has been registered on.</p>
+                            <h6 class="d-inline-flex">
+                                <span><u><?php echo $_smarty_tpl->tpl_vars['birth_reg']->value->reg_day;?>
+</u><br/>Day</span>&nbsp;/&nbsp;<span><u><?php echo $_smarty_tpl->tpl_vars['birth_reg']->value->reg_month;?>
+</u><br/>Month</span>&nbsp;/&nbsp;
+                                <span><u><?php echo $_smarty_tpl->tpl_vars['birth_reg']->value->reg_year;?>
+</u><br/>Year</span>
+                                &nbsp;at this Registration Center
+                            </h6>
+                        </div>
+                        <div class="col-sm-12 text-left">
+                            <h5 class="h5 my-3">
+                                <span>1.&nbsp;&nbsp;&nbsp;&nbsp;Full Name:&nbsp;&nbsp;
+                                    <?php echo $_smarty_tpl->tpl_vars['birth_reg']->value->child_surname;?>
+ <?php echo $_smarty_tpl->tpl_vars['birth_reg']->value->child_firstname;?>
+ <?php echo $_smarty_tpl->tpl_vars['birth_reg']->value->child_other_name;?>
+
+                                </span>
+                            </h5>
+                            <h5 class="h5 my-3 text-center">
+                                <span class="float-left">2.&nbsp;&nbsp;&nbsp;&nbsp;Sex:&nbsp;<?php echo $_smarty_tpl->tpl_vars['birth_reg']->value->sex;?>
+&nbsp;</span>
+                                <span class="h5 d-inline-flex">3.&nbsp;&nbsp;&nbsp;&nbsp;Date of Birth:&nbsp;
+                                    <span><u><?php echo $_smarty_tpl->tpl_vars['birth_reg']->value->child_birth_day;?>
+</u><br/>Day</span>&nbsp;/&nbsp;<span><u><?php echo $_smarty_tpl->tpl_vars['birth_reg']->value->child_birth_month;?>
+</u><br/>Month</span>&nbsp;/&nbsp;
+                                    <span><u><?php echo $_smarty_tpl->tpl_vars['birth_reg']->value->child_birth_year;?>
+</u><br/>Year</span>
+                                </span>
+                            </h5>
+                            <h5 class="h5 my-3">
+                                <span>
+                                    4.&nbsp;&nbsp;&nbsp;&nbsp;Place or Birth:&nbsp;&nbsp; <?php echo $_smarty_tpl->tpl_vars['birth_reg']->value->town_village;?>
+ <?php echo $_smarty_tpl->tpl_vars['birth_reg']->value->place_of_birth;?>
+ Town / Village
+                                </span>
+                            </h5>
+                            <h5 class="h5 my-3">
+                                <span>5.&nbsp;&nbsp;&nbsp;&nbsp;Full name of Father:&nbsp;&nbsp;
+                                    <?php echo $_smarty_tpl->tpl_vars['birth_reg']->value->father_surname;?>
+ <?php echo $_smarty_tpl->tpl_vars['birth_reg']->value->father_firstname;?>
+
+                                </span>
+                            </h5>
+                            <h5 class="h5 my-3">
+                                <span>6.&nbsp;&nbsp;&nbsp;&nbsp;Full name of Mother:&nbsp;&nbsp;
+                                    <?php echo $_smarty_tpl->tpl_vars['birth_reg']->value->mother_surname;?>
+ <?php echo $_smarty_tpl->tpl_vars['birth_reg']->value->mother_firstname;?>
+
+                                </span>
+                            </h5>
+                        </div>
+                        <div class="col-sm-12 text-left">
+                            <h5 class="my-5">
+                                <span class="float-left">Place of Issue:&nbsp;<?php echo $_smarty_tpl->tpl_vars['birth_reg']->value->lga;?>
+ <?php echo $_smarty_tpl->tpl_vars['birth_reg']->value->state;?>
+&nbsp;</span>
+                                <span class=" float-right">Name of Register:&nbsp;_____________</span>
+                            </h5>
+                        </div>
+                        <div class="col-sm-12 text-left">
+                            <h5 class="my-3">
+                                <span class="float-left">Date:&nbsp;<?php echo $_smarty_tpl->tpl_vars['birth_reg']->value->updated_at;?>
+&nbsp;</span>
+                                <span class=" float-right">Signature:&nbsp;__________________</span>
+                            </h5>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-sm-12">
+                            <button class="btn btn-sm btn-info rounded-0" id="printSect"><i class="fa fa-print"></i> Print</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    <?php } else { ?>
+        <div class="col-sm-10 form-group mb-3">
+            <h6 class="text-center">No record found</h6>
+        </div>
+    <?php }?>
+</section>
+
+
 			
 			
 			</main>
@@ -162,16 +257,15 @@ echo $_smarty_tpl->tpl_vars['Site']->value['domainName'];?>
 		
 		
 			<?php /*  Call merged included template "modal-file.html" */
-echo $_smarty_tpl->getInlineSubTemplate('modal-file.html', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, '251195fc231c7202484_99213756', 'content_5fc231c71fc2b8_69270784');
+echo $_smarty_tpl->getInlineSubTemplate('modal-file.html', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, '14375fc231e57e8be3_09272777', 'content_5fc231e57e3a71_57736069');
 /*  End of included template "modal-file.html" */?>
 
 		
-		
-			<?php if (!empty($_smarty_tpl->tpl_vars['fail']->value)) {?>
-				<?php echo $_smarty_tpl->tpl_vars['fail']->value;?>
+		<?php
+$_smarty_tpl->properties['nocache_hash'] = '239945fc231e33d9025_61453308';
+?>
 
-			<?php }?>
-		
+
 		
 			<!--========================== Footer ============================-->
 		    <footer id="footer" class="footer-bg-img">
@@ -264,12 +358,12 @@ echo $_smarty_tpl->tpl_vars['Site']->value['domainName'];?>
 <?php }
 }
 ?><?php
-/*%%SmartyHeaderCode:155555fc231c60fd285_34569083%%*/
-if ($_valid && !is_callable('content_5fc231c60f7d13_57573205')) {
-function content_5fc231c60f7d13_57573205 ($_smarty_tpl) {
+/*%%SmartyHeaderCode:275925fc231e38dac19_96486602%%*/
+if ($_valid && !is_callable('content_5fc231e38d5aa6_14872192')) {
+function content_5fc231e38d5aa6_14872192 ($_smarty_tpl) {
 ?>
 <?php
-$_smarty_tpl->properties['nocache_hash'] = '155555fc231c60fd285_34569083';
+$_smarty_tpl->properties['nocache_hash'] = '275925fc231e38dac19_96486602';
 ?>
 <!--==========================  Header  ============================-->
 <header class="border border-top-0 border-left-0 border-right-0 border-success" id="header">
@@ -328,16 +422,16 @@ echo $_smarty_tpl->tpl_vars['Site']->value['domainName'];?>
     </div>
 </header><!-- #header -->
 <button type="button" class="btn btn-primary d-none" data-toggle="modal" data-target="#myModal3" id="contact-button"><b><i class="fa fa-headphones"></i> Contact</b></button><?php
-/*/%%SmartyNocache:155555fc231c60fd285_34569083%%*/
+/*/%%SmartyNocache:275925fc231e38dac19_96486602%%*/
 }
 }
 ?><?php
-/*%%SmartyHeaderCode:206015fc231c6a7aa00_20371847%%*/
-if ($_valid && !is_callable('content_5fc231c6a76074_23183431')) {
-function content_5fc231c6a76074_23183431 ($_smarty_tpl) {
+/*%%SmartyHeaderCode:70465fc231e43c5a32_67086563%%*/
+if ($_valid && !is_callable('content_5fc231e43a1723_99475326')) {
+function content_5fc231e43a1723_99475326 ($_smarty_tpl) {
 ?>
 <?php
-$_smarty_tpl->properties['nocache_hash'] = '206015fc231c6a7aa00_20371847';
+$_smarty_tpl->properties['nocache_hash'] = '70465fc231e43c5a32_67086563';
 ?>
 <!--==========================Intro Section============================-->
 <section id="intro d-none">
@@ -431,16 +525,16 @@ echo $_smarty_tpl->tpl_vars['Site']->value['domainName'];?>
         </div>
     </div>
 </section><!-- #intro --><?php
-/*/%%SmartyNocache:206015fc231c6a7aa00_20371847%%*/
+/*/%%SmartyNocache:70465fc231e43c5a32_67086563%%*/
 }
 }
 ?><?php
-/*%%SmartyHeaderCode:251195fc231c7202484_99213756%%*/
-if ($_valid && !is_callable('content_5fc231c71fc2b8_69270784')) {
-function content_5fc231c71fc2b8_69270784 ($_smarty_tpl) {
+/*%%SmartyHeaderCode:14375fc231e57e8be3_09272777%%*/
+if ($_valid && !is_callable('content_5fc231e57e3a71_57736069')) {
+function content_5fc231e57e3a71_57736069 ($_smarty_tpl) {
 ?>
 <?php
-$_smarty_tpl->properties['nocache_hash'] = '251195fc231c7202484_99213756';
+$_smarty_tpl->properties['nocache_hash'] = '14375fc231e57e8be3_09272777';
 ?>
 <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModal1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document" >
@@ -507,7 +601,7 @@ echo $_smarty_tpl->tpl_vars['Site']->value['domainName'];?>
     <?php echo $_smarty_tpl->tpl_vars['msg']->value;?>
 
 <?php }?><?php
-/*/%%SmartyNocache:251195fc231c7202484_99213756%%*/
+/*/%%SmartyNocache:14375fc231e57e8be3_09272777%%*/
 }
 }
 ?>

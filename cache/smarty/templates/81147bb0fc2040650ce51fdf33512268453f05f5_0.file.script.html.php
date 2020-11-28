@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.27, created on 2020-11-26 18:16:20
+<?php /* Smarty version 3.1.27, created on 2020-11-28 12:20:41
          compiled from "C:\wamp\www\birthregistration\site\templates\base\script.html" */ ?>
 <?php
-/*%%SmartyHeaderCode:301605fbfe2e400a705_05925445%%*/
+/*%%SmartyHeaderCode:179265fc23289038963_99627944%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,11 +9,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '81147bb0fc2040650ce51fdf33512268453f05f5' => 
     array (
       0 => 'C:\\wamp\\www\\birthregistration\\site\\templates\\base\\script.html',
-      1 => 1604136218,
+      1 => 1606562436,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '301605fbfe2e400a705_05925445',
+  'nocache_hash' => '179265fc23289038963_99627944',
   'variables' => 
   array (
     'Site' => 0,
@@ -22,13 +22,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => '3.1.27',
-  'unifunc' => 'content_5fbfe2e4501802_65162871',
+  'unifunc' => 'content_5fc2328a35d4f7_12485114',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_5fbfe2e4501802_65162871')) {
-function content_5fbfe2e4501802_65162871 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_5fc2328a35d4f7_12485114')) {
+function content_5fc2328a35d4f7_12485114 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '301605fbfe2e400a705_05925445';
+$_smarty_tpl->properties['nocache_hash'] = '179265fc23289038963_99627944';
 ?>
 <!-- JavaScript Libraries -->
 <?php echo '<script'; ?>
@@ -139,6 +139,7 @@ echo $_smarty_tpl->tpl_vars['Site']->value['domainName'];?>
 	/*Old Important JS*/
 	$("body").addClass("js");
 	let indexer=0;
+	let printTitle= `Nigerian Population Commission: Birth Certificate`;
 	window.addEventListener('scroll', function() {
 		// windowScroll();
 	});
@@ -201,6 +202,13 @@ echo $_smarty_tpl->tpl_vars['Site']->value['domainName'];?>
 				printData('printMe', '<?php echo $_smarty_tpl->tpl_vars['Site']->value['companyName'];?>
 : Printing');
 				$("#printNow").show();
+			});
+			/*Print Event Handler*/
+			$(document).on('click',"#printSect", function() {
+				$("#printSect").hide();
+				printData('printMe', '<?php echo $_smarty_tpl->tpl_vars['Site']->value['companyName'];?>
+: Manage');
+				$("#printSect").show();
 			});
 	    	$(document).on('click', ".icon-bar", function() {
 	    		$("#nav-menu-container").fadeToggle('slow').toggleClass('showMenu');

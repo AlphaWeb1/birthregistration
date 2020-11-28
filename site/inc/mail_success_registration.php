@@ -86,7 +86,7 @@ $divElements='<div class="row justify-content-center">
     $mailer->ClearAllRecipients();
     // echo "MAIL HAS BEEN SENT SUCCESSFULLY";
 
-    $fail='<div class="alert text-primary alert-dismissible" role="alert">
+    $fail='<div class="alert alert-info text-primary alert-dismissible" role="alert">
         <i class="fa fa-checked"></i> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h3>Success!</h3><p>Your Registration of birth detail is successfully sent for verification</p>
         <p>A mail had been sent to you regarding this registration</p>
@@ -96,7 +96,7 @@ $divElements='<div class="row justify-content-center">
 
 } catch (Exception $e) {
     // echo "EMAIL SENDING FAILED. INFO: " . $mailer->ErrorInfo;
-    $fail.='<div class="alert text-warning alert-dismissible" role="alert"><i class="fa fa-warning"></i>
+    $fail.='<div class="alert text-success alert-success alert-dismissible" role="alert"><i class="fa fa-warning"></i>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><h3>Oops!</h3> 
         <h3>Success!</h3><p>Your Registration of birth detail is successfully sent for verification</p>
         <p>Unable to connect to send message</p>
